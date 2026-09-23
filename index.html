@@ -499,7 +499,10 @@
     <section id="tryhackme">
       <h2 class="reveal">Live Fire Exercises (TryHackMe)</h2>
       <div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
-        <img id="thm-badge-img" src="https://tryhackme-badges.s3.amazonaws.com/Hackth3Path.png" alt="TryHackMe badge" style="max-width:329px; margin-bottom: 1.5rem;">
+        <!-- ⚡ FIX: Wrapped image in <a> tag so it redirects to your THM profile -->
+        <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" rel="noopener noreferrer" title="Visit my TryHackMe Profile">
+          <img id="thm-badge-img" src="https://tryhackme-badges.s3.amazonaws.com/Hackth3Path.png" alt="TryHackMe badge" style="max-width:329px; margin-bottom: 1.5rem; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
         <div id="thm-stats" style="color: var(--text-muted); text-align:center; width: 100%;"></div>
         <ul id="thm-rooms" style="list-style:none; color: var(--text-muted); text-align:center; padding: 0; margin-top: 1rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;"></ul>
       </div>
@@ -616,7 +619,6 @@
     // ==========================================
     // 2. DYNAMIC SECURITY WRITEUPS INJECTION
     // ==========================================
-    // ➕ ADD YOUR NEW WRITEUPS HERE! Just copy a block and change the text.
     const writeupsData = [
       {
         title: "TryHackMe: Recruit Walkthrough",
@@ -649,7 +651,7 @@
       
       data.forEach(w => {
         const card = document.createElement('div');
-        card.className = 'project-card reveal'; // Add reveal for animation
+        card.className = 'project-card reveal'; 
         card.innerHTML = `
           <div class="project-icon">📄</div>
           <div class="project-title">${w.title}</div>
@@ -668,14 +670,12 @@
     // 3. UI INTERACTIONS & ANIMATIONS
     // ==========================================
 
-    // Loader Fade Out
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
       }, 2000);
     });
 
-    // Custom Cursor
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
     let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -698,7 +698,6 @@
       el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
     });
 
-    // Particle Canvas
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -762,7 +761,6 @@
     }
     animateParticles();
 
-    // Intersection Observer for Scroll Animations
     const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -779,13 +777,9 @@
       });
     }, observerOptions);
 
-    // Observe standard elements
     document.querySelectorAll('.reveal, .exp-card').forEach(el => observer.observe(el));
-    
-    // Observe dynamically added writeups
     document.querySelectorAll('#writeups-container .project-card').forEach(el => observer.observe(el));
 
-    // Smooth Scroll Offset for Fixed Nav
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
