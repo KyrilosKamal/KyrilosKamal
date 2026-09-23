@@ -205,11 +205,12 @@
     .badge { font-size: 0.7rem; padding: 4px 8px; background: rgba(245, 158, 11, 0.15); color: var(--amber); border-radius: 4px; }
     .exp-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-top: 0.5rem; }
 
-    /* Projects */
+    /* Projects & Writeups */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
     .project-card {
       background: var(--surface); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.05);
       position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; flex-direction: column;
     }
     .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
     .project-card::before {
@@ -220,9 +221,11 @@
     .project-card:hover::before { transform: scaleX(1); }
     .project-icon { font-size: 2rem; margin-bottom: 1rem; display: inline-block; }
     .project-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .project-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .project-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; flex-grow: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
     .project-tag { font-size: 0.75rem; padding: 4px 8px; background: var(--surface-light); color: var(--cyan); border-radius: 4px; }
+    .read-more-btn { display: inline-block; margin-top: auto; color: var(--cyan); font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+    .read-more-btn:hover { color: var(--pink); }
 
     /* Education & Languages */
     .edu-lang { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -304,6 +307,7 @@
       <a href="#skills">Arsenal</a>
       <a href="#experience">Operations</a>
       <a href="#projects">R&D Labs</a>
+      <a href="#writeups">Writeups</a>
       <a href="#education">Training</a>
       <a href="#contact">Secure Comms</a>
     </div>
@@ -395,7 +399,7 @@
         <div class="exp-card reveal">
           <div class="exp-header"><div class="exp-title">Lead Infrastructure Engineer</div><div class="exp-meta">Dec 2025 – Present</div></div>
           <div class="exp-company">Lazuli Marsa Allam | Marsa Allam, Egypt</div>
-          <div class="exp-desc">Spearheaded emergency response to an incomplete IT handover. Conducted ground-up discovery across a /16 IP range, mapping and securing a 500+ endpoint hospitality environment. Deployed 180+ Omada APs and 200+ IP cameras across segmented VLANs (Staff, Guest, CCTV, Servers, IPTV). Engineered FortiGate firewall policies and hardened Active Directory to maintain 24/7 operational security.</div>
+          <div class="exp-desc">Spearheaded emergency response to an incomplete IT handover. Conducted ground-up discovery across a /16 IP range, mapping and securing a 500+ endpoint hospitality environment. Deployed 180+ Omada APs and 200+ IP cameras across segmented VLANs. Engineered FortiGate firewall policies and hardened Active Directory to maintain 24/7 operational security.</div>
           <div class="exp-badges"><span class="badge">Infrastructure Recovery</span><span class="badge">Network Segmentation</span><span class="badge">Policy Enforcement</span></div>
         </div>
         <div class="exp-card reveal">
@@ -428,12 +432,14 @@
           <div class="project-title">MITM Attack Research — Browsec VPN</div>
           <div class="project-desc">Identified and documented a real-world MITM attack by the Browsec VPN browser extension rewriting GitHub CDN URLs to a malicious domain (infird.com). Performed deep traffic analysis using Wireshark to capture and confirm URL hijacking behavior. Published full technical writeup with IOCs and remediation strategies.</div>
           <div class="project-tags"><span class="project-tag">Wireshark</span><span class="project-tag">Traffic Analysis</span><span class="project-tag">Threat Intel</span></div>
+          <a href="https://github.com/KyrilosKamal/Security-WriteUps" target="_blank" class="read-more-btn">Read Writeup &rarr;</a>
         </div>
         <div class="project-card reveal">
           <div class="project-icon">📊</div>
           <div class="project-title">NetMon — Network Monitoring Desktop App</div>
           <div class="project-desc">Developed a cross-platform network monitoring desktop app (Python, PySide6) with real-time bandwidth tracking, live connection table with process/PID resolution, and integrated speed test. Implemented MVC architecture with QThread workers for non-blocking UI updates. Published to Arch Linux AUR (netmon-gui) and packaged for Windows.</div>
           <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">PySide6</span><span class="project-tag">Tooling Dev</span></div>
+          <a href="https://github.com/KyrilosKamal/NetMon" target="_blank" class="read-more-btn">View Repository &rarr;</a>
         </div>
         <div class="project-card reveal">
           <div class="project-icon">🏨</div>
@@ -447,6 +453,14 @@
           <div class="project-desc">Configured FortiGate and Sophos firewalls for secure remote access, SSL inspection, and web filtering. Integrated threat prevention and IDS/IPS for production environments, ensuring robust perimeter defense and secure VPN tunnels for remote workforce.</div>
           <div class="project-tags"><span class="project-tag">FortiGate NSE4</span><span class="project-tag">Sophos</span><span class="project-tag">SSL Inspection</span></div>
         </div>
+      </div>
+    </section>
+
+    <!-- Writeups & CTF Walkthroughs -->
+    <section id="writeups">
+      <h2 class="reveal">Security Writeups & CTF Walkthroughs</h2>
+      <div class="projects-grid" id="writeups-container">
+        <!-- Writeups will be dynamically injected here via JavaScript -->
       </div>
     </section>
 
@@ -537,7 +551,7 @@
 
   <script>
     // ==========================================
-    // 1. TRYHACKME DATA INJECTION (Merged JSON)
+    // 1. TRYHACKME DATA INJECTION
     // ==========================================
     const thmData = {
       "rank": "Wizard (0xA)",
@@ -564,10 +578,8 @@
       ]
     };
 
-    // Function to render THM data
     function renderTHMData(data) {
       const statsContainer = document.getElementById('thm-stats');
-      
       const statsHtml = `
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; width: 100%; max-width: 800px; text-align: center;">
           <div style="background: var(--surface-light); padding: 1.5rem; border-radius: 8px;">
@@ -588,7 +600,6 @@
           </div>
         </div>
       `;
-      
       statsContainer.innerHTML = statsHtml;
 
       const roomsList = document.getElementById('thm-rooms');
@@ -596,18 +607,65 @@
       (data.completedRooms || []).forEach(r => {
         const li = document.createElement('li');
         li.textContent = r;
-        // Styling for the room chips
         li.style.cssText = "background: var(--surface); padding: 6px 12px; border-radius: 4px; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.05);";
         roomsList.appendChild(li);
       });
     }
-
-    // Initialize THM data immediately
     renderTHMData(thmData);
 
+    // ==========================================
+    // 2. DYNAMIC SECURITY WRITEUPS INJECTION
+    // ==========================================
+    // ➕ ADD YOUR NEW WRITEUPS HERE! Just copy a block and change the text.
+    const writeupsData = [
+      {
+        title: "TryHackMe: Recruit Walkthrough",
+        desc: "Medium-rated web exploitation room focusing on Path Traversal and SQL Injection to gain user and administrator access to a hiring dashboard. Covered manual and automated SQLi exploitation using SQLMAP.",
+        link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Recruit-TryHackMe-Writeup.md",
+        tags: ["TryHackMe", "Web Exploitation", "SQL Injection", "Path Traversal"]
+      },
+      {
+        title: "TryHackMe: Brr — ScadaBR Writeup",
+        desc: "OT/ICS challenge involving a SCADA box. Exploited a ScadaBR login page and default Modbus FC03 (read holding registers) configuration to gain access to the industrial control system.",
+        link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Brr-Writeup-room",
+        tags: ["TryHackMe", "OT/ICS", "SCADA", "Modbus"]
+      },
+      {
+        title: "Cracking SMB Wide Open — Brute Force with Metasploit",
+        desc: "Detailed walkthrough of SMB brute-forcing on TryHackMe. Used Metasploit's smb_login module with a wordlist to crack credentials and gain unauthorized access to a Windows target.",
+        link: "https://kirll0s.medium.com/cracking-smb-wide-open-brute-force-with-metasploit-on-tryhackme-f71258db3be8",
+        tags: ["TryHackMe", "Metasploit", "SMB", "Brute Force"]
+      },
+      {
+        title: "PortSwigger Lab: SQL Injection with Filter Bypass via XML Encoding",
+        desc: "Solved the Practitioner-level SQL injection lab by obfuscating the malicious payload using XML entity encoding (via Hackvertor) to bypass the web application firewall (WAF) and extract data.",
+        link: "https://kirll0s.medium.com/portswigger-lab-writeup-sql-injection-with-filter-bypass-via-xml-encoding-7e1436358462",
+        tags: ["PortSwigger", "SQL Injection", "WAF Bypass", "XML Encoding"]
+      }
+    ];
+
+    function renderWriteups(data) {
+      const container = document.getElementById('writeups-container');
+      
+      data.forEach(w => {
+        const card = document.createElement('div');
+        card.className = 'project-card reveal'; // Add reveal for animation
+        card.innerHTML = `
+          <div class="project-icon">📄</div>
+          <div class="project-title">${w.title}</div>
+          <div class="project-desc">${w.desc}</div>
+          <div class="project-tags">
+            ${w.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}
+          </div>
+          <a href="${w.link}" target="_blank" class="read-more-btn">Read Writeup &rarr;</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+    renderWriteups(writeupsData);
 
     // ==========================================
-    // 2. UI INTERACTIONS & ANIMATIONS
+    // 3. UI INTERACTIONS & ANIMATIONS
     // ==========================================
 
     // Loader Fade Out
@@ -710,7 +768,6 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          // Animate skill bars
           const bars = entry.target.querySelectorAll('.skill-bar-fill');
           bars.forEach(bar => {
             const width = bar.getAttribute('data-width');
@@ -722,7 +779,11 @@
       });
     }, observerOptions);
 
+    // Observe standard elements
     document.querySelectorAll('.reveal, .exp-card').forEach(el => observer.observe(el));
+    
+    // Observe dynamically added writeups
+    document.querySelectorAll('#writeups-container .project-card').forEach(el => observer.observe(el));
 
     // Smooth Scroll Offset for Fixed Nav
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
