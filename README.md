@@ -45,6 +45,15 @@ Bridging the gap between robust infrastructure defense and offensive security re
 
 ---
 
+## 📝 Security Writeups & CTF Walkthroughs
+
+*   **TryHackMe: Recruit Walkthrough** - Web exploitation room focusing on Path Traversal and SQL Injection. Covered manual and automated SQLi exploitation using SQLMAP. [Read Writeup](https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Recruit-TryHackMe-Writeup.md)
+*   **TryHackMe: Brr — ScadaBR Writeup** - OT/ICS challenge involving a SCADA box. Exploited a ScadaBR login page and default Modbus FC03 configuration to gain access to the industrial control system. [Read Writeup](https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Brr-Writeup-room)
+*   **Cracking SMB Wide Open — Brute Force with Metasploit** - Detailed walkthrough of SMB brute-forcing on TryHackMe. Used Metasploit's smb_login module with a wordlist to crack credentials and gain unauthorized access. [Read Writeup](https://kirll0s.medium.com/cracking-smb-wide-open-brute-force-with-metasploit-on-tryhackme-f71258db3be8)
+*   **PortSwigger Lab: SQL Injection with Filter Bypass via XML Encoding** - Solved the Practitioner-level SQL injection lab by obfuscating the malicious payload using XML entity encoding (via Hackvertor) to bypass the WAF. [Read Writeup](https://kirll0s.medium.com/portswigger-lab-writeup-sql-injection-with-filter-bypass-via-xml-encoding-7e1436358462)
+
+---
+
 ## 👨‍💻 About Me
 
 - 🔭 **6+ years** of experience in IT & Networking (Net Admin, Systems, Firewalls)
