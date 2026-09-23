@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kyrillos Kamal | IT & Cybersecurity Portfolio</title>
+  <title>Kyrillos Kamal | Network Defender & Offensive Security</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -81,9 +81,7 @@
     @media (max-width: 768px) { #cursor-dot, #cursor-ring { display: none; } body { cursor: auto; } }
 
     /* Canvas */
-    #particle-canvas {
-      position: fixed; inset: 0; z-index: -1; opacity: 0.6;
-    }
+    #particle-canvas { position: fixed; inset: 0; z-index: -1; opacity: 0.6; }
 
     /* Navbar */
     nav {
@@ -281,7 +279,7 @@
       .hero-right { order: 1; }
       .cta-group { justify-content: center; }
       .skills-grid, .edu-lang, .contact-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; } /* Simplified for mobile, could add hamburger if needed */
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -303,11 +301,11 @@
   <nav>
     <a href="#" class="logo">Kyrillos Kamal</a>
     <div class="nav-links">
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+      <a href="#skills">Arsenal</a>
+      <a href="#experience">Operations</a>
+      <a href="#projects">R&D Labs</a>
+      <a href="#education">Training</a>
+      <a href="#contact">Secure Comms</a>
     </div>
   </nav>
 
@@ -315,149 +313,146 @@
     <!-- Hero -->
     <section class="hero" id="hero">
       <div class="hero-left">
-        <span class="tag">✅ Available for Opportunities</span>
+        <span class="tag">[ SYSTEM STATUS: ACTIVE ] - OPEN TO DEPLOYMENT</span>
         <h1 class="hero-name">Kyrillos Kamal</h1>
-        <p class="hero-subtitle">IT & Network Specialist | Cybersecurity Trainee</p>
+        <p class="hero-subtitle">Network Defender | Offensive Security Enthusiast | Infrastructure Architect</p>
+        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; max-width: 600px;">
+          Bridging the gap between robust infrastructure defense and offensive security research. 6+ years hardening enterprise networks, now actively hunting vulnerabilities and simulating advanced persistent threats.
+        </p>
         <div class="cta-group">
-          <a href="#contact" class="btn btn-primary">Get In Touch</a>
-          <a href="https://linkedin.com/in/kyrillos-kamal" target="_blank" class="btn btn-outline">LinkedIn</a>
+          <a href="#contact" class="btn btn-primary">Initiate Handshake</a>
+          <a href="https://linkedin.com/in/kyrillos-kamal" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
         </div>
       </div>
       <div class="hero-right">
         <div class="glow-orb"></div>
         <div class="hero-card">
           <div class="avatar-ring"><span class="avatar-initials">KK</span></div>
-          <div class="hero-role">Infrastructure & Security</div>
+          <div class="hero-role">Offensive Security & Infrastructure</div>
           <div class="stats-grid">
             <div><div class="stat-val">6+</div><div class="stat-label">Years Exp</div></div>
-            <div><div class="stat-val">180+</div><div class="stat-label">APs Managed</div></div>
-            <div><div class="stat-val">99%</div><div class="stat-label">Uptime</div></div>
+            <div><div class="stat-val">180+</div><div class="stat-label">Nodes Secured</div></div>
+            <div><div class="stat-val">99%</div><div class="stat-label">Uptime Maintained</div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills (Arsenal) -->
     <section id="skills">
-      <h2 class="reveal">Technical Expertise</h2>
+      <h2 class="reveal">Technical Arsenal</h2>
       <div class="skills-grid">
         <div class="reveal">
           <div class="skill-item">
-            <div class="skill-header"><span>FortiGate & Sophos Firewalls</span><span>90%</span></div>
+            <div class="skill-header"><span>Firewall Architecture (FortiGate/Sophos)</span><span>90%</span></div>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%" style="background: linear-gradient(90deg, var(--indigo), var(--cyan));"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-header"><span>Network Administration (CCNA)</span><span>95%</span></div>
+            <div class="skill-header"><span>Network Defense & Segmentation (CCNA)</span><span>95%</span></div>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%" style="background: linear-gradient(90deg, var(--cyan), var(--amber));"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-header"><span>Windows Server & Active Directory</span><span>85%</span></div>
+            <div class="skill-header"><span>Active Directory & Windows Server</span><span>85%</span></div>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%" style="background: linear-gradient(90deg, var(--pink), var(--indigo));"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-header"><span>Linux Administration</span><span>80%</span></div>
+            <div class="skill-header"><span>Linux Administration (Kali, Ubuntu)</span><span>80%</span></div>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%" style="background: linear-gradient(90deg, var(--amber), var(--cyan));"></div></div>
           </div>
         </div>
         <div class="reveal">
           <div class="skill-item">
-            <div class="skill-header"><span>Cybersecurity & Threat Prevention</span><span>70%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70%" style="background: linear-gradient(90deg, var(--pink), var(--indigo));"></div></div>
+            <div class="skill-header"><span>Offensive Security & Pen Testing (eJPT Path)</span><span>75%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75%" style="background: linear-gradient(90deg, var(--pink), var(--indigo));"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-header"><span>Virtualization & Cloud</span><span>75%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75%" style="background: linear-gradient(90deg, var(--indigo), var(--amber));"></div></div>
+            <div class="skill-header"><span>Traffic Analysis & Threat Hunting</span><span>85%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%" style="background: linear-gradient(90deg, var(--indigo), var(--amber));"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-header"><span>Shell Scripting & Automation</span><span>65%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="65%" style="background: linear-gradient(90deg, var(--cyan), var(--pink));"></div></div>
+            <div class="skill-header"><span>Scripting & Automation (Python, Bash)</span><span>70%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70%" style="background: linear-gradient(90deg, var(--cyan), var(--pink));"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-header"><span>Endpoint Protection & ITIL</span><span>88%</span></div>
+            <div class="skill-header"><span>Incident Response & ITIL Operations</span><span>88%</span></div>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88%" style="background: linear-gradient(90deg, var(--amber), var(--indigo));"></div></div>
           </div>
         </div>
       </div>
       <div class="chip-cloud reveal">
+        <span class="chip">Nmap</span><span class="chip">Metasploit</span><span class="chip">Burp Suite</span>
+        <span class="chip">Wireshark</span><span class="chip">Hydra</span><span class="chip">Gobuster</span>
         <span class="chip">VLANs</span><span class="chip">ACLs</span><span class="chip">NAT</span>
-        <span class="chip">Wireshark</span><span class="chip">DNS/DHCP</span><span class="chip">GPO</span>
-        <span class="chip">Ubuntu/CentOS</span><span class="chip">VMware/Hyper-V</span>
         <span class="chip">IDS/IPS</span><span class="chip">SSL Inspection</span>
-        <span class="chip">Omada Controller</span><span class="chip">Packet Analysis</span>
+        <span class="chip">VMware/Hyper-V</span><span class="chip">MITM Attacks</span>
       </div>
     </section>
 
-    <!-- Experience -->
+    <!-- Experience (Field Operations) -->
     <section id="experience">
-      <h2 class="reveal">Professional Experience</h2>
+      <h2 class="reveal">Field Operations</h2>
       <div class="timeline">
         <div class="exp-card reveal">
-          <div class="exp-header"><div class="exp-title">Assistant IT Manager</div><div class="exp-meta">Dec 2025 – Present</div></div>
+          <div class="exp-header"><div class="exp-title">Lead Infrastructure Engineer</div><div class="exp-meta">Dec 2025 – Present</div></div>
           <div class="exp-company">Lazuli Marsa Allam | Marsa Allam, Egypt</div>
-          <div class="exp-desc">Took ownership of large-scale hotel IT infrastructure post-incomplete handover. Stabilized networks across /16 IP range, documented assets, and enforced IT policies. Managed 180+ APs, 200+ IP cameras, AD/DC, PMS, accounting systems, and electronic locks. Coordinated vendors for PBX, IPTV, and fire systems.</div>
+          <div class="exp-desc">Spearheaded emergency response to an incomplete IT handover. Conducted ground-up discovery across a /16 IP range, mapping and securing a 500+ endpoint hospitality environment. Deployed 180+ Omada APs and 200+ IP cameras across segmented VLANs (Staff, Guest, CCTV, Servers, IPTV). Engineered FortiGate firewall policies and hardened Active Directory to maintain 24/7 operational security.</div>
           <div class="exp-badges"><span class="badge">Infrastructure Recovery</span><span class="badge">Network Segmentation</span><span class="badge">Policy Enforcement</span></div>
         </div>
         <div class="exp-card reveal">
           <div class="exp-header"><div class="exp-title">Network Administrator</div><div class="exp-meta">Feb 2024 – Dec 2025</div></div>
           <div class="exp-company">Stella Sidi Abd El-Rahman Resort | North Coast, Egypt</div>
-          <div class="exp-desc">Maintained LAN/WAN/Wi-Fi with 99% uptime. Configured segmented routers, switches, and APs. Managed VPNs, conferencing tools, and CCTV. Handled helpdesk prioritization and log monitoring for minimal downtime.</div>
-          <div class="exp-badges"><span class="badge">High Availability</span><span class="badge">Remote Admin VPN</span><span class="badge">Multimedia Support</span></div>
+          <div class="exp-desc">Maintained 99% uptime for a high-density resort network. Configured secure routers, switches, and 50+ APs across 5 segmented network zones. Managed VPNs, prioritized threat incidents via helpdesk, and monitored system logs to reduce average downtime to under 30 minutes per event.</div>
+          <div class="exp-badges"><span class="badge">High Availability</span><span class="badge">Remote Admin VPN</span><span class="badge">Incident Response</span></div>
         </div>
         <div class="exp-card reveal">
-          <div class="exp-header"><div class="exp-title">IT Specialist</div><div class="exp-meta">Feb 2023 – Jan 2024</div></div>
-          <div class="exp-company">Al-Ahram Plastic Group Sohag | Sohag, Egypt</div>
-          <div class="exp-desc">Administered Windows Server (AD, DNS, DHCP, File Servers). Configured FortiGate & Sophos for VPNs/web filtering. Integrated production machinery IT. Reduced outages via proactive monitoring. Managed ERP workflows and procurement.</div>
-          <div class="exp-badges"><span class="badge">Firewall Configuration</span><span class="badge">ERP Integration</span><span class="badge">Vendor Management</span></div>
+          <div class="exp-header"><div class="exp-title">IT & Firewall Specialist</div><div class="exp-meta">Feb 2023 – Jan 2024</div></div>
+          <div class="exp-company">Al-Ahram Plastic Group | Sohag, Egypt</div>
+          <div class="exp-desc">Administered Windows Server environments (AD, DNS, DHCP) for 150+ users. Configured FortiGate & Sophos firewalls, managing VPN tunnels for 20+ remote users. Integrated OT/IT production machinery, eliminating 5+ weekly network conflicts and reducing unplanned outages by 40% through scheduled security audits.</div>
+          <div class="exp-badges"><span class="badge">Firewall Configuration</span><span class="badge">OT/IT Convergence</span><span class="badge">Vendor Management</span></div>
         </div>
         <div class="exp-card reveal">
-          <div class="exp-header"><div class="exp-title">IT Helpdesk</div><div class="exp-meta">Jan 2022 – Jan 2023</div></div>
+          <div class="exp-header"><div class="exp-title">IT Helpdesk & Endpoint Support</div><div class="exp-meta">Jan 2022 – Jan 2023</div></div>
           <div class="exp-company">Askyadoc | Cairo, Egypt</div>
-          <div class="exp-desc">First-line support for 150+ hybrid/e-learning users. Troubleshot Windows/Linux/web systems. Maintained LMS uptime. Created troubleshooting guides, trained users, reduced tickets, ensured SLA compliance.</div>
-          <div class="exp-badges"><span class="badge">LMS Support</span><span class="badge">Ticket Management</span><span class="badge">User Training</span></div>
+          <div class="exp-desc">First-line defense for 150+ hybrid/e-learning users. Troubleshot Windows/Linux endpoints and maintained LMS uptime for 500+ active learners. Created 20+ security troubleshooting guides, reducing repetitive tickets by 35% and ensuring strict SLA compliance.</div>
+          <div class="exp-badges"><span class="badge">LMS Support</span><span class="badge">Ticket Management</span><span class="badge">User Awareness</span></div>
         </div>
       </div>
     </section>
 
-    <!-- Projects (Derived from Resume Infrastructure Deployments) -->
+    <!-- Projects (R&D Labs) -->
     <section id="projects">
-      <h2 class="reveal">Key Infrastructure Projects</h2>
+      <h2 class="reveal">R&D Labs & Security Research</h2>
       <div class="projects-grid">
         <div class="project-card reveal">
+          <div class="project-icon">🕵️</div>
+          <div class="project-title">MITM Attack Research — Browsec VPN</div>
+          <div class="project-desc">Identified and documented a real-world MITM attack by the Browsec VPN browser extension rewriting GitHub CDN URLs to a malicious domain (infird.com). Performed deep traffic analysis using Wireshark to capture and confirm URL hijacking behavior. Published full technical writeup with IOCs and remediation strategies.</div>
+          <div class="project-tags"><span class="project-tag">Wireshark</span><span class="project-tag">Traffic Analysis</span><span class="project-tag">Threat Intel</span></div>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-icon">📊</div>
+          <div class="project-title">NetMon — Network Monitoring Desktop App</div>
+          <div class="project-desc">Developed a cross-platform network monitoring desktop app (Python, PySide6) with real-time bandwidth tracking, live connection table with process/PID resolution, and integrated speed test. Implemented MVC architecture with QThread workers for non-blocking UI updates. Published to Arch Linux AUR (netmon-gui) and packaged for Windows.</div>
+          <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">PySide6</span><span class="project-tag">Tooling Dev</span></div>
+        </div>
+        <div class="project-card reveal">
           <div class="project-icon">🏨</div>
-          <div class="project-title">Hotel IT Infrastructure Overhaul</div>
-          <div class="project-desc">Full discovery, documentation, and stabilization of a large-scale hospitality network. Implemented logical segmentation for Staff, Guest, CCTV, Servers, and IPTV across a /16 subnet.</div>
+          <div class="project-title">Enterprise Hospitality Infrastructure Overhaul</div>
+          <div class="project-desc">Full discovery, documentation, and stabilization of a large-scale hospitality network. Implemented logical segmentation for Staff, Guest, CCTV, Servers, and IPTV across a /16 subnet. Authored complete IT documentation suite covering network topology, asset register, and incident response policies.</div>
           <div class="project-tags"><span class="project-tag">Network Mapping</span><span class="project-tag">Omada Controller</span><span class="project-tag">ITIL Policy</span></div>
         </div>
         <div class="project-card reveal">
           <div class="project-icon">🛡️</div>
           <div class="project-title">Enterprise Firewall & Security Deployment</div>
-          <div class="project-desc">Configured FortiGate and Sophos firewalls for secure remote access, SSL inspection, and web filtering. Integrated threat prevention and IDS/IPS for production environments.</div>
+          <div class="project-desc">Configured FortiGate and Sophos firewalls for secure remote access, SSL inspection, and web filtering. Integrated threat prevention and IDS/IPS for production environments, ensuring robust perimeter defense and secure VPN tunnels for remote workforce.</div>
           <div class="project-tags"><span class="project-tag">FortiGate NSE4</span><span class="project-tag">Sophos</span><span class="project-tag">SSL Inspection</span></div>
         </div>
-        <div class="project-card reveal">
-          <div class="project-icon">🌐</div>
-          <div class="project-title">High-Density Wireless & CCTV Network</div>
-          <div class="project-desc">Deployed and centralized management for 180+ wireless access points and 200+ IP cameras. Ensured network isolation, QoS optimization, and 99% service uptime for resort operations.</div>
-          <div class="project-tags"><span class="project-tag">VLAN Segmentation</span><span class="project-tag">PoE Management</span><span class="project-tag">Wireshark</span></div>
-        </div>
-<div class="project-card reveal">
-  <div class="project-icon">🕵️</div>
-  <div class="project-title">MITM Attack Research — Browsec VPN</div>
-  <div class="project-desc">Identified and documented a real-world MITM attack by the Browsec VPN browser extension rewriting GitHub CDN URLs to a malicious domain. Confirmed via Wireshark traffic analysis; published full writeup with IOCs and remediation.</div>
-  <div class="project-tags"><span class="project-tag">Wireshark</span><span class="project-tag">Traffic Analysis</span><span class="project-tag">IOC Documentation</span></div>
-</div>
-<div class="project-card reveal">
-  <div class="project-icon">📊</div>
-  <div class="project-title">NetMon — Network Monitoring Desktop App</div>
-  <div class="project-desc">Cross-platform network monitor (Python, PySide6) with real-time bandwidth tracking, live connection table with process/PID resolution, and built-in speed test. MVC architecture with QThread workers. Published to the AUR (netmon-gui) and packaged for Windows 10/11.</div>
-  <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">PySide6</span><span class="project-tag">Multithreading</span></div>
-</div>
       </div>
     </section>
 
-    <!-- Education & Languages -->
+    <!-- Education & Certifications (Training & Credentials) -->
     <section id="education">
-      <h2 class="reveal">Education & Certifications</h2>
+      <h2 class="reveal">Training & Credentials</h2>
       <div class="edu-lang">
         <div class="reveal">
           <div class="edu-card">
@@ -467,7 +462,7 @@
           </div>
           <div style="margin-top: 1.5rem;">
             <div class="edu-card" style="border-left-color: var(--cyan);">
-              <div class="edu-title">Certifications</div>
+              <div class="edu-title">Professional Certifications</div>
               <div class="edu-inst">CCNA, NSE4 FortiGate, Sophos Firewall, MCSE, CompTIA A+, Cisco NetAcad Intro to Cybersecurity, Google Technical Support Fundamentals</div>
               <div class="edu-year">In Progress: eJPT (INE Security), TryHackMe Jr Penetration Tester Path</div>
             </div>
@@ -486,42 +481,19 @@
       </div>
     </section>
 
-    <!-- TryHackMe -->
-<section id="tryhackme">
-  <h2 class="reveal">TryHackMe Progress</h2>
-  <div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
-    <img id="thm-badge-img" src="assets/thm_badge.png" alt="TryHackMe badge" style="max-width:329px;">
-    <div id="thm-stats" style="color: var(--text-muted); text-align:center;"></div>
-    <ul id="thm-rooms" style="list-style:none; color: var(--text-muted); text-align:center;"></ul>
-  </div>
-</section>
+    <!-- TryHackMe Live Fire Exercises -->
+    <section id="tryhackme">
+      <h2 class="reveal">Live Fire Exercises (TryHackMe)</h2>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
+        <img id="thm-badge-img" src="https://tryhackme-badges.s3.amazonaws.com/Hackth3Path.png" alt="TryHackMe badge" style="max-width:329px; margin-bottom: 1.5rem;">
+        <div id="thm-stats" style="color: var(--text-muted); text-align:center; width: 100%;"></div>
+        <ul id="thm-rooms" style="list-style:none; color: var(--text-muted); text-align:center; padding: 0; margin-top: 1rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;"></ul>
+      </div>
+    </section>
 
-<script>
-  fetch('data/thm-data.json')
-    .then(r => r.json())
-    .then(d => {
-      const stats = document.getElementById('thm-stats');
-      const parts = [];
-      if (d.rank) parts.push(`Rank: ${d.rank.trim()}`);
-      if (d.level) parts.push(`Level: ${d.level.trim()}`);
-      if (d.badgeCount) parts.push(`Badges: ${d.badgeCount}`);
-      stats.textContent = parts.join(' · ');
-
-      const rooms = document.getElementById('thm-rooms');
-      (d.completedRooms || []).slice(0, 8).forEach(r => {
-        const li = document.createElement('li');
-        li.textContent = r;
-        rooms.appendChild(li);
-      });
-    })
-    .catch(() => {
-      document.getElementById('thm-stats').textContent = 'Stats will appear after the next sync.';
-    });
-</script>
-
-    <!-- Contact -->
+    <!-- Contact (Secure Comms) -->
     <section id="contact">
-      <h2 class="reveal">Get In Touch</h2>
+      <h2 class="reveal">Establish Secure Connection</h2>
       <div class="contact-grid">
         <div class="contact-cards reveal">
           <div class="contact-card">
@@ -534,7 +506,7 @@
           </div>
           <div class="contact-card">
             <div class="contact-icon">📍</div>
-            <div class="contact-info"><h4>Location</h4><p>Hadayek El Kobba, Cairo, Egypt</p></div>
+            <div class="contact-info"><h4>Location</h4><p>Hadayek El Kobba, Cairo, Egypt (Willing to Relocate)</p></div>
           </div>
           <div class="contact-card">
             <div class="contact-icon">💼</div>
@@ -559,11 +531,85 @@
     </div>
 
     <footer>
-      <p>© 2026 Kyrillos Kamal. Built with pure HTML, CSS & JS.</p>
+      <p>© 2026 Kyrillos Kamal. Built with pure HTML, CSS & JS. Securing the digital perimeter.</p>
     </footer>
   </main>
 
   <script>
+    // ==========================================
+    // 1. TRYHACKME DATA INJECTION (Merged JSON)
+    // ==========================================
+    const thmData = {
+      "rank": "Wizard (0xA)",
+      "level": 64,
+      "badgeCount": 17,
+      "streak": 3,
+      "completedRoomsCount": 147,
+      "globalRank": "Top 3% (65146)",
+      "completedRooms": [
+        "Cyber Security 101",
+        "Pre Security (Legacy)",
+        "Hacker Holidays",
+        "Metasploitable",
+        "Blue (EternalBlue)",
+        "OWASP Top 10",
+        "Burp'd",
+        "World Wide Web",
+        "Networking Nerd",
+        "cat linux.txt",
+        "Sword Apprentice",
+        "Shield Apprentice",
+        "Cyber Ready",
+        "Intro to Web Hacking"
+      ]
+    };
+
+    // Function to render THM data
+    function renderTHMData(data) {
+      const statsContainer = document.getElementById('thm-stats');
+      
+      const statsHtml = `
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; width: 100%; max-width: 800px; text-align: center;">
+          <div style="background: var(--surface-light); padding: 1.5rem; border-radius: 8px;">
+            <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--cyan); font-weight: 700;">${data.rank || 'N/A'}</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Current Rank</div>
+          </div>
+          <div style="background: var(--surface-light); padding: 1.5rem; border-radius: 8px;">
+            <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--amber); font-weight: 700;">${data.level || 'N/A'}</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Level</div>
+          </div>
+          <div style="background: var(--surface-light); padding: 1.5rem; border-radius: 8px;">
+            <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--pink); font-weight: 700;">${data.completedRoomsCount || 0}</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Rooms Completed</div>
+          </div>
+          <div style="background: var(--surface-light); padding: 1.5rem; border-radius: 8px;">
+            <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--indigo); font-weight: 700;">${data.globalRank || 'N/A'}</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Global Rank</div>
+          </div>
+        </div>
+      `;
+      
+      statsContainer.innerHTML = statsHtml;
+
+      const roomsList = document.getElementById('thm-rooms');
+      roomsList.innerHTML = ''; 
+      (data.completedRooms || []).forEach(r => {
+        const li = document.createElement('li');
+        li.textContent = r;
+        // Styling for the room chips
+        li.style.cssText = "background: var(--surface); padding: 6px 12px; border-radius: 4px; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.05);";
+        roomsList.appendChild(li);
+      });
+    }
+
+    // Initialize THM data immediately
+    renderTHMData(thmData);
+
+
+    // ==========================================
+    // 2. UI INTERACTIONS & ANIMATIONS
+    // ==========================================
+
     // Loader Fade Out
     window.addEventListener('load', () => {
       setTimeout(() => {
