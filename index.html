@@ -6,19 +6,34 @@
   <title>Kyrillos Kamal | Network Defender & Offensive Security</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0b14;
-      --surface: #151522;
-      --surface-light: #1e1e2e;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --indigo: #4f46e5;
-      --pink: #ec4899;
-      --cyan: #06b6d4;
-      --amber: #f59e0b;
-      --nav-height: 70px;
+      --bg: #050508;
+      --surface: #0f0f15;
+      --surface-light: #181822;
+      --border: #2a2a3a;
+      --text: #e0e0e8;
+      --text-muted: #7a7a9a;
+      
+      /* Default: Red Team Theme */
+      --accent: #ff0040;
+      --accent-dim: rgba(255, 0, 64, 0.15);
+      --accent-glow: rgba(255, 0, 64, 0.4);
+      --danger: #ff0040;
+      --warning: #ff8c00;
+      --info: #00d4ff;
+      --nav-height: 60px;
+    }
+
+    /* Blue Team Theme Override */
+    body.blue-team {
+      --accent: #00d4ff;
+      --accent-dim: rgba(0, 212, 255, 0.15);
+      --accent-glow: rgba(0, 212, 255, 0.4);
+      --danger: #00d4ff;
+      --warning: #ff8c00;
+      --info: #ff0040;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,771 +41,1429 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
       overflow-x: hidden;
-      cursor: none;
+      transition: background 0.5s ease;
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--indigo), var(--pink)); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; transition: background 0.3s; }
 
     /* Noise Overlay */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
-      z-index: 0;
+      z-index: 9999;
     }
 
     /* Loader */
     #loader {
-      position: fixed; inset: 0; background: var(--bg); z-index: 1000;
+      position: fixed; inset: 0; background: var(--bg); z-index: 10000;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
     #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-initials {
-      font-family: 'Syne', sans-serif; font-size: 4rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--indigo), var(--pink), var(--cyan));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      margin-bottom: 1.5rem;
+    .boot-log {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-align: left;
+      width: 300px;
+      line-height: 1.8;
+      text-shadow: 0 0 5px var(--accent-glow);
     }
-    .progress-container { width: 200px; height: 4px; background: var(--surface); border-radius: 2px; overflow: hidden; }
-    .progress-bar {
-      height: 100%; width: 0; border-radius: 2px;
-      background: linear-gradient(90deg, var(--indigo), var(--pink), var(--cyan), var(--amber));
-      animation: fillProgress 2s linear forwards;
+    .boot-log .ok { color: #00ff00; }
+    .loader-bar {
+      width: 300px; height: 2px; background: var(--surface-light); border-radius: 1px; overflow: hidden;
+      margin-top: 1.5rem;
     }
-    @keyframes fillProgress { to { width: 100%; } }
+    .loader-fill {
+      height: 100%; width: 0; background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      animation: loadFill 2.5s ease forwards;
+    }
+    @keyframes loadFill { to { width: 100%; } }
 
-    /* Cursor */
-    #cursor-dot, #cursor-ring {
-      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
-      transform: translate(-50%, -50%); border-radius: 50%;
-    }
-    #cursor-dot { width: 8px; height: 8px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
-    #cursor-ring {
-      width: 36px; height: 36px; border: 2px solid rgba(236, 72, 153, 0.6);
-      transition: width 0.2s, height 0.2s, background 0.2s;
-    }
-    body.hovering #cursor-ring { width: 50px; height: 50px; background: rgba(236, 72, 153, 0.1); }
-    @media (max-width: 768px) { #cursor-dot, #cursor-ring { display: none; } body { cursor: auto; } }
-
-    /* Canvas */
-    #particle-canvas { position: fixed; inset: 0; z-index: -1; opacity: 0.6; }
-
-    /* Navbar */
+    /* Nav */
     nav {
       position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height);
-      background: rgba(21, 21, 34, 0.7); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 100;
-      display: flex; justify-content: space-between; align-items: center; padding: 0 5%;
-      transform: translateY(-100%); animation: slideDown 0.8s ease 2.2s forwards;
+      background: rgba(5, 5, 8, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      transform: translateY(-100%);
+      animation: slideDown 0.6s ease 2.8s forwards;
     }
     @keyframes slideDown { to { transform: translateY(0); } }
-    .logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--text); text-decoration: none; }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a {
-      color: var(--text-muted); text-decoration: none; font-weight: 500; position: relative; padding-bottom: 4px;
+    .nav-logo {
+      font-family: 'Fira Code', monospace;
+      font-weight: 700; font-size: 0.9rem; color: var(--accent);
+      text-decoration: none;
+      text-shadow: 0 0 8px var(--accent-glow);
       transition: color 0.3s;
     }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-      background: linear-gradient(90deg, var(--cyan), var(--pink));
-      transition: width 0.3s ease;
+    .nav-logo span { color: var(--text-muted); text-shadow: none; }
+    
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
     }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::after { width: 100%; }
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-dim);
+    }
 
-    /* Sections Base */
-    section { padding: 100px 5% 60px; position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
-    h2 { font-family: 'Syne', sans-serif; font-size: 2.5rem; margin-bottom: 2.5rem; background: linear-gradient(90deg, var(--text), var(--text-muted)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.3s, text-shadow 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
+
+    /* Sections */
+    section {
+      padding: 100px 5% 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    h2 {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    h2 .hash { color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
 
     /* Hero */
-    .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; min-height: calc(100vh - var(--nav-height)); padding-top: 120px; }
-    .hero-left .tag {
-      display: inline-block; padding: 6px 14px; background: rgba(6, 182, 212, 0.15); border: 1px solid var(--cyan);
-      color: var(--cyan); border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem;
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 120px;
     }
-    .hero-name {
-      font-family: 'Syne', sans-serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem;
-      background: linear-gradient(120deg, var(--text) 20%, var(--pink) 40%, var(--cyan) 60%, var(--amber) 80%, var(--text) 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      animation: shimmer 4s linear infinite;
+    .system-status {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-shadow: 0 0 8px var(--accent-glow);
     }
-    @keyframes shimmer { to { background-position: -200% center; } }
-    .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem; }
-    .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    .system-status .dot {
+      width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s infinite;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: linear-gradient(135deg, var(--indigo), var(--pink)); color: white; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4); }
-    .btn-outline { background: transparent; border: 2px solid var(--text-muted); color: var(--text); }
-    .btn-outline:hover { border-color: var(--cyan); box-shadow: 0 0 15px rgba(6, 182, 212, 0.3); }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    .hero-right { position: relative; display: flex; justify-content: center; perspective: 1000px; }
-    .glow-orb {
-      position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, var(--indigo) 0%, transparent 70%);
-      filter: blur(60px); opacity: 0.5; z-index: 0; animation: pulseOrb 4s ease-in-out infinite;
+    .hero-title {
+      font-family: 'Fira Code', monospace;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #ffffff 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
     }
-    @keyframes pulseOrb { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 0.3; } }
-    .hero-card {
-      background: rgba(30, 30, 46, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px; padding: 2.5rem; text-align: center; position: relative; z-index: 2;
-      transform-style: preserve-3d; animation: floatCard 6s ease-in-out infinite, rotateY 10s linear infinite;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    /* Glitch Effect */
+    .hero-title::before, .hero-title::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--bg);
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      -webkit-text-fill-color: var(--text);
     }
-    @keyframes floatCard { 0%, 100% { transform: translateY(0) rotateY(5deg); } 50% { transform: translateY(-15px) rotateY(-5deg); } }
-    @keyframes rotateY { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
-    .avatar-ring {
-      width: 100px; height: 100px; border: 2px dashed var(--amber); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
-      animation: spinDash 8s linear infinite;
+    .hero-title::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--accent);
+      animation: glitch-1 2s infinite linear alternate-reverse;
     }
-    @keyframes spinDash { to { transform: rotate(360deg); } }
-    .avatar-initials { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text); }
-    .hero-role { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; text-align: center; }
-    .stat-val { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--cyan); }
-    .stat-label { font-size: 0.75rem; color: var(--text-muted); }
+    .hero-title::after {
+      left: -2px;
+      text-shadow: 2px 0 var(--info);
+      animation: glitch-2 3s infinite linear alternate-reverse;
+    }
+    @keyframes glitch-1 {
+      0% { clip: rect(20px, 9999px, 15px, 0); }
+      20% { clip: rect(50px, 9999px, 80px, 0); }
+      40% { clip: rect(10px, 9999px, 30px, 0); }
+      60% { clip: rect(80px, 9999px, 90px, 0); }
+      80% { clip: rect(40px, 9999px, 60px, 0); }
+      100% { clip: rect(70px, 9999px, 20px, 0); }
+    }
+    @keyframes glitch-2 {
+      0% { clip: rect(10px, 9999px, 50px, 0); }
+      20% { clip: rect(80px, 9999px, 20px, 0); }
+      40% { clip: rect(30px, 9999px, 70px, 0); }
+      60% { clip: rect(60px, 9999px, 10px, 0); }
+      80% { clip: rect(90px, 9999px, 40px, 0); }
+      100% { clip: rect(20px, 9999px, 80px, 0); }
+    }
 
-    /* Skills */
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .skill-item { margin-bottom: 1.5rem; }
-    .skill-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 500; }
-    .skill-bar-bg { width: 100%; height: 8px; background: var(--surface); border-radius: 4px; overflow: hidden; position: relative; }
-    .skill-bar-fill { height: 100%; width: 0; border-radius: 4px; transition: width 1.5s cubic-bezier(0.2, 1, 0.3, 1); position: relative; }
-    .skill-bar-fill::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transform: skewX(-20deg) translateX(-150%); transition: transform 0.5s;
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-bottom: 2rem;
     }
-    .skill-bar-fill.animate::after { transform: skewX(-20deg) translateX(150%); }
-    .chip-cloud { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
-    .chip {
-      padding: 8px 16px; background: var(--surface); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
-      font-size: 0.85rem; color: var(--text-muted); transition: all 0.3s; cursor: default;
+
+    .terminal-window {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      font-family: 'Fira Code', monospace;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     }
-    .chip:hover { transform: translateY(-4px); background: rgba(79, 70, 229, 0.2); border-color: var(--indigo); color: var(--text); box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); }
+    .terminal-header {
+      background: var(--surface-light);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-header .btn {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .terminal-header .btn.red { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+    .terminal-header .btn.yellow { background: var(--warning); }
+    .terminal-header .btn.green { background: #00ff00; }
+    .terminal-title {
+      margin-left: auto; font-size: 0.7rem; color: var(--text-muted);
+    }
+    .terminal-body {
+      padding: 16px;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+    .terminal-body .prompt { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); }
+    .terminal-body .cmd { color: var(--text); }
+    .terminal-body .output { color: var(--text-muted); }
+    .terminal-body .highlight { color: var(--info); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .hero-stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .hero-stat:hover { 
+      border-color: var(--accent); 
+      box-shadow: 0 0 20px var(--accent-dim);
+    }
+    .hero-stat .val {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent-glow);
+      transition: color 0.3s;
+    }
+    .hero-stat .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Profile */
+    #profile { padding-top: 60px; }
+    .profile-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .profile-text p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .profile-text p strong { color: var(--text); }
+    .profile-details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+    .profile-details .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .profile-details .row:last-child { border-bottom: none; }
+    .profile-details .key { color: var(--text-muted); }
+    .profile-details .value { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); transition: color 0.3s; }
+
+    /* Capabilities */
+    #capabilities { padding-top: 60px; }
+    .capabilities-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .capability-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .capability-item:hover { 
+      border-color: var(--accent); 
+      box-shadow: 0 0 25px var(--accent-dim);
+    }
+    .capability-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .capability-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .capability-pct {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-shadow: 0 0 5px var(--accent-glow);
+      transition: color 0.3s;
+    }
+    .capability-tools {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .skill-bar {
+      width: 100%;
+      height: 4px;
+      background: var(--surface-light);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--info));
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.5s ease;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* Field Notes / Writeups */
+    #field-notes { padding-top: 60px; }
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .note-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .note-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px var(--accent-dim);
+    }
+    .note-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.75rem;
+      text-shadow: 0 0 5px var(--accent-glow);
+      transition: color 0.3s;
+    }
+    .note-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .note-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+    .note-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1rem;
+    }
+    .note-tool {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--info);
+    }
+    .note-link {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .note-link:hover { color: var(--info); }
 
     /* Experience */
-    .timeline { position: relative; padding-left: 30px; }
-    .timeline::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-      background: linear-gradient(180deg, var(--indigo), var(--pink), var(--cyan), transparent);
-      border-radius: 2px; animation: gradientShift 4s ease infinite;
-      background-size: 100% 200%;
+    #experience { padding-top: 60px; }
+    .exp-timeline {
+      position: relative;
+      padding-left: 30px;
     }
-    @keyframes gradientShift { 0% { background-position: 0% 0%; } 50% { background-position: 0% 100%; } 100% { background-position: 0% 0%; } }
-    .exp-card {
-      background: var(--surface); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;
-      border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      transform: translateX(-30px); opacity: 0;
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--info), transparent);
     }
-    .exp-card.visible { transform: translateX(0); opacity: 1; }
-    .exp-card:hover { transform: translateX(10px) translateY(-5px); box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15); border-color: var(--cyan); }
-    .exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 0.5rem; }
-    .exp-title { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--text); }
-    .exp-meta { font-size: 0.85rem; color: var(--text-muted); }
-    .exp-company { color: var(--amber); font-weight: 600; margin-bottom: 0.5rem; }
-    .exp-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
-    .badge { font-size: 0.7rem; padding: 4px 8px; background: rgba(245, 158, 11, 0.15); color: var(--amber); border-radius: 4px; }
-    .exp-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-top: 0.5rem; }
+    .exp-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -34px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+    }
+    .exp-role {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .exp-date {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .exp-company {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      transition: color 0.3s;
+    }
+    .exp-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .exp-desc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .exp-desc ul li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+    }
+    .exp-desc ul li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: 'Fira Code', monospace;
+      transition: color 0.3s;
+    }
 
-    /* Projects & Writeups */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .project-card {
-      background: var(--surface); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.05);
-      position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex; flex-direction: column;
+    /* TryHackMe */
+    #tryhackme { padding-top: 60px; }
+    .thm-container {
+      text-align: center;
     }
-    .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
-    .project-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--indigo), var(--pink), var(--cyan), var(--amber));
-      transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease;
+    .thm-badge-wrapper {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s;
     }
-    .project-card:hover::before { transform: scaleX(1); }
-    .project-icon { font-size: 2rem; margin-bottom: 1rem; display: inline-block; }
-    .project-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .project-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; flex-grow: 1; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-    .project-tag { font-size: 0.75rem; padding: 4px 8px; background: var(--surface-light); color: var(--cyan); border-radius: 4px; }
-    .read-more-btn { display: inline-block; margin-top: auto; color: var(--cyan); font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
-    .read-more-btn:hover { color: var(--pink); }
+    .thm-badge-wrapper:hover { transform: scale(1.05); }
+    .thm-badge-wrapper img {
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 30px var(--accent-dim);
+    }
+    .thm-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    .thm-stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .thm-stat .val {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent-glow);
+      transition: color 0.3s;
+    }
+    .thm-stat .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .thm-badges-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+    .thm-badge-item {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--warning);
+    }
 
-    /* Education & Languages */
-    .edu-lang { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .edu-card { background: var(--surface); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--pink); }
-    .edu-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.25rem; }
-    .edu-inst { color: var(--text-muted); font-size: 0.9rem; }
-    .edu-year { display: inline-block; margin-top: 0.5rem; font-size: 0.8rem; color: var(--amber); background: rgba(245, 158, 11, 0.1); padding: 2px 8px; border-radius: 4px; }
-    .lang-grid { display: flex; flex-direction: column; gap: 1rem; justify-content: center; }
-    .lang-item { display: flex; align-items: center; justify-content: space-between; background: var(--surface); padding: 1rem; border-radius: 8px; }
-    .lang-badge { padding: 6px 12px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; }
-    .lang-native { background: rgba(6, 182, 212, 0.2); color: var(--cyan); }
-    .lang-prof { background: rgba(236, 72, 153, 0.2); color: var(--pink); }
+    /* Education */
+    #education { padding-top: 60px; }
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border-left: 3px solid var(--accent);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: border-color 0.3s;
+    }
+    .edu-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .edu-inst {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .edu-year {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--warning);
+      margin-top: 0.5rem;
+    }
+    .cert-list {
+      list-style: none;
+      padding: 0;
+    }
+    .cert-list li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cert-list li:last-child { border-bottom: none; }
+    .cert-list li strong { color: var(--accent); transition: color 0.3s; }
+
+    /* Console */
+    #console { padding-top: 60px; }
+    .console-window {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: 'Fira Code', monospace;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+    }
+    .console-output {
+      padding: 16px;
+      font-size: 0.8rem;
+      height: 300px;
+      overflow-y: auto;
+      line-height: 1.8;
+    }
+    .console-output .line { margin-bottom: 2px; }
+    .console-output .prompt { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); }
+    .console-output .cmd { color: var(--text); }
+    .console-output .output { color: var(--text-muted); }
+    .console-output .error { color: var(--danger); text-shadow: 0 0 5px var(--accent-glow); }
+    .console-output .success { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); }
+    .console-input-wrapper {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--surface-light);
+    }
+    .console-input-wrapper .prompt {
+      color: var(--accent);
+      margin-right: 8px;
+      font-size: 0.8rem;
+      text-shadow: 0 0 5px var(--accent-glow);
+    }
+    #console-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      flex: 1;
+    }
+
+    /* Focus */
+    #focus { padding-top: 60px; }
+    .focus-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+    .focus-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 8px var(--accent-glow);
+      transition: color 0.3s;
+    }
+    .focus-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .focus-bar {
+      width: 100%;
+      max-width: 400px;
+      height: 6px;
+      background: var(--surface-light);
+      border-radius: 3px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .focus-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--info));
+      border-radius: 3px;
+      width: 0;
+      transition: width 1.5s ease;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
 
     /* Contact */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-    .contact-cards { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-card {
-      background: var(--surface); padding: 1rem 1.25rem; border-radius: 10px; display: flex; align-items: center; gap: 1rem;
-      border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s;
+    #contact { padding-top: 60px; }
+    .contact-content {
+      text-align: center;
     }
-    .contact-card:hover { transform: translateX(10px); border-color: var(--indigo); box-shadow: 0 5px 20px rgba(79, 70, 229, 0.2); }
-    .contact-icon { width: 40px; height: 40px; background: var(--surface-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-    .contact-info h4 { font-size: 0.9rem; color: var(--text); }
-    .contact-info p { font-size: 0.8rem; color: var(--text-muted); }
-    .contact-right { display: flex; justify-content: center; align-items: center; position: relative; }
-    .avatar-ripple {
-      width: 140px; height: 140px; background: var(--surface); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; color: var(--text); position: relative; z-index: 2;
+    .contact-content p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
     }
-    .ripple {
-      position: absolute; border: 2px solid var(--pink); border-radius: 50%; width: 140px; height: 140px;
-      animation: rippleAnim 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
-    .ripple:nth-child(2) { animation-delay: 1s; }
-    .ripple:nth-child(3) { animation-delay: 2s; }
-    @keyframes rippleAnim {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(2.5); opacity: 0; }
+    .contact-link {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.3s;
     }
-
-    /* Marquee */
-    .marquee-container { overflow: hidden; background: var(--surface); padding: 1.5rem 0; margin: 4rem 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .marquee-track { display: flex; gap: 3rem; width: max-content; animation: scrollMarquee 30s linear infinite; }
-    .marquee-item { font-family: 'Syne', sans-serif; font-weight: 600; color: var(--text-muted); opacity: 0.6; font-size: 1.1rem; white-space: nowrap; }
-    @keyframes scrollMarquee { to { transform: translateX(-50%); } }
+    .contact-link:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      box-shadow: 0 0 25px var(--accent-glow);
+    }
 
     /* Footer */
-    footer { text-align: center; padding: 2rem 5%; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    footer {
+      text-align: center;
+      padding: 2rem 5%;
+      border-top: 1px solid var(--border);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
 
     /* Responsive */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; }
-      .hero-left { order: 2; }
-      .hero-right { order: 1; }
-      .cta-group { justify-content: center; }
-      .skills-grid, .edu-lang, .contact-grid { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      .profile-content,
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
       .nav-links { display: none; }
+      .nav-right { gap: 1rem; }
+      section { padding: 80px 5% 60px; }
+      h2 { font-size: 1.4rem; }
+      .hero-title { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- FLAG{kyrillos_kamal_red_team_operator} -->
+
   <!-- Loader -->
   <div id="loader">
-    <div class="loader-initials">KK</div>
-    <div class="progress-container"><div class="progress-bar"></div></div>
+    <div class="boot-log" id="boot-log">
+      <div>[ OK ] Initializing kernel modules...</div>
+    </div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
   </div>
 
-  <!-- Custom Cursor -->
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
-
-  <!-- Particle Canvas -->
-  <canvas id="particle-canvas"></canvas>
-
-  <!-- Navbar -->
+  <!-- Nav -->
   <nav>
-    <a href="#" class="logo">Kyrillos Kamal</a>
-    <div class="nav-links">
-      <a href="#skills">Arsenal</a>
-      <a href="#experience">Operations</a>
-      <a href="#projects">R&D Labs</a>
-      <a href="#writeups">Writeups</a>
-      <a href="#education">Training</a>
-      <a href="#contact">Secure Comms</a>
+    <a href="#hero" class="nav-logo">root@darknet<span>:~#</span></a>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle">[ SWITCH TO BLUE TEAM ]</button>
+      <div class="nav-links">
+        <a href="#profile">/profile</a>
+        <a href="#capabilities">/capabilities</a>
+        <a href="#field-notes">/writeups</a>
+        <a href="#experience">/experience</a>
+        <a href="#tryhackme">/thm</a>
+        <a href="#contact">/contact</a>
+      </div>
     </div>
   </nav>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero" id="hero">
-      <div class="hero-left">
-        <span class="tag">[ SYSTEM STATUS: ACTIVE ] - OPEN TO DEPLOYMENT</span>
-        <h1 class="hero-name">Kyrillos Kamal</h1>
-        <p class="hero-subtitle">Network Defender | Offensive Security Enthusiast | Infrastructure Architect</p>
-        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; max-width: 600px;">
-          Bridging the gap between robust infrastructure defense and offensive security research. 6+ years hardening enterprise networks, now actively hunting vulnerabilities and simulating advanced persistent threats.
-        </p>
-        <div class="cta-group">
-          <a href="#contact" class="btn btn-primary">Initiate Handshake</a>
-          <a href="https://linkedin.com/in/kyrillos-kamal" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="glow-orb"></div>
-        <div class="hero-card">
-          <div class="avatar-ring"><span class="avatar-initials">KK</span></div>
-          <div class="hero-role">Offensive Security & Infrastructure</div>
-          <div class="stats-grid">
-            <div><div class="stat-val">6+</div><div class="stat-label">Years Exp</div></div>
-            <div><div class="stat-val">180+</div><div class="stat-label">Nodes Secured</div></div>
-            <div><div class="stat-val">99%</div><div class="stat-label">Uptime Maintained</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- Hero -->
+  <section id="hero">
+    <div class="system-status">
+      <span class="dot"></span> SYSTEM ONLINE — AWAITING ORDERS
+    </div>
 
-    <!-- Skills (Arsenal) -->
-    <section id="skills">
-      <h2 class="reveal">Technical Arsenal</h2>
-      <div class="skills-grid">
-        <div class="reveal">
-          <div class="skill-item">
-            <div class="skill-header"><span>Firewall Architecture (FortiGate/Sophos)</span><span>90%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%" style="background: linear-gradient(90deg, var(--indigo), var(--cyan));"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header"><span>Network Defense & Segmentation (CCNA)</span><span>95%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%" style="background: linear-gradient(90deg, var(--cyan), var(--amber));"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header"><span>Active Directory & Windows Server</span><span>85%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%" style="background: linear-gradient(90deg, var(--pink), var(--indigo));"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header"><span>Linux Administration (Kali, Ubuntu)</span><span>80%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%" style="background: linear-gradient(90deg, var(--amber), var(--cyan));"></div></div>
-          </div>
-        </div>
-        <div class="reveal">
-          <div class="skill-item">
-            <div class="skill-header"><span>Offensive Security & Pen Testing (eJPT Path)</span><span>75%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75%" style="background: linear-gradient(90deg, var(--pink), var(--indigo));"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header"><span>Traffic Analysis & Threat Hunting</span><span>85%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%" style="background: linear-gradient(90deg, var(--indigo), var(--amber));"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header"><span>Scripting & Automation (Python, Bash)</span><span>70%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70%" style="background: linear-gradient(90deg, var(--cyan), var(--pink));"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-header"><span>Incident Response & ITIL Operations</span><span>88%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88%" style="background: linear-gradient(90deg, var(--amber), var(--indigo));"></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="chip-cloud reveal">
-        <span class="chip">Nmap</span><span class="chip">Metasploit</span><span class="chip">Burp Suite</span>
-        <span class="chip">Wireshark</span><span class="chip">Hydra</span><span class="chip">Gobuster</span>
-        <span class="chip">VLANs</span><span class="chip">ACLs</span><span class="chip">NAT</span>
-        <span class="chip">IDS/IPS</span><span class="chip">SSL Inspection</span>
-        <span class="chip">VMware/Hyper-V</span><span class="chip">MITM Attacks</span>
-      </div>
-    </section>
+    <h1 class="hero-title" data-text="Think like an attacker.
+Defend like a pro.">
+      Think like an attacker.<br>
+      Defend like a pro.
+    </h1>
 
-    <!-- Experience (Field Operations) -->
-    <section id="experience">
-      <h2 class="reveal">Field Operations</h2>
-      <div class="timeline">
-        <div class="exp-card reveal">
-          <div class="exp-header"><div class="exp-title">Lead Infrastructure Engineer</div><div class="exp-meta">Dec 2025 – Present</div></div>
-          <div class="exp-company">Lazuli Marsa Allam | Marsa Allam, Egypt</div>
-          <div class="exp-desc">Spearheaded emergency response to an incomplete IT handover. Conducted ground-up discovery across a /16 IP range, mapping and securing a 500+ endpoint hospitality environment. Deployed 180+ Omada APs and 200+ IP cameras across segmented VLANs. Engineered FortiGate firewall policies and hardened Active Directory to maintain 24/7 operational security.</div>
-          <div class="exp-badges"><span class="badge">Infrastructure Recovery</span><span class="badge">Network Segmentation</span><span class="badge">Policy Enforcement</span></div>
-        </div>
-        <div class="exp-card reveal">
-          <div class="exp-header"><div class="exp-title">Network Administrator</div><div class="exp-meta">Feb 2024 – Dec 2025</div></div>
-          <div class="exp-company">Stella Sidi Abd El-Rahman Resort | North Coast, Egypt</div>
-          <div class="exp-desc">Maintained 99% uptime for a high-density resort network. Configured secure routers, switches, and 50+ APs across 5 segmented network zones. Managed VPNs, prioritized threat incidents via helpdesk, and monitored system logs to reduce average downtime to under 30 minutes per event.</div>
-          <div class="exp-badges"><span class="badge">High Availability</span><span class="badge">Remote Admin VPN</span><span class="badge">Incident Response</span></div>
-        </div>
-        <div class="exp-card reveal">
-          <div class="exp-header"><div class="exp-title">IT & Firewall Specialist</div><div class="exp-meta">Feb 2023 – Jan 2024</div></div>
-          <div class="exp-company">Al-Ahram Plastic Group | Sohag, Egypt</div>
-          <div class="exp-desc">Administered Windows Server environments (AD, DNS, DHCP) for 150+ users. Configured FortiGate & Sophos firewalls, managing VPN tunnels for 20+ remote users. Integrated OT/IT production machinery, eliminating 5+ weekly network conflicts and reducing unplanned outages by 40% through scheduled security audits.</div>
-          <div class="exp-badges"><span class="badge">Firewall Configuration</span><span class="badge">OT/IT Convergence</span><span class="badge">Vendor Management</span></div>
-        </div>
-        <div class="exp-card reveal">
-          <div class="exp-header"><div class="exp-title">IT Helpdesk & Endpoint Support</div><div class="exp-meta">Jan 2022 – Jan 2023</div></div>
-          <div class="exp-company">Askyadoc | Cairo, Egypt</div>
-          <div class="exp-desc">First-line defense for 150+ hybrid/e-learning users. Troubleshot Windows/Linux endpoints and maintained LMS uptime for 500+ active learners. Created 20+ security troubleshooting guides, reducing repetitive tickets by 35% and ensuring strict SLA compliance.</div>
-          <div class="exp-badges"><span class="badge">LMS Support</span><span class="badge">Ticket Management</span><span class="badge">User Awareness</span></div>
-        </div>
-      </div>
-    </section>
+    <p class="hero-sub">
+      I'm <strong style="color: var(--text);">Kyrillos Kamal</strong> — an IT &amp; Network Security professional with 6+ years of hands-on experience, now transitioning into offensive security. I hunt for the gaps others miss. Every vulnerability found is a system made stronger.
+    </p>
 
-    <!-- Projects (R&D Labs) -->
-    <section id="projects">
-      <h2 class="reveal">R&D Labs & Security Research</h2>
-      <div class="projects-grid">
-        <div class="project-card reveal">
-          <div class="project-icon">🕵️</div>
-          <div class="project-title">MITM Attack Research — Browsec VPN</div>
-          <div class="project-desc">Identified and documented a real-world MITM attack by the Browsec VPN browser extension rewriting GitHub CDN URLs to a malicious domain (infird.com). Performed deep traffic analysis using Wireshark to capture and confirm URL hijacking behavior. Published full technical writeup with IOCs and remediation strategies.</div>
-          <div class="project-tags"><span class="project-tag">Wireshark</span><span class="project-tag">Traffic Analysis</span><span class="project-tag">Threat Intel</span></div>
-          <a href="https://github.com/KyrilosKamal/Security-WriteUps" target="_blank" class="read-more-btn">Read Writeup &rarr;</a>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-icon">📊</div>
-          <div class="project-title">NetMon — Network Monitoring Desktop App</div>
-          <div class="project-desc">Developed a cross-platform network monitoring desktop app (Python, PySide6) with real-time bandwidth tracking, live connection table with process/PID resolution, and integrated speed test. Implemented MVC architecture with QThread workers for non-blocking UI updates. Published to Arch Linux AUR (netmon-gui) and packaged for Windows.</div>
-          <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">PySide6</span><span class="project-tag">Tooling Dev</span></div>
-          <a href="https://github.com/KyrilosKamal/NetMon" target="_blank" class="read-more-btn">View Repository &rarr;</a>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-icon">🏨</div>
-          <div class="project-title">Enterprise Hospitality Infrastructure Overhaul</div>
-          <div class="project-desc">Full discovery, documentation, and stabilization of a large-scale hospitality network. Implemented logical segmentation for Staff, Guest, CCTV, Servers, and IPTV across a /16 subnet. Authored complete IT documentation suite covering network topology, asset register, and incident response policies.</div>
-          <div class="project-tags"><span class="project-tag">Network Mapping</span><span class="project-tag">Omada Controller</span><span class="project-tag">ITIL Policy</span></div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-icon">🛡️</div>
-          <div class="project-title">Enterprise Firewall & Security Deployment</div>
-          <div class="project-desc">Configured FortiGate and Sophos firewalls for secure remote access, SSL inspection, and web filtering. Integrated threat prevention and IDS/IPS for production environments, ensuring robust perimeter defense and secure VPN tunnels for remote workforce.</div>
-          <div class="project-tags"><span class="project-tag">FortiGate NSE4</span><span class="project-tag">Sophos</span><span class="project-tag">SSL Inspection</span></div>
-        </div>
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="btn red"></span>
+        <span class="btn yellow"></span>
+        <span class="btn green"></span>
+        <span class="terminal-title">root@darknet: ~</span>
       </div>
-    </section>
-
-    <!-- Writeups & CTF Walkthroughs -->
-    <section id="writeups">
-      <h2 class="reveal">Security Writeups & CTF Walkthroughs</h2>
-      <div class="projects-grid" id="writeups-container">
-        <!-- Writeups will be dynamically injected here via JavaScript -->
-      </div>
-    </section>
-
-    <!-- Education & Certifications (Training & Credentials) -->
-    <section id="education">
-      <h2 class="reveal">Training & Credentials</h2>
-      <div class="edu-lang">
-        <div class="reveal">
-          <div class="edu-card">
-            <div class="edu-title">Bachelor’s Degree in Computer Science</div>
-            <div class="edu-inst">Modern Academy, Maadi</div>
-            <div class="edu-year">Graduated 2018</div>
-          </div>
-          <div style="margin-top: 1.5rem;">
-            <div class="edu-card" style="border-left-color: var(--cyan);">
-              <div class="edu-title">Professional Certifications</div>
-              <div class="edu-inst">CCNA, NSE4 FortiGate, Sophos Firewall, MCSE, CompTIA A+, Cisco NetAcad Intro to Cybersecurity, Google Technical Support Fundamentals</div>
-              <div class="edu-year">In Progress: eJPT (INE Security), TryHackMe Jr Penetration Tester Path</div>
-            </div>
-          </div>
+      <div class="terminal-body">
+        <div><span class="prompt">root@darknet:~#</span> <span class="cmd">whoami</span></div>
+        <div class="output">kyrillos_kamal // network defender &amp; offensive security</div>
+        <div style="margin-top: 8px;"><span class="prompt">root@darknet:~#</span> <span class="cmd">cat /etc/motd</span></div>
+        <div class="output">
+          <span class="highlight">6+</span> Years Infrastructure Experience<br>
+          <span class="highlight">147</span> TryHackMe Rooms Completed<br>
+          <span class="highlight">Top 3%</span> Globally on TryHackMe<br>
+          <span class="highlight">eJPT</span> In Progress
         </div>
-        <div class="lang-grid reveal">
-          <div class="lang-item">
-            <span style="font-weight: 500;">Arabic</span>
-            <span class="lang-badge lang-native">Native</span>
-          </div>
-          <div class="lang-item">
-            <span style="font-weight: 500;">English</span>
-            <span class="lang-badge lang-prof">Professional</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TryHackMe Live Fire Exercises -->
-    <section id="tryhackme">
-      <h2 class="reveal">Live Fire Exercises (TryHackMe)</h2>
-      <div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
-        <!-- ⚡ FIX: Wrapped image in <a> tag so it redirects to your THM profile -->
-        <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" rel="noopener noreferrer" title="Visit my TryHackMe Profile">
-          <img id="thm-badge-img" src="https://tryhackme-badges.s3.amazonaws.com/Hackth3Path.png" alt="TryHackMe badge" style="max-width:329px; margin-bottom: 1.5rem; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        </a>
-        <div id="thm-stats" style="color: var(--text-muted); text-align:center; width: 100%;"></div>
-        <ul id="thm-rooms" style="list-style:none; color: var(--text-muted); text-align:center; padding: 0; margin-top: 1rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;"></ul>
-      </div>
-    </section>
-
-    <!-- Contact (Secure Comms) -->
-    <section id="contact">
-      <h2 class="reveal">Establish Secure Connection</h2>
-      <div class="contact-grid">
-        <div class="contact-cards reveal">
-          <div class="contact-card">
-            <div class="contact-icon">📧</div>
-            <div class="contact-info"><h4>Email</h4><p>kyrillos.kamal@proton.me</p></div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-icon">📱</div>
-            <div class="contact-info"><h4>Phone</h4><p>+20122 801 1332</p></div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-icon">📍</div>
-            <div class="contact-info"><h4>Location</h4><p>Hadayek El Kobba, Cairo, Egypt (Willing to Relocate)</p></div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-icon">💼</div>
-            <div class="contact-info"><h4>Availability</h4><p>Open to Network Security & Junior Penetration Tester roles</p></div>
-          </div>
-        </div>
-        <div class="contact-right reveal">
-          <div class="avatar-ripple">KK</div>
-          <div class="ripple"></div>
-          <div class="ripple"></div>
-          <div class="ripple"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Marquee -->
-    <div class="marquee-container">
-      <div class="marquee-track">
-        <span class="marquee-item">Lazuli Hotels</span><span class="marquee-item">Stella Resorts</span><span class="marquee-item">Al-Ahram Plastic</span><span class="marquee-item">Askyadoc</span><span class="marquee-item">Fortinet</span><span class="marquee-item">Sophos</span><span class="marquee-item">Cisco</span><span class="marquee-item">Microsoft</span><span class="marquee-item">CompTIA</span><span class="marquee-item">Red Teaming Labs</span>
-        <span class="marquee-item">Lazuli Hotels</span><span class="marquee-item">Stella Resorts</span><span class="marquee-item">Al-Ahram Plastic</span><span class="marquee-item">Askyadoc</span><span class="marquee-item">Fortinet</span><span class="marquee-item">Sophos</span><span class="marquee-item">Cisco</span><span class="marquee-item">Microsoft</span><span class="marquee-item">CompTIA</span><span class="marquee-item">Red Teaming Labs</span>
       </div>
     </div>
 
-    <footer>
-      <p>© 2026 Kyrillos Kamal. Built with pure HTML, CSS & JS. Securing the digital perimeter.</p>
-    </footer>
-  </main>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="val">6+</div>
+        <div class="label">Years Experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">180+</div>
+        <div class="label">Nodes Secured</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">99%</div>
+        <div class="label">Uptime Maintained</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">Top 3%</div>
+        <div class="label">TryHackMe Global</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <section id="profile">
+    <div class="section-label">01 / profile</div>
+    <h2><span class="hash">##</span> Security is not just a toolset. // it's a mindset</h2>
+
+    <div class="profile-content">
+      <div class="profile-text">
+        <p>
+          It's a way of thinking. I'm building my foundation through <strong>structured, hands-on practice</strong> across web applications, networks, and exploitation.
+        </p>
+        <p>
+          Every lab is a chance to ask better questions: <strong>What can break? Why did it break? And how do we make sure it doesn't happen again?</strong>
+        </p>
+        <p>
+          With <strong>6+ years of enterprise IT experience</strong> — from managing 180+ access points and 200+ IP cameras to hardening FortiGate and Sophos firewalls — I bring a depth of infrastructure knowledge that most junior pentesters lack.
+        </p>
+        <p>
+          I'm currently seeking <strong>Network Security</strong> or <strong>Junior Penetration Tester</strong> opportunities in Saudi Arabia, where I can apply both my infrastructure depth and offensive security skills.
+        </p>
+      </div>
+      <div class="profile-details">
+        <div class="row"><span class="key">location</span><span class="value">Cairo, Egypt</span></div>
+        <div class="row"><span class="key">relocation</span><span class="value">Saudi Arabia (Open)</span></div>
+        <div class="row"><span class="key">availability</span><span class="value">Immediate</span></div>
+        <div class="row"><span class="key">focus</span><span class="value">NetSec / Jr Pentester</span></div>
+        <div class="row"><span class="key">education</span><span class="value">B.Sc. Computer Science</span></div>
+        <div class="row"><span class="key">languages</span><span class="value">Arabic, English</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section id="capabilities">
+    <div class="section-label">02 / capabilities</div>
+    <h2><span class="hash">##</span> Tools I use to read the signal.</h2>
+
+    <div class="capabilities-grid">
+      <div class="capability-item">
+        <div class="capability-header">
+          <span class="capability-title">01 · Network Security &amp; Firewalls</span>
+          <span class="capability-pct">95%</span>
+        </div>
+        <div class="capability-tools">FortiGate (NSE4) · Sophos · VLANs · ACLs · NAT · IDS/IPS · VPN</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="95%"></div></div>
+      </div>
+
+      <div class="capability-item">
+        <div class="capability-header">
+          <span class="capability-title">02 · Web Application Security</span>
+          <span class="capability-pct">85%</span>
+        </div>
+        <div class="capability-tools">Burp Suite · OWASP Top 10 · SQLi · XSS · Authentication Bypass</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+      </div>
+
+      <div class="capability-item">
+        <div class="capability-header">
+          <span class="capability-title">03 · Exploitation &amp; Penetration Testing</span>
+          <span class="capability-pct">80%</span>
+        </div>
+        <div class="capability-tools">Metasploit · Nmap · Hydra · Gobuster · John the Ripper · Netcat</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+      </div>
+
+      <div class="capability-item">
+        <div class="capability-header">
+          <span class="capability-title">04 · Traffic Analysis &amp; Threat Hunting</span>
+          <span class="capability-pct">85%</span>
+        </div>
+        <div class="capability-tools">Wireshark · tcpdump · Packet Analysis · IOC Documentation</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+      </div>
+
+      <div class="capability-item">
+        <div class="capability-header">
+          <span class="capability-title">05 · Systems &amp; Infrastructure</span>
+          <span class="capability-pct">90%</span>
+        </div>
+        <div class="capability-tools">Windows Server (AD, DNS, DHCP, GPO) · Linux (Kali, Ubuntu, CentOS) · VMware · Hyper-V</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+      </div>
+
+      <div class="capability-item">
+        <div class="capability-header">
+          <span class="capability-title">06 · Programming &amp; Scripting</span>
+          <span class="capability-pct">75%</span>
+        </div>
+        <div class="capability-tools">Python · Bash · Shell Scripting · PySide6 · MVC Architecture</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Field Notes / Writeups -->
+  <section id="field-notes">
+    <div class="section-label">03 / field notes</div>
+    <h2><span class="hash">##</span> Practice makes prepared.</h2>
+
+    <div class="notes-grid" id="writeups-container">
+      <!-- Writeups injected via JS -->
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="section-label">04 / field operations</div>
+    <h2><span class="hash">##</span> Where I've made an impact.</h2>
+
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Lead Infrastructure Engineer</span>
+          <span class="exp-date">Dec 2025 – Present</span>
+        </div>
+        <div class="exp-company">Lazuli Marsa Allam | Marsa Allam, Egypt</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Spearheaded emergency response to an incomplete IT handover, conducting ground-up discovery across a /16 IP range.</li>
+            <li>Deployed and managed 180+ Omada-controlled APs and 200+ IP cameras across segmented VLANs (Staff, Guest, CCTV, Servers, IPTV).</li>
+            <li>Engineered FortiGate firewall policies and hardened Active Directory to maintain 24/7 operational security for a 500+ endpoint environment.</li>
+            <li>Authored complete IT documentation suite covering network topology, asset register, and incident response policies.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Network Administrator</span>
+          <span class="exp-date">Feb 2024 – Dec 2025</span>
+        </div>
+        <div class="exp-company">Stella Sidi Abd El-Rahman Resort | North Coast, Egypt</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Maintained 99% uptime for a high-density resort network with 50+ APs across 5 segmented network zones.</li>
+            <li>Managed VPNs, prioritized threat incidents via helpdesk, and monitored system logs to reduce average downtime to under 30 minutes per event.</li>
+            <li>Configured and secured routers, switches, and access points with role-based access policies.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">IT &amp; Firewall Specialist</span>
+          <span class="exp-date">Feb 2023 – Jan 2024</span>
+        </div>
+        <div class="exp-company">Al-Ahram Plastic Group | Sohag, Egypt</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Administered Windows Server environments (AD, DNS, DHCP) for 150+ users across 3 sites.</li>
+            <li>Configured FortiGate &amp; Sophos firewalls, managing VPN tunnels for 20+ remote users and enforcing web filtering policies.</li>
+            <li>Integrated OT/IT production machinery, eliminating 5+ weekly network conflicts and reducing unplanned outages by 40%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">IT Helpdesk &amp; Endpoint Support</span>
+          <span class="exp-date">Jan 2022 – Jan 2023</span>
+        </div>
+        <div class="exp-company">Askyadoc | Cairo, Egypt</div>
+        <div class="exp-desc">
+          <ul>
+            <li>First-line defense for 150+ hybrid/e-learning users, maintaining 95% same-day resolution rate.</li>
+            <li>Troubleshot Windows/Linux endpoints and maintained LMS uptime for 500+ active learners.</li>
+            <li>Created 20+ security troubleshooting guides, reducing repetitive tickets by 35%.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TryHackMe -->
+  <section id="tryhackme">
+    <div class="section-label">05 / live fire exercises</div>
+    <h2><span class="hash">##</span> TryHackMe Profile</h2>
+
+    <div class="thm-container">
+      <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" rel="noopener noreferrer" class="thm-badge-wrapper" title="Visit my TryHackMe Profile">
+        <img src="https://tryhackme-badges.s3.amazonaws.com/Hackth3Path.png" alt="TryHackMe Badge">
+      </a>
+
+      <div class="thm-stats-grid" id="thm-stats">
+        <!-- THM stats injected via JS -->
+      </div>
+
+      <div class="thm-badges-list" id="thm-badges">
+        <!-- THM badges injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <div class="section-label">06 / training &amp; credentials</div>
+    <h2><span class="hash">##</span> Foundation &amp; continuous learning.</h2>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-title">Bachelor of Science in Computer Science</div>
+        <div class="edu-inst">Modern Academy, Maadi, Egypt</div>
+        <div class="edu-year">Graduated 2018</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-title">Professional Certifications</div>
+        <ul class="cert-list">
+          <li><strong>eJPT</strong> — INE Security (In Progress)</li>
+          <li><strong>Jr Penetration Tester Path</strong> — TryHackMe (In Progress)</li>
+          <li><strong>NSE4 FortiGate Firewall</strong> — Fortinet (2025)</li>
+          <li><strong>CCNA</strong> — Cisco (2023)</li>
+          <li><strong>Sophos Firewall</strong> — Sophos (2024)</li>
+          <li><strong>MCSE</strong> — Windows Server Administration (2023)</li>
+          <li><strong>CompTIA A+</strong> — Core 1 &amp; 2 (2023)</li>
+          <li><strong>Cyber Security 101</strong> — TryHackMe (2026)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Console -->
+  <section id="console">
+    <div class="section-label">07 / live console</div>
+    <h2><span class="hash">##</span> Interactive Shell</h2>
+
+    <div class="console-window">
+      <div class="terminal-header">
+        <span class="btn red"></span>
+        <span class="btn yellow"></span>
+        <span class="btn green"></span>
+        <span class="terminal-title">root@darknet: ~ — interactive shell</span>
+      </div>
+      <div class="console-output" id="console-output">
+        <div class="line"><span class="prompt">root@darknet:~#</span> <span class="cmd">Welcome to Kyrillos Kamal's interactive console.</span></div>
+        <div class="line output">Type "help" to list available commands.</div>
+        <div class="line output">Try: help, whoami, skills, tools, writeups, thm, scan, inject, flag, contact</div>
+      </div>
+      <div class="console-input-wrapper">
+        <span class="prompt">root@darknet:~#</span>
+        <input type="text" id="console-input" placeholder="Type a command..." autocomplete="off">
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Focus -->
+  <section id="focus">
+    <div class="section-label">08 / current focus</div>
+    <h2><span class="hash">##</span> What I'm working towards.</h2>
+
+    <div class="focus-card">
+      <div class="focus-title">Jr Penetration Tester Learning Path</div>
+      <div class="focus-sub">TryHackMe · In Progress</div>
+      <div class="focus-bar"><div class="focus-fill" data-width="80%"></div></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-label">09 / establish contact</div>
+    <h2><span class="hash">##</span> Have a system worth testing?</h2>
+
+    <div class="contact-content">
+      <p>I'm always open to conversations about security, learning, and opportunities to grow alongside a strong team.</p>
+      <div class="contact-links">
+        <a href="mailto:kyrillos.kamal@proton.me" class="contact-link">[email]</a>
+        <a href="https://linkedin.com/in/kyrillos-kamal" target="_blank" class="contact-link">[linkedin]</a>
+        <a href="https://github.com/KyrilosKamal" target="_blank" class="contact-link">[github]</a>
+        <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" class="contact-link">[tryhackme]</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Kyrillos Kamal. Built with pure HTML, CSS &amp; JS. Securing the digital perimeter.</p>
+  </footer>
 
   <script>
     // ==========================================
-    // 1. TRYHACKME DATA INJECTION
+    // DATA
     // ==========================================
     const thmData = {
-      "rank": "Wizard (0xA)",
-      "level": 64,
-      "badgeCount": 17,
-      "streak": 3,
-      "completedRoomsCount": 147,
-      "globalRank": "Top 3% (65146)",
-      "completedRooms": [
-        "Cyber Security 101",
-        "Pre Security (Legacy)",
-        "Hacker Holidays",
-        "Metasploitable",
-        "Blue (EternalBlue)",
-        "OWASP Top 10",
-        "Burp'd",
-        "World Wide Web",
-        "Networking Nerd",
-        "cat linux.txt",
-        "Sword Apprentice",
-        "Shield Apprentice",
-        "Cyber Ready",
-        "Intro to Web Hacking"
+      rank: "Wizard (0xA)",
+      level: 64,
+      badges: 17,
+      rooms: 147,
+      streak: 3,
+      globalRank: "Top 3% (65146)",
+      completedRooms: [
+        "Cyber Security 101", "Pre Security (Legacy)", "Hacker Holidays",
+        "Metasploitable", "Blue (EternalBlue)", "OWASP Top 10", "Burp'd",
+        "World Wide Web", "Networking Nerd", "cat linux.txt",
+        "Sword Apprentice", "Shield Apprentice", "Cyber Ready", "Intro to Web Hacking"
       ]
     };
 
-    function renderTHMData(data) {
-      const statsContainer = document.getElementById('thm-stats');
-      const statsHtml = `
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; width: 100%; max-width: 800px; text-align: center;">
-          <div style="background: var(--surface-light); padding: 1.5rem; border-radius: 8px;">
-            <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--cyan); font-weight: 700;">${data.rank || 'N/A'}</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">Current Rank</div>
-          </div>
-          <div style="background: var(--surface-light); padding: 1.5rem; border-radius: 8px;">
-            <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--amber); font-weight: 700;">${data.level || 'N/A'}</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">Level</div>
-          </div>
-          <div style="background: var(--surface-light); padding: 1.5rem; border-radius: 8px;">
-            <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--pink); font-weight: 700;">${data.completedRoomsCount || 0}</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">Rooms Completed</div>
-          </div>
-          <div style="background: var(--surface-light); padding: 1.5rem; border-radius: 8px;">
-            <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--indigo); font-weight: 700;">${data.globalRank || 'N/A'}</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">Global Rank</div>
-          </div>
-        </div>
-      `;
-      statsContainer.innerHTML = statsHtml;
-
-      const roomsList = document.getElementById('thm-rooms');
-      roomsList.innerHTML = ''; 
-      (data.completedRooms || []).forEach(r => {
-        const li = document.createElement('li');
-        li.textContent = r;
-        li.style.cssText = "background: var(--surface); padding: 6px 12px; border-radius: 4px; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.05);";
-        roomsList.appendChild(li);
-      });
-    }
-    renderTHMData(thmData);
-
-    // ==========================================
-    // 2. DYNAMIC SECURITY WRITEUPS INJECTION
-    // ==========================================
     const writeupsData = [
       {
-        title: "TryHackMe: Recruit Walkthrough",
-        desc: "Medium-rated web exploitation room focusing on Path Traversal and SQL Injection to gain user and administrator access to a hiring dashboard. Covered manual and automated SQLi exploitation using SQLMAP.",
-        link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Recruit-TryHackMe-Writeup.md",
-        tags: ["TryHackMe", "Web Exploitation", "SQL Injection", "Path Traversal"]
+        tag: "TryHackMe",
+        title: "Recruit — Web Exploitation",
+        desc: "Medium-rated room focusing on Path Traversal and SQL Injection to gain user and admin access. Covered manual and automated SQLi exploitation using SQLMAP.",
+        tools: ["SQLi", "Path Traversal", "SQLMAP"],
+        link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Recruit-TryHackMe-Writeup.md"
       },
       {
-        title: "TryHackMe: Brr — ScadaBR Writeup",
-        desc: "OT/ICS challenge involving a SCADA box. Exploited a ScadaBR login page and default Modbus FC03 (read holding registers) configuration to gain access to the industrial control system.",
-        link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Brr-Writeup-room",
-        tags: ["TryHackMe", "OT/ICS", "SCADA", "Modbus"]
+        tag: "TryHackMe",
+        title: "Brr — SCADA/Modbus",
+        desc: "OT/ICS challenge involving a SCADA box. Exploited a ScadaBR login page and default Modbus FC03 configuration to gain access to the industrial control system.",
+        tools: ["SCADA", "Modbus", "OT/ICS"],
+        link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Brr-Writeup-room"
       },
       {
-        title: "Cracking SMB Wide Open — Brute Force with Metasploit",
-        desc: "Detailed walkthrough of SMB brute-forcing on TryHackMe. Used Metasploit's smb_login module with a wordlist to crack credentials and gain unauthorized access to a Windows target.",
-        link: "https://kirll0s.medium.com/cracking-smb-wide-open-brute-force-with-metasploit-on-tryhackme-f71258db3be8",
-        tags: ["TryHackMe", "Metasploit", "SMB", "Brute Force"]
+        tag: "Metasploit",
+        title: "Cracking SMB with Metasploit",
+        desc: "Detailed walkthrough of SMB brute-forcing on TryHackMe. Used Metasploit's smb_login module with a wordlist to crack credentials and gain unauthorized access.",
+        tools: ["Metasploit", "SMB", "Brute Force"],
+        link: "https://kirll0s.medium.com/cracking-smb-wide-open-brute-force-with-metasploit-on-tryhackme-f71258db3be8"
       },
       {
-        title: "PortSwigger Lab: SQL Injection with Filter Bypass via XML Encoding",
-        desc: "Solved the Practitioner-level SQL injection lab by obfuscating the malicious payload using XML entity encoding (via Hackvertor) to bypass the web application firewall (WAF) and extract data.",
-        link: "https://kirll0s.medium.com/portswigger-lab-writeup-sql-injection-with-filter-bypass-via-xml-encoding-7e1436358462",
-        tags: ["PortSwigger", "SQL Injection", "WAF Bypass", "XML Encoding"]
+        tag: "PortSwigger",
+        title: "SQLi Filter Bypass via XML Encoding",
+        desc: "Solved the Practitioner-level SQL injection lab by obfuscating the payload using XML entity encoding to bypass the web application firewall (WAF).",
+        tools: ["SQLi", "WAF Bypass", "XML Encoding"],
+        link: "https://kirll0s.medium.com/portswigger-lab-writeup-sql-injection-with-filter-bypass-via-xml-encoding-7e1436358462"
       }
     ];
 
+    // ==========================================
+    // RENDER: WRITEUPS
+    // ==========================================
     function renderWriteups(data) {
       const container = document.getElementById('writeups-container');
-      
       data.forEach(w => {
         const card = document.createElement('div');
-        card.className = 'project-card reveal'; 
+        card.className = 'note-card';
         card.innerHTML = `
-          <div class="project-icon">📄</div>
-          <div class="project-title">${w.title}</div>
-          <div class="project-desc">${w.desc}</div>
-          <div class="project-tags">
-            ${w.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}
+          <div class="note-tag">${w.tag}</div>
+          <div class="note-title">${w.title}</div>
+          <div class="note-desc">${w.desc}</div>
+          <div class="note-tools">
+            ${w.tools.map(t => `<span class="note-tool">${t}</span>`).join('')}
           </div>
-          <a href="${w.link}" target="_blank" class="read-more-btn">Read Writeup &rarr;</a>
+          <a href="${w.link}" target="_blank" rel="noopener" class="note-link">Read Writeup →</a>
         `;
         container.appendChild(card);
       });
     }
-    renderWriteups(writeupsData);
 
     // ==========================================
-    // 3. UI INTERACTIONS & ANIMATIONS
+    // RENDER: TRYHACKME
+    // ==========================================
+    function renderTHM(data) {
+      const statsContainer = document.getElementById('thm-stats');
+      statsContainer.innerHTML = `
+        <div class="thm-stat">
+          <div class="val">${data.rank}</div>
+          <div class="label">Rank</div>
+        </div>
+        <div class="thm-stat">
+          <div class="val">${data.level}</div>
+          <div class="label">Level</div>
+        </div>
+        <div class="thm-stat">
+          <div class="val">${data.rooms}</div>
+          <div class="label">Rooms Completed</div>
+        </div>
+        <div class="thm-stat">
+          <div class="val">${data.globalRank}</div>
+          <div class="label">Global Rank</div>
+        </div>
+      `;
+
+      const badgesContainer = document.getElementById('thm-badges');
+      const notableBadges = [
+        "Sword Apprentice (3.7%)", "Shield Apprentice (3.1%)", "Session Held (1.5%)",
+        "30 Day Streak (4.7%)", "Burp'ed (9.2%)", "Intro to Web Hacking (8.9%)",
+        "Metasploitable (12.2%)", "Blue (12.8%)", "OWASP Top 10 (13%)"
+      ];
+      badgesContainer.innerHTML = notableBadges.map(b => `<span class="thm-badge-item">${b}</span>`).join('');
+    }
+
+    // ==========================================
+    // THEME TOGGLE
+    // ==========================================
+    function initThemeToggle() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('blue-team');
+        const isBlue = document.body.classList.contains('blue-team');
+        toggleBtn.textContent = isBlue ? '[ SWITCH TO RED TEAM ]' : '[ SWITCH TO BLUE TEAM ]';
+      });
+    }
+
+    // ==========================================
+    // BOOT SEQUENCE
+    // ==========================================
+    function initBootSequence() {
+      const bootLog = document.getElementById('boot-log');
+      const lines = [
+        "[ OK ] Initializing kernel modules...",
+        "[ OK ] Mounting /dev/sda1...",
+        "[ OK ] Starting Network Manager...",
+        "[ OK ] Starting Firewall (ufw)...",
+        "[ OK ] Loading offensive security tools...",
+        "[ OK ] Reached target Multi-User System.",
+        "[ OK ] Starting Kyrillos Kamal Portfolio..."
+      ];
+      
+      let currentLine = 0;
+      const interval = setInterval(() => {
+        if (currentLine < lines.length) {
+          const div = document.createElement('div');
+          div.textContent = lines[currentLine];
+          // Add green OK
+          const okText = div.innerHTML.replace('[ OK ]', '<span class="ok">[ OK ]</span>');
+          div.innerHTML = okText;
+          bootLog.appendChild(div);
+          currentLine++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 300);
+    }
+
+    // ==========================================
+    // INTERACTIVE CONSOLE
+    // ==========================================
+    function initConsole() {
+      const output = document.getElementById('console-output');
+      const input = document.getElementById('console-input');
+
+      const commands = {
+        help: () => [
+          'Available commands:',
+          '  whoami      — about me',
+          '  skills      — technical capabilities',
+          '  tools       — security tools I use',
+          '  writeups    — list security writeups',
+          '  thm         — TryHackMe stats',
+          '  scan        — simulate an Nmap scan',
+          '  inject      — simulate a SQL injection',
+          '  flag        — find the hidden flag',
+          '  contact     — contact information',
+          '  clear       — clear console'
+        ],
+        whoami: () => [
+          'Kyrillos Kamal',
+          'Network Defender & Offensive Security Enthusiast',
+          '6+ years IT & Network Security experience',
+          'Currently: eJPT (In Progress) | TryHackMe Top 3%'
+        ],
+        skills: () => [
+          'Network Security & Firewalls: FortiGate, Sophos, VLANs, ACLs, IDS/IPS',
+          'Web App Security: Burp Suite, OWASP Top 10, SQLi, XSS',
+          'Exploitation: Metasploit, Nmap, Hydra, Gobuster, John the Ripper',
+          'Traffic Analysis: Wireshark, tcpdump, IOC Documentation',
+          'Systems: Windows Server, Linux (Kali, Ubuntu), VMware, Hyper-V'
+        ],
+        tools: () => [
+          'Nmap | Metasploit | Burp Suite | Wireshark | Hydra',
+          'Gobuster | John the Ripper | Netcat | SQLmap | OWASP ZAP',
+          'FortiGate | Sophos | Kali Linux | Python | Bash'
+        ],
+        writeups: () => writeupsData.map((w, i) => `  [${i + 1}] ${w.title} — ${w.link}`),
+        thm: () => [
+          `Rank: ${thmData.rank}`,
+          `Level: ${thmData.level}`,
+          `Rooms: ${thmData.rooms}`,
+          `Global Rank: ${thmData.globalRank}`,
+          `Profile: https://tryhackme.com/p/Hackth3Path`
+        ],
+        scan: () => [
+          'Starting Nmap 7.94 ( https://nmap.org )',
+          'Nmap scan report for target.local (192.168.1.105)',
+          'Host is up (0.0021s latency).',
+          'Not shown: 997 closed tcp ports (reset)',
+          'PORT     STATE SERVICE',
+          '22/tcp   open  ssh',
+          '80/tcp   open  http',
+          '443/tcp  open  https',
+          'Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds',
+          '[!] Vulnerabilities detected: Outdated web server (Apache 2.4.49)'
+        ],
+        inject: () => [
+          '[+] Testing SQL Injection on http://target.local/login',
+          "[*] Payload: ' OR 1=1 -- -",
+          '[+] Response length: 4823 (normal: 1024)',
+          '[+] SQL Injection confirmed!',
+          '[+] Dumping database users table...',
+          'admin:admin',
+          'user:password123',
+          '[!] Recommendation: Use parameterized queries.'
+        ],
+        flag: () => [
+          'Searching for hidden flags...',
+          '[!] No flag found in the DOM.',
+          '[!] Hint: Check the HTML source code, look for a comment.',
+          'Try: view-source:https://kyrilloskamal.github.io/'
+        ],
+        contact: () => [
+          'Email:    kyrillos.kamal@proton.me',
+          'LinkedIn: linkedin.com/in/kyrillos-kamal',
+          'GitHub:   github.com/KyrilosKamal',
+          'THM:      tryhackme.com/p/Hackth3Path'
+        ],
+        clear: () => { output.innerHTML = ''; return []; }
+      };
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const cmd = input.value.trim().toLowerCase();
+          input.value = '';
+
+          const line = document.createElement('div');
+          line.className = 'line';
+          line.innerHTML = `<span class="prompt">root@darknet:~#</span> <span class="cmd">${cmd}</span>`;
+          output.appendChild(line);
+
+          if (cmd === '') return;
+
+          const fn = commands[cmd];
+          if (fn) {
+            const result = fn();
+            result.forEach(res => {
+              const outLine = document.createElement('div');
+              outLine.className = 'line output';
+              // Highlight success or error messages
+              if (res.includes('[+]') || res.includes('[ OK ]')) outLine.className = 'line success';
+              else if (res.includes('[!]')) outLine.className = 'line error';
+              outLine.textContent = res;
+              output.appendChild(outLine);
+            });
+          } else {
+            const errLine = document.createElement('div');
+            errLine.className = 'line error';
+            errLine.textContent = `command not found: ${cmd}. Type "help" for available commands.`;
+            output.appendChild(errLine);
+          }
+
+          output.scrollTop = output.scrollHeight;
+        }
+      });
+    }
+
+    // ==========================================
+    // ANIMATIONS & INITIALIZATION
     // ==========================================
 
     window.addEventListener('load', () => {
+      initBootSequence();
       setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
-      }, 2000);
+      }, 2800);
     });
 
-    const dot = document.getElementById('cursor-dot');
-    const ring = document.getElementById('cursor-ring');
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX; mouseY = e.clientY;
-      dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
-    });
-
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
-      ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    document.querySelectorAll('a, button, .btn, .chip, .project-card, .contact-card').forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-    });
-
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const colors = ['#4f46e5', '#ec4899', '#06b6d4', '#f59e0b'];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 2 + 1;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-      }
-      update() {
-        this.x += this.vx; this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      particles = [];
-      const count = Math.min(window.innerWidth * 0.08, 120);
-      for (let i = 0; i < count; i++) particles.push(new Particle());
-    }
-    initParticles();
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, i) => {
-        p.update(); p.draw();
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(148, 163, 184, ${1 - dist / 120})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+    // Skill bar animation on scroll
+    const observerOptions = { threshold: 0.3 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          const bars = entry.target.querySelectorAll('.skill-bar-fill');
-          bars.forEach(bar => {
-            const width = bar.getAttribute('data-width');
-            bar.style.width = width;
-            setTimeout(() => bar.classList.add('animate'), 100);
-          });
+          const fill = entry.target.querySelector('.skill-fill');
+          if (fill) {
+            setTimeout(() => {
+              fill.style.width = fill.getAttribute('data-width');
+            }, 200);
+          }
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal, .exp-card').forEach(el => observer.observe(el));
-    document.querySelectorAll('#writeups-container .project-card').forEach(el => observer.observe(el));
+    // Initialize everything
+    renderWriteups(writeupsData);
+    renderTHM(thmData);
+    initThemeToggle();
+    initConsole();
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if(target) {
-          const offset = 80;
-          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
+    // Observe skill bars
+    document.querySelectorAll('.capability-item').forEach(el => observer.observe(el));
+
+    // Focus bar
+    setTimeout(() => {
+      document.querySelectorAll('.focus-fill').forEach(el => {
+        el.style.width = el.getAttribute('data-width');
       });
-    });
+    }, 500);
   </script>
 </body>
 </html>
