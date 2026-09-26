@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ff0040"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050508"/>
+
+  <!-- Subtle grid overlay -->
+  <g opacity="0.06" stroke="#ff0040" stroke-width="1">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Terminal window border -->
+  <rect x="60" y="60" width="1080" height="510" rx="12" fill="#0f0f15" stroke="#2a2a3a" stroke-width="2"/>
+
+  <!-- Terminal top bar -->
+  <rect x="60" y="60" width="1080" height="44" rx="12" fill="#181822"/>
+  <rect x="60" y="90" width="1080" height="14" fill="#181822"/>
+  <line x1="60" y1="104" x2="1140" y2="104" stroke="#2a2a3a" stroke-width="1"/>
+
+  <!-- Terminal dots -->
+  <circle cx="90" cy="82" r="6" fill="#ff0040"/>
+  <circle cx="112" cy="82" r="6" fill="#ff8c00"/>
+  <circle cx="134" cy="82" r="6" fill="#00ff00"/>
+
+  <!-- Terminal title -->
+  <text x="1140" y="87" font-family="monospace" font-size="14" fill="#7a7a9a" text-anchor="end">root@darknet: ~</text>
+
+  <!-- Terminal content -->
+  <text x="100" y="160" font-family="monospace" font-size="20" fill="#ff0040" filter="url(#glow)">root@darknet:~# whoami</text>
+  <text x="100" y="195" font-family="monospace" font-size="20" fill="#7a7a9a">kyrillos_kamal // network defender &amp; offensive security</text>
+
+  <text x="100" y="250" font-family="monospace" font-size="20" fill="#ff0040" filter="url(#glow)">root@darknet:~# cat /etc/motd</text>
+
+  <!-- Main name -->
+  <text x="100" y="340" font-family="monospace" font-size="72" font-weight="bold" fill="url(#accentGrad)">Kyrillos Kamal</text>
+
+  <!-- Title line -->
+  <text x="100" y="400" font-family="monospace" font-size="26" fill="#e0e0e8">Network Security &amp; Offensive Security</text>
+
+  <!-- Stats line -->
+  <text x="100" y="460" font-family="monospace" font-size="20" fill="#00d4ff">► 6+ Years Experience</text>
+  <text x="420" y="460" font-family="monospace" font-size="20" fill="#00d4ff">► TryHackMe Top 3%</text>
+  <text x="760" y="460" font-family="monospace" font-size="20" fill="#00d4ff">► 147 Rooms Completed</text>
+
+  <!-- Bottom URL -->
+  <text x="100" y="530" font-family="monospace" font-size="18" fill="#7a7a9a">kyriloskamal.github.io/KyrilosKamal</text>
+
+  <!-- Bottom prompt -->
+  <text x="1140" y="530" font-family="monospace" font-size="20" fill="#ff0040" text-anchor="end" filter="url(#glow)">█</text>
+</svg>
