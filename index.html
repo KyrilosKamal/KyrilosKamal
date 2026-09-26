@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- 🔑 GOOGLE SITE VERIFICATION -->
-  <!-- Replace PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE with the content value from Google Search Console. -->
   <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
 
-  <!-- Primary SEO -->
   <title>Kyrillos Kamal | Network Security & Offensive Security Portfolio</title>
   <meta name="description" content="Portfolio of Kyrillos Kamal — IT & Network Security professional with 6+ years of experience in offensive security, infrastructure hardening, and OT/ICS defense. TryHackMe Top 3% globally.">
   <meta name="author" content="Kyrillos Kamal">
@@ -16,28 +14,21 @@
   <meta name="keywords" content="Kyrillos Kamal, penetration tester, network security, offensive security, TryHackMe, eJPT, FortiGate, cybersecurity portfolio, Egypt cybersecurity">
   <link rel="canonical" href="https://kyriloskamal.github.io/KyrilosKamal/">
 
-  <!-- Open Graph (LinkedIn, WhatsApp, Facebook previews) -->
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://kyriloskamal.github.io/KyrilosKamal/">
   <meta property="og:title" content="Kyrillos Kamal | Network Security & Offensive Security">
-  <meta property="og:description" content="IT & Network Security professional with 6+ years of experience. TryHackMe Top 3% globally. Focused on offensive security and OT/ICS defense.">
+  <meta property="og:description" content="IT & Network Security professional with 6+ years of experience. TryHackMe Top 3% globally.">
   <meta property="og:image" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="Kyrillos Kamal Portfolio">
 
-  <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kyrillos Kamal | Network Security & Offensive Security">
   <meta name="twitter:description" content="IT & Network Security professional with 6+ years of experience. TryHackMe Top 3% globally.">
   <meta name="twitter:image" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
 
-  <!-- Favicon (inline SVG with KK initials) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050508'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='55' font-weight='bold' fill='%23ff0040' text-anchor='middle'%3EKK%3C/text%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050508'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='55' font-weight='bold' fill='%23ff0040' text-anchor='middle'%3EKK%3C/text%3E%3C/svg%3E">
 
-  <!-- Structured Data: Person Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,23 +36,11 @@
     "name": "Kyrillos Kamal",
     "url": "https://kyriloskamal.github.io/KyrilosKamal/",
     "jobTitle": "IT & Network Security Professional",
-    "description": "IT & Network Security professional with 6+ years of experience in network infrastructure, firewall administration, and offensive security.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Cairo",
-      "addressCountry": "Egypt"
-    },
     "sameAs": [
       "https://linkedin.com/in/kyrillos-kamal",
       "https://github.com/KyrilosKamal",
-      "https://tryhackme.com/p/Hackth3Path"
-    ],
-    "knowsAbout": [
-      "Penetration Testing",
-      "Network Security",
-      "Firewall Administration",
-      "OT/ICS Security",
-      "Vulnerability Assessment"
+      "https://tryhackme.com/p/Hackth3Path",
+      "https://www.credly.com/users/kyrillos-kamal"
     ]
   }
   </script>
@@ -109,7 +88,7 @@
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; transition: background 0.3s; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
 
     body::before {
       content: '';
@@ -162,15 +141,9 @@
       font-weight: 700; font-size: 0.9rem; color: var(--accent);
       text-decoration: none;
       text-shadow: 0 0 8px var(--accent-glow);
-      transition: color 0.3s;
     }
     .nav-logo span { color: var(--text-muted); text-shadow: none; }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
+    .nav-right { display: flex; align-items: center; gap: 2rem; }
     .theme-toggle {
       background: transparent;
       border: 1px solid var(--border);
@@ -187,7 +160,6 @@
       color: var(--accent);
       box-shadow: 0 0 15px var(--accent-dim);
     }
-
     .nav-links { display: flex; gap: 2rem; }
     .nav-links a {
       font-family: 'Fira Code', monospace;
@@ -318,20 +290,12 @@
       gap: 8px;
       border-bottom: 1px solid var(--border);
     }
-    .terminal-header .btn {
-      width: 10px; height: 10px; border-radius: 50%;
-    }
+    .terminal-header .btn { width: 10px; height: 10px; border-radius: 50%; }
     .terminal-header .btn.red { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
     .terminal-header .btn.yellow { background: var(--warning); }
     .terminal-header .btn.green { background: #00ff00; }
-    .terminal-title {
-      margin-left: auto; font-size: 0.7rem; color: var(--text-muted);
-    }
-    .terminal-body {
-      padding: 16px;
-      font-size: 0.85rem;
-      line-height: 1.8;
-    }
+    .terminal-title { margin-left: auto; font-size: 0.7rem; color: var(--text-muted); }
+    .terminal-body { padding: 16px; font-size: 0.85rem; line-height: 1.8; }
     .terminal-body .prompt { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); }
     .terminal-body .cmd { color: var(--text); }
     .terminal-body .output { color: var(--text-muted); }
@@ -351,23 +315,15 @@
       text-align: center;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
-    .hero-stat:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 20px var(--accent-dim);
-    }
+    .hero-stat:hover { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-dim); }
     .hero-stat .val {
       font-family: 'Fira Code', monospace;
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--accent);
       text-shadow: 0 0 10px var(--accent-glow);
-      transition: color 0.3s;
     }
-    .hero-stat .label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
+    .hero-stat .label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
 
     #profile { padding-top: 60px; }
     .profile-content {
@@ -376,11 +332,7 @@
       gap: 3rem;
       align-items: start;
     }
-    .profile-text p {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
+    .profile-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; }
     .profile-text p strong { color: var(--text); }
     .profile-details {
       background: var(--surface);
@@ -399,13 +351,10 @@
     }
     .profile-details .row:last-child { border-bottom: none; }
     .profile-details .key { color: var(--text-muted); }
-    .profile-details .value { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); transition: color 0.3s; }
+    .profile-details .value { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); }
 
     #capabilities { padding-top: 60px; }
-    .capabilities-grid {
-      display: grid;
-      gap: 1.5rem;
-    }
+    .capabilities-grid { display: grid; gap: 1.5rem; }
     .capability-item {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -413,33 +362,21 @@
       padding: 1.25rem 1.5rem;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
-    .capability-item:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 25px var(--accent-dim);
-    }
+    .capability-item:hover { border-color: var(--accent); box-shadow: 0 0 25px var(--accent-dim); }
     .capability-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0.75rem;
     }
-    .capability-title {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
+    .capability-title { font-family: 'Fira Code', monospace; font-size: 0.9rem; font-weight: 500; }
     .capability-pct {
       font-family: 'Fira Code', monospace;
       font-size: 0.85rem;
       color: var(--accent);
       text-shadow: 0 0 5px var(--accent-glow);
-      transition: color 0.3s;
     }
-    .capability-tools {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
+    .capability-tools { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem; }
     .skill-bar {
       width: 100%;
       height: 4px;
@@ -484,26 +421,10 @@
       letter-spacing: 1px;
       margin-bottom: 0.75rem;
       text-shadow: 0 0 5px var(--accent-glow);
-      transition: color 0.3s;
     }
-    .note-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-    .note-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      flex-grow: 1;
-    }
-    .note-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 1rem;
-    }
+    .note-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
+    .note-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
+    .note-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
     .note-tool {
       font-family: 'Fira Code', monospace;
       font-size: 0.7rem;
@@ -562,17 +483,8 @@
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
-    .bounty-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      line-height: 1.7;
-    }
-    .bounty-method {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 1.5rem;
-    }
+    .bounty-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.7; }
+    .bounty-method { list-style: none; padding: 0; margin-bottom: 1.5rem; }
     .bounty-method li {
       font-family: 'Fira Code', monospace;
       font-size: 0.8rem;
@@ -582,29 +494,18 @@
       gap: 10px;
     }
     .bounty-method li:last-child { border-bottom: none; }
-    .bounty-method .step {
-      color: var(--accent);
-      font-weight: 700;
-    }
+    .bounty-method .step { color: var(--accent); font-weight: 700; }
 
     #experience { padding-top: 60px; }
-    .exp-timeline {
-      position: relative;
-      padding-left: 30px;
-    }
+    .exp-timeline { position: relative; padding-left: 30px; }
     .exp-timeline::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
+      left: 0; top: 0; bottom: 0;
       width: 2px;
       background: linear-gradient(180deg, var(--accent), var(--info), transparent);
     }
-    .exp-item {
-      position: relative;
-      margin-bottom: 2.5rem;
-    }
+    .exp-item { position: relative; margin-bottom: 2.5rem; }
     .exp-item::before {
       content: '';
       position: absolute;
@@ -615,7 +516,6 @@
       background: var(--accent);
       border-radius: 50%;
       box-shadow: 0 0 12px var(--accent);
-      transition: background 0.3s, box-shadow 0.3s;
     }
     .exp-header {
       display: flex;
@@ -623,44 +523,18 @@
       flex-wrap: wrap;
       margin-bottom: 0.25rem;
     }
-    .exp-role {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .exp-date {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .exp-company {
-      font-size: 0.85rem;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-      transition: color 0.3s;
-    }
-    .exp-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-    .exp-desc ul {
-      list-style: none;
-      padding: 0;
-    }
-    .exp-desc ul li {
-      position: relative;
-      padding-left: 16px;
-      margin-bottom: 6px;
-    }
+    .exp-role { font-family: 'Fira Code', monospace; font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .exp-date { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--text-muted); }
+    .exp-company { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; }
+    .exp-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+    .exp-desc ul { list-style: none; padding: 0; }
+    .exp-desc ul li { position: relative; padding-left: 16px; margin-bottom: 6px; }
     .exp-desc ul li::before {
       content: '>';
       position: absolute;
       left: 0;
       color: var(--accent);
       font-family: 'Fira Code', monospace;
-      transition: color 0.3s;
     }
 
     #tryhackme { padding-top: 60px; }
@@ -695,12 +569,8 @@
       font-weight: 700;
       color: var(--accent);
       text-shadow: 0 0 8px var(--accent-glow);
-      transition: color 0.3s;
     }
-    .thm-stat .label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
+    .thm-stat .label { font-size: 0.75rem; color: var(--text-muted); }
     .thm-badges-list {
       display: flex;
       flex-wrap: wrap;
@@ -731,24 +601,10 @@
       padding: 1.5rem;
       border-left: 3px solid var(--accent);
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      transition: border-color 0.3s;
     }
-    .edu-title {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    .edu-inst {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .edu-year {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.75rem;
-      color: var(--warning);
-      margin-top: 0.5rem;
-    }
+    .edu-title { font-family: 'Fira Code', monospace; font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .edu-inst { font-size: 0.85rem; color: var(--text-muted); }
+    .edu-year { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--warning); margin-top: 0.5rem; }
     .cert-list { list-style: none; padding: 0; }
     .cert-list li {
       font-size: 0.85rem;
@@ -757,7 +613,7 @@
       border-bottom: 1px solid var(--border);
     }
     .cert-list li:last-child { border-bottom: none; }
-    .cert-list li strong { color: var(--accent); transition: color 0.3s; }
+    .cert-list li strong { color: var(--accent); }
 
     /* ===== CERTIFICATIONS SECTION ===== */
     #certifications { padding-top: 60px; }
@@ -822,21 +678,22 @@
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 3;
-      background: var(--surface-light);
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
     }
-    .cert-thumb-wrap iframe {
+    .cert-thumb-wrap img {
       width: 100%;
       height: 100%;
-      border: none;
-      pointer-events: none;
+      object-fit: contain;
+      background: #ffffff;
+      transition: transform 0.3s;
     }
-    .cert-card:hover .cert-thumb-wrap iframe {
-      opacity: 0.85;
+    .cert-card:hover .cert-thumb-wrap img {
+      transform: scale(1.03);
     }
 
     .cert-status-badge {
@@ -871,22 +728,199 @@
     }
     .cert-info .cert-title {
       font-family: 'Fira Code', monospace;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 0.25rem;
+      line-height: 1.3;
     }
     .cert-info .cert-issuer {
       font-size: 0.8rem;
       color: var(--accent);
       margin-bottom: 0.5rem;
-      transition: color 0.3s;
     }
     .cert-info .cert-date {
       font-size: 0.75rem;
       color: var(--text-muted);
       font-family: 'Fira Code', monospace;
       margin-top: auto;
+    }
+
+    /* ===== BADGES SECTION ===== */
+    #badges { padding-top: 60px; }
+
+    .badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .badge-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1rem;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .badge-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(circle at center, var(--accent-glow), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .badge-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 35px var(--accent-dim);
+    }
+    .badge-card:hover::before { opacity: 1; }
+
+    .badge-thumb-wrap {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+      z-index: 1;
+    }
+    .badge-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      filter: drop-shadow(0 0 10px var(--accent-dim));
+    }
+    .badge-card:hover .badge-thumb-wrap img {
+      transform: scale(1.08) rotate(-2deg);
+      filter: drop-shadow(0 0 20px var(--accent-glow));
+    }
+
+    .badge-fallback {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-dim), transparent 70%);
+      border: 2px dashed var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-shadow: 0 0 15px var(--accent-glow);
+      box-shadow: 0 0 25px var(--accent-dim);
+      animation: pulse 2s infinite;
+    }
+
+    .badge-info {
+      z-index: 1;
+      width: 100%;
+    }
+    .badge-info .badge-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+    .badge-info .badge-issuer {
+      font-size: 0.7rem;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .badge-info .badge-date {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* ===== INTERACTIVE CONSOLE ===== */
+    #console { padding-top: 60px; }
+
+    .console-window {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: 'Fira Code', monospace;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .console-output {
+      padding: 16px;
+      font-size: 0.8rem;
+      height: 300px;
+      overflow-y: auto;
+      line-height: 1.8;
+    }
+    .console-output .line { margin-bottom: 2px; }
+    .console-output .prompt {
+      color: var(--accent);
+      text-shadow: 0 0 5px var(--accent-glow);
+    }
+    .console-output .cmd { color: var(--text); }
+    .console-output .output { color: var(--text-muted); }
+    .console-output .error {
+      color: var(--danger);
+      text-shadow: 0 0 5px var(--accent-glow);
+    }
+    .console-output .success {
+      color: var(--accent);
+      text-shadow: 0 0 5px var(--accent-glow);
+    }
+
+    .console-input-wrapper {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--surface-light);
+    }
+    .console-input-wrapper .prompt {
+      color: var(--accent);
+      margin-right: 8px;
+      font-size: 0.8rem;
+      text-shadow: 0 0 5px var(--accent-glow);
+    }
+    #console-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      flex: 1;
+      caret-color: var(--accent);
+    }
+    .console-input-wrapper::after {
+      content: '▊';
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent-glow);
+      animation: blinkCursor 1.1s step-end infinite;
+      font-size: 0.9rem;
+      line-height: 1;
+      margin-left: 4px;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+    @keyframes blinkCursor {
+      0%, 50% { opacity: 0.9; }
+      51%, 100% { opacity: 0; }
     }
 
     /* ===== LIGHTBOX ===== */
@@ -904,23 +938,19 @@
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
     }
-    #cert-lightbox.open {
-      opacity: 1;
-      visibility: visible;
-    }
+    #cert-lightbox.open { opacity: 1; visibility: visible; }
 
     .lightbox-content {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      max-width: 900px;
+      max-width: 1000px;
       width: 100%;
-      max-height: 90vh;
+      max-height: 92vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
       box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8);
-      position: relative;
     }
 
     .lightbox-header {
@@ -946,7 +976,6 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 1rem;
-      line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -961,14 +990,17 @@
     .lightbox-body {
       flex: 1;
       min-height: 0;
-      background: #000;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
     }
-    .lightbox-body iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 60vh;
-      border: none;
+    .lightbox-body img {
+      max-width: 100%;
+      max-height: 75vh;
       display: block;
+      object-fit: contain;
     }
 
     .lightbox-footer {
@@ -1009,20 +1041,10 @@
       box-shadow: 0 0 20px var(--accent-glow);
     }
 
-    /* ===== CONTACT SECTION ===== */
     #contact { padding-top: 60px; }
     .contact-content { text-align: center; }
-    .contact-content p {
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
-    }
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .contact-content p { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; }
+    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     .contact-link {
       font-family: 'Fira Code', monospace;
       font-size: 0.85rem;
@@ -1073,23 +1095,21 @@
     }
 
     @media (max-width: 768px) {
-      .profile-content,
-      .edu-grid {
-        grid-template-columns: 1fr;
-      }
+      .profile-content, .edu-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .nav-right { gap: 1rem; }
       section { padding: 80px 5% 60px; }
       h2 { font-size: 1.4rem; }
       .hero-title { font-size: 1.8rem; }
-      .lightbox-body iframe { min-height: 50vh; }
       .certs-grid { grid-template-columns: 1fr; }
+      .badges-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+      .badge-thumb-wrap { width: 100px; height: 100px; }
+      .lightbox-body img { max-height: 60vh; }
+      .console-output { height: 250px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- FLAG{kyrillos_kamal_red_team_operator} -->
 
   <div id="loader">
     <div class="boot-log" id="boot-log">
@@ -1110,6 +1130,8 @@
         <a href="#experience">/experience</a>
         <a href="#tryhackme">/thm</a>
         <a href="#certifications">/certs</a>
+        <a href="#badges">/badges</a>
+        <a href="#console">/console</a>
         <a href="#contact">/contact</a>
       </div>
     </div>
@@ -1264,9 +1286,7 @@ Defend like a pro.">
   <section id="field-notes">
     <div class="section-label">03 / field notes</div>
     <h2><span class="hash">##</span> Practice makes prepared.</h2>
-
-    <div class="notes-grid" id="writeups-container">
-    </div>
+    <div class="notes-grid" id="writeups-container"></div>
   </section>
 
   <section id="bug-bounty">
@@ -1282,7 +1302,6 @@ Defend like a pro.">
       <div class="bounty-desc">
         Completed a full bug bounty engagement cycle on the LaunchDarkly program via Bugcrowd, from reconnaissance through submission and triage. Findings reached P5 (Informational) severity, with no higher-severity vulnerabilities identified during the engagement. The submission workflow — recon, hunting, validation, and triage review — was exercised end-to-end. Specific technical details remain protected under program NDA.
       </div>
-
       <ul class="bounty-method">
         <li><span class="step">01.</span> <strong>Reconnaissance</strong> — Mapping the attack surface, subdomain enumeration, and identifying potential entry points using tools like Amass, Sublist3r, and Burp Suite.</li>
         <li><span class="step">02.</span> <strong>Hunting</strong> — Manual testing for OWASP Top 10 vulnerabilities, business logic flaws, and misconfigurations. Documenting every step and payload.</li>
@@ -1398,8 +1417,7 @@ Defend like a pro.">
         </div>
       </div>
 
-      <div class="thm-badges-list" id="thm-badges">
-      </div>
+      <div class="thm-badges-list" id="thm-badges"></div>
     </div>
   </section>
 
@@ -1429,7 +1447,6 @@ Defend like a pro.">
     </div>
   </section>
 
-  <!-- ===== CERTIFICATIONS SECTION ===== -->
   <section id="certifications">
     <div class="section-label">08 / certifications</div>
     <h2><span class="hash">##</span> Verified credentials. // Proof of work.</h2>
@@ -1440,32 +1457,18 @@ Defend like a pro.">
       <button class="cert-filter-btn" data-filter="in-progress">[ IN PROGRESS ]</button>
     </div>
 
-    <div class="certs-grid" id="certs-grid">
-      <!-- Certs injected via JS -->
-    </div>
+    <div class="certs-grid" id="certs-grid"></div>
   </section>
 
-  <!-- ===== LIGHTBOX MODAL ===== -->
-  <div id="cert-lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer">
-    <div class="lightbox-content">
-      <div class="lightbox-header">
-        <span class="lb-title" id="lb-title">Certificate</span>
-        <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
-      </div>
-      <div class="lightbox-body">
-        <iframe id="lb-iframe" src="" title="Certificate PDF"></iframe>
-      </div>
-      <div class="lightbox-footer">
-        <div class="lb-meta" id="lb-meta"></div>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="lb-verify-btn" id="lb-verify">
-          Verify Certificate →
-        </a>
-      </div>
-    </div>
-  </div>
+  <section id="badges">
+    <div class="section-label">09 / badges</div>
+    <h2><span class="hash">##</span> Digital credentials. // Verified achievements.</h2>
+
+    <div class="badges-grid" id="badges-grid"></div>
+  </section>
 
   <section id="console">
-    <div class="section-label">09 / live console</div>
+    <div class="section-label">10 / live console</div>
     <h2><span class="hash">##</span> Interactive Shell</h2>
 
     <div class="console-window">
@@ -1487,8 +1490,26 @@ Defend like a pro.">
     </div>
   </section>
 
+  <div id="cert-lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+    <div class="lightbox-content">
+      <div class="lightbox-header">
+        <span class="lb-title" id="lb-title">Certificate</span>
+        <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+      </div>
+      <div class="lightbox-body">
+        <img id="lb-img" src="" alt="Certificate full view">
+      </div>
+      <div class="lightbox-footer">
+        <div class="lb-meta" id="lb-meta"></div>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="lb-verify-btn" id="lb-verify">
+          Verify Certificate →
+        </a>
+      </div>
+    </div>
+  </div>
+
   <section id="focus">
-    <div class="section-label">10 / current focus</div>
+    <div class="section-label">11 / current focus</div>
     <h2><span class="hash">##</span> What I'm working towards.</h2>
 
     <div class="focus-card">
@@ -1503,7 +1524,7 @@ Defend like a pro.">
   </section>
 
   <section id="contact">
-    <div class="section-label">11 / establish contact</div>
+    <div class="section-label">12 / establish contact</div>
     <h2><span class="hash">##</span> Have a system worth testing?</h2>
 
     <div class="contact-content">
@@ -1584,32 +1605,171 @@ Defend like a pro.">
       ];
 
       const certsData = [
+        { id: "udemy-ip-subnetting", title: "IP Addressing and Subnetting — Hands-on Learning", issuer: "Udemy", date: "Earned", status: "earned", img: "https://i.postimg.cc/jStFFxKg/image.png", verify: "https://www.udemy.com/certificate/UC-0b9c6ed5-3867-43ed-974e-7604590e517a/" },
+        { id: "udemy-powershell", title: "PowerShell Basics", issuer: "Udemy", date: "Earned", status: "earned", img: "https://i.postimg.cc/4ypWWM0J/image.png", verify: "https://www.udemy.com/certificate/UC-2ab65f2a-a9ce-460a-8474-5b17070a4d1b/" },
+        { id: "udemy-mcse-2022", title: "Ultimate Windows Server 2022 — MCSE", issuer: "Udemy", date: "Earned", status: "earned", img: "https://i.postimg.cc/C1q7KXSn/image.png", verify: "https://www.udemy.com/certificate/UC-866db552-b1c7-4288-ab7c-2eef053ecb8f/" },
+        { id: "udemy-linux-ideal-job", title: "Complete Linux Training Course", issuer: "Udemy", date: "Earned", status: "earned", img: "https://i.postimg.cc/0N6dtF6f/image.png", verify: "https://www.udemy.com/certificate/UC-96a0d528-3e71-4e53-a36b-317b9ebf0063/" },
+        { id: "udemy-ccna-networking", title: "CCNA Networking Essentials — Comprehensive Cisco", issuer: "Udemy", date: "Earned", status: "earned", img: "https://i.postimg.cc/rsT1wphc/image.png", verify: "https://www.udemy.com/certificate/UC-916e8695-bc24-47c2-a70b-a9f41fecee8f/" },
+        { id: "udemy-comptia-a-plus", title: "Master Course in CompTIA A+ (Core 1 &amp; Core 2)", issuer: "Udemy", date: "Earned", status: "earned", img: "https://i.postimg.cc/65YrBtC9/image.png", verify: "https://www.udemy.com/certificate/UC-48a834ab-752f-4a97-af36-32ff8137ef0d/" },
+        { id: "thm-pre-security", title: "Pre-Security", issuer: "TryHackMe", date: "2026", status: "earned", img: "https://i.postimg.cc/28Bc6qjJ/image.png", verify: "https://tryhackme.com/p/Hackth3Path" },
+        { id: "thm-security-101", title: "Cyber Security 101", issuer: "TryHackMe", date: "2026", status: "earned", img: "https://i.postimg.cc/GpzzNGzd/image.png", verify: "https://tryhackme.com/p/Hackth3Path" },
+        { id: "thm-hacker-holidays", title: "Hacker Holidays", issuer: "TryHackMe", date: "August 2026", status: "earned", img: "https://i.postimg.cc/sxGcv8zZ/image.png", verify: "https://tryhackme.com/p/Hackth3Path" },
+        { id: "coursera-tech-support", title: "Technical Support Fundamentals", issuer: "Google / Coursera", date: "2023", status: "earned", img: "https://i.postimg.cc/g2HfzwNr/image.png", verify: "https://www.coursera.org/account/accomplishments/verify/Y6NM7PGTD5SM" },
+        { id: "maharatech-network-fundamentals", title: "Computer Network Fundamentals", issuer: "MaharaTech", date: "Earned", status: "earned", img: "https://i.postimg.cc/5yfzMRtk/image.png", verify: "https://maharatech.gov.eg/mod/customcert/my_certificates.php?userid=38284&certificateid=20&downloadcert=1" },
+        { id: "maharatech-network-impl", title: "Implementation of Computer Network Fundamentals", issuer: "MaharaTech", date: "Earned", status: "earned", img: "https://i.postimg.cc/KvqMdQh0/image.png", verify: "https://maharatech.gov.eg/mod/customcert/my_certificates.php?userid=38284&certificateid=274&downloadcert=1" },
+        { id: "maharatech-netsec-intro", title: "Introduction to Network Security", issuer: "MaharaTech", date: "Earned", status: "earned", img: "https://i.postimg.cc/mg1tKswj/image.png", verify: "https://maharatech.gov.eg/mod/customcert/my_certificates.php?userid=38284&certificateid=55&downloadcert=1" }
+      ];
+
+      // =========================================================
+      // BADGES DATA — THM SVG URL updated to assets.tryhackme.com
+      // =========================================================
+      const badgesData = [
+        // ===== CREDLY BADGES =====
         {
-          id: "pre-security",
-          title: "Pre-Security",
-          issuer: "TryHackMe",
-          date: "2026",
-          status: "earned",
-          pdf: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-C5XVR485GS.pdf",
-          verify: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-C5XVR485GS.pdf"
+          id: "certiprof-csfpc",
+          title: "Cyber Security Foundation Professional Certificate — CSFPC™",
+          issuer: "Certiprof",
+          date: "Expired",
+          img: "https://images.credly.com/size/340x340/images/8a0fb550-4d51-41d0-be50-6c1f54526539/Cybersecurity-Foundation-Professional-Certificate-CSFPC.png",
+          verify: "https://www.credly.com/badges/dce5e72e-3f60-40de-9276-d858a06bc2c7/public_url"
         },
         {
-          id: "security-101",
-          title: "Cyber Security 101",
+          id: "cisco-intro-cybersecurity",
+          title: "Introduction to Cybersecurity",
+          issuer: "Cisco Networking Academy",
+          date: "2025",
+          img: "https://images.credly.com/size/340x340/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png",
+          verify: "https://www.credly.com/badges/008ce403-bb16-4d4e-9c9f-e2707a9f3c8f/public_url"
+        },
+
+        // ===== TRYHACKME BADGES =====
+        {
+          id: "thm-cat-linux",
+          title: "cat linux.txt",
           issuer: "TryHackMe",
-          date: "2026",
-          status: "earned",
-          pdf: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WFIRHZMSNV.pdf",
-          verify: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WFIRHZMSNV.pdf"
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/linux.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
         },
         {
-          id: "hacker-holidays",
-          title: "Hacker Holidays",
+          id: "thm-streak3",
+          title: "3 Day Streak",
           issuer: "TryHackMe",
-          date: "August 2026",
-          status: "earned",
-          pdf: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-DD78OSJI2E.pdf",
-          verify: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-DD78OSJI2E.pdf"
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/streak3.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-streak7",
+          title: "7 Day Streak",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/streak7.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-streak30",
+          title: "30 Day Streak",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/streak30.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-webbed",
+          title: "Webbed",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/webbed.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-world-wide-web",
+          title: "World Wide Web",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/howthewebworks.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-networking-nerd",
+          title: "Networking Nerd",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/networkfundamentals.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-metasploitable",
+          title: "Metasploitable",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/metasploit.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-blue",
+          title: "Blue",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/blue.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-intro-web-hacking",
+          title: "Intro to Web Hacking",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/introtowebsecurity.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-sword-apprentice",
+          title: "Sword Apprentice",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/swordapprentice.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-shield-apprentice",
+          title: "Shield Apprentice",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/shieldapprentice.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-cyber-ready",
+          title: "Cyber Ready",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/careerready.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-owasp-top10",
+          title: "OWASP Top 10",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/owasptop10.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-session-held",
+          title: "Session Held",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/session-held.svg",
+          verify: "https://tryhackme.com/p/Hackth3Path"
+        },
+        {
+          id: "thm-burped",
+          title: "Burp'ed",
+          issuer: "TryHackMe",
+          date: "Earned",
+          img: "https://assets.tryhackme.com/img/badges/burpsuite.png",
+          verify: "https://tryhackme.com/p/Hackth3Path"
         }
       ];
 
@@ -1620,18 +1780,14 @@ Defend like a pro.">
         data.forEach(w => {
           const card = document.createElement('div');
           card.className = 'note-card';
-
           const footer = w.link
             ? `<a href="${w.link}" target="_blank" rel="noopener" class="note-link">Read Writeup →</a>`
             : `<span class="note-footer-disabled">${w.noLinkText || 'No public link'}</span>`;
-
           card.innerHTML = `
             <div class="note-tag">${w.tag}</div>
             <div class="note-title">${w.title}</div>
             <div class="note-desc">${w.desc}</div>
-            <div class="note-tools">
-              ${w.tools.map(t => `<span class="note-tool">${t}</span>`).join('')}
-            </div>
+            <div class="note-tools">${w.tools.map(t => `<span class="note-tool">${t}</span>`).join('')}</div>
             ${footer}
           `;
           container.appendChild(card);
@@ -1664,7 +1820,7 @@ Defend like a pro.">
 
           card.innerHTML = `
             <div class="cert-thumb-wrap">
-              <iframe src="${c.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" loading="lazy" title="${c.title} certificate preview"></iframe>
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
               <span class="cert-status-badge ${statusClass}">${statusLabel}</span>
             </div>
             <div class="cert-info">
@@ -1678,18 +1834,52 @@ Defend like a pro.">
         });
       }
 
-      function openLightbox(cert) {
+      function renderBadges(data) {
+        const grid = document.getElementById('badges-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        data.forEach(b => {
+          const card = document.createElement('div');
+          card.className = 'badge-card';
+          card.dataset.id = b.id;
+
+          const initials = b.title
+            .split(' ')
+            .filter(w => /^[A-Za-z]/.test(w))
+            .slice(0, 3)
+            .map(w => w[0].toUpperCase())
+            .join('');
+
+          card.innerHTML = `
+            <div class="badge-thumb-wrap">
+              <div class="badge-fallback" style="display:none;">${initials}</div>
+              <img src="${b.img}" alt="${b.title}" loading="lazy"
+                   onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';">
+            </div>
+            <div class="badge-info">
+              <div class="badge-title">${b.title}</div>
+              <div class="badge-issuer">${b.issuer}</div>
+              <div class="badge-date">${b.date}</div>
+            </div>
+          `;
+          card.addEventListener('click', () => openLightbox(b));
+          grid.appendChild(card);
+        });
+      }
+
+      function openLightbox(item) {
         const lb = document.getElementById('cert-lightbox');
-        const iframe = document.getElementById('lb-iframe');
+        const img = document.getElementById('lb-img');
         const title = document.getElementById('lb-title');
         const meta = document.getElementById('lb-meta');
         const verify = document.getElementById('lb-verify');
 
-        iframe.src = cert.pdf;
-        title.textContent = cert.title;
-        const statusLabel = cert.status === 'earned' ? 'EARNED' : 'IN PROGRESS';
-        meta.innerHTML = `Issuer: <strong>${cert.issuer}</strong> · Date: <strong>${cert.date}</strong> · Status: <strong>${statusLabel}</strong>`;
-        verify.href = cert.verify || cert.pdf;
+        img.src = item.img;
+        img.alt = item.title;
+        title.textContent = item.title;
+        const statusLabel = item.status ? (item.status === 'earned' ? 'EARNED' : 'IN PROGRESS') : 'VERIFIED';
+        meta.innerHTML = `Issuer: <strong>${item.issuer}</strong> · Date: <strong>${item.date}</strong>${item.status ? ` · Status: <strong>${statusLabel}</strong>` : ''}`;
+        verify.href = item.verify;
 
         lb.classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -1697,21 +1887,18 @@ Defend like a pro.">
 
       function closeLightbox() {
         const lb = document.getElementById('cert-lightbox');
-        const iframe = document.getElementById('lb-iframe');
+        const img = document.getElementById('lb-img');
         lb.classList.remove('open');
         document.body.style.overflow = '';
-        setTimeout(() => { iframe.src = ''; }, 300);
+        setTimeout(() => { img.src = ''; }, 300);
       }
 
       function initCertLightbox() {
         const lb = document.getElementById('cert-lightbox');
         const closeBtn = document.getElementById('lb-close');
         if (!lb || !closeBtn) return;
-
         closeBtn.addEventListener('click', closeLightbox);
-        lb.addEventListener('click', (e) => {
-          if (e.target === lb) closeLightbox();
-        });
+        lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
         });
@@ -1720,13 +1907,11 @@ Defend like a pro.">
       function initCertFilters() {
         const buttons = document.querySelectorAll('.cert-filter-btn');
         const cards = document.querySelectorAll('.cert-card');
-
         buttons.forEach(btn => {
           btn.addEventListener('click', () => {
             buttons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const filter = btn.dataset.filter;
-
             cards.forEach(card => {
               if (filter === 'all' || card.dataset.status === filter) {
                 card.classList.remove('hidden');
@@ -1864,14 +2049,11 @@ Defend like a pro.">
           if (e.key === 'Enter') {
             const cmd = input.value.trim().toLowerCase();
             input.value = '';
-
             const line = document.createElement('div');
             line.className = 'line';
             line.innerHTML = `<span class="prompt">root@darknet:~#</span> <span class="cmd">${cmd}</span>`;
             output.appendChild(line);
-
             if (cmd === '') return;
-
             const fn = commands[cmd];
             if (fn) {
               const result = fn();
@@ -1889,7 +2071,6 @@ Defend like a pro.">
               errLine.textContent = `command not found: ${cmd}. Type "help" for available commands.`;
               output.appendChild(errLine);
             }
-
             output.scrollTop = output.scrollHeight;
           }
         });
@@ -1907,9 +2088,7 @@ Defend like a pro.">
             entry.target.classList.add('visible');
             const fill = entry.target.querySelector('.skill-fill');
             if (fill) {
-              setTimeout(() => {
-                fill.style.width = fill.getAttribute('data-width');
-              }, 200);
+              setTimeout(() => { fill.style.width = fill.getAttribute('data-width'); }, 200);
             }
             observer.unobserve(entry.target);
           }
@@ -1919,6 +2098,7 @@ Defend like a pro.">
       renderWriteups(writeupsData);
       renderTHMBadges();
       renderCerts(certsData);
+      renderBadges(badgesData);
       initThemeToggle();
       initConsole();
       initCertLightbox();
