@@ -4,13 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ============================================================ -->
-  <!-- 🔑 GOOGLE SITE VERIFICATION                                  -->
-  <!-- Replace PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE with the    -->
-  <!-- content value from Google Search Console (HTML tag method).  -->
-  <!-- The code looks like: abc123XYZ-_def456ghi789...              -->
-  <!-- Do NOT include quotes or <meta> tags around it.              -->
-  <!-- ============================================================ -->
+  <!-- 🔑 GOOGLE SITE VERIFICATION -->
+  <!-- Replace PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE with the content value from Google Search Console. -->
   <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
 
   <!-- Primary SEO -->
@@ -764,106 +759,257 @@
     .cert-list li:last-child { border-bottom: none; }
     .cert-list li strong { color: var(--accent); transition: color 0.3s; }
 
-    #console { padding-top: 60px; }
-    .console-window {
+    /* ===== CERTIFICATIONS SECTION ===== */
+    #certifications { padding-top: 60px; }
+
+    .cert-filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .cert-filter-btn {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      padding: 6px 14px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cert-filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-dim);
+    }
+    .cert-filter-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+      box-shadow: 0 0 15px var(--accent-dim);
+    }
+
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .cert-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
-      font-family: 'Fira Code', monospace;
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
     }
-    .console-output {
-      padding: 16px;
-      font-size: 0.8rem;
-      height: 300px;
-      overflow-y: auto;
-      line-height: 1.8;
+    .cert-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px var(--accent-dim);
     }
-    .console-output .line { margin-bottom: 2px; }
-    .console-output .prompt { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); }
-    .console-output .cmd { color: var(--text); }
-    .console-output .output { color: var(--text-muted); }
-    .console-output .error { color: var(--danger); text-shadow: 0 0 5px var(--accent-glow); }
-    .console-output .success { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); }
-    .console-input-wrapper {
+    .cert-card.hidden { display: none; }
+
+    .cert-thumb-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--surface-light);
       display: flex;
       align-items: center;
-      padding: 8px 16px;
-      border-top: 1px solid var(--border);
-      background: var(--surface-light);
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
     }
-    .console-input-wrapper .prompt {
-      color: var(--accent);
-      margin-right: 8px;
-      font-size: 0.8rem;
-      text-shadow: 0 0 5px var(--accent-glow);
-    }
-    #console-input {
-      background: transparent;
+    .cert-thumb-wrap iframe {
+      width: 100%;
+      height: 100%;
       border: none;
-      outline: none;
-      color: var(--text);
-      font-family: 'Fira Code', monospace;
-      font-size: 0.8rem;
-      flex: 1;
+      pointer-events: none;
+    }
+    .cert-card:hover .cert-thumb-wrap iframe {
+      opacity: 0.85;
     }
 
-    #focus { padding-top: 60px; }
-    .focus-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-    }
-    .focus-title {
+    .cert-status-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
       font-family: 'Fira Code', monospace;
-      font-size: 1.1rem;
+      font-size: 0.6rem;
+      padding: 3px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      z-index: 2;
+    }
+    .cert-status-badge.earned {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+    .cert-status-badge.in-progress {
+      background: var(--warning);
+      color: #000;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+    }
+
+    .cert-info {
+      padding: 1rem 1.25rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .cert-info .cert-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .cert-info .cert-issuer {
+      font-size: 0.8rem;
       color: var(--accent);
       margin-bottom: 0.5rem;
-      text-shadow: 0 0 8px var(--accent-glow);
       transition: color 0.3s;
     }
-    .focus-sub {
-      font-size: 0.85rem;
+    .cert-info .cert-date {
+      font-size: 0.75rem;
       color: var(--text-muted);
-      margin-bottom: 0.75rem;
+      font-family: 'Fira Code', monospace;
+      margin-top: auto;
     }
-    .focus-progress-label {
+
+    /* ===== LIGHTBOX ===== */
+    #cert-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 8, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 20000;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      max-width: 400px;
-      margin: 0 auto 0.5rem;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    #cert-lightbox.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8);
+      position: relative;
+    }
+
+    .lightbox-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-light);
+    }
+    .lightbox-header .lb-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .lightbox-header .lb-close {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    .lightbox-header .lb-close:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-dim);
+    }
+
+    .lightbox-body {
+      flex: 1;
+      min-height: 0;
+      background: #000;
+    }
+    .lightbox-body iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 60vh;
+      border: none;
+      display: block;
+    }
+
+    .lightbox-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .lightbox-footer .lb-meta {
       font-family: 'Fira Code', monospace;
       font-size: 0.75rem;
       color: var(--text-muted);
     }
-    .focus-progress-label .pct {
+    .lightbox-footer .lb-meta strong { color: var(--accent); }
+
+    .lb-verify-btn {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      background: transparent;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
       color: var(--accent);
-      font-weight: 700;
-      text-shadow: 0 0 5px var(--accent-glow);
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .focus-bar {
-      width: 100%;
-      max-width: 400px;
-      height: 6px;
-      background: var(--surface-light);
-      border-radius: 3px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-    .focus-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--info));
-      border-radius: 3px;
-      width: 0;
-      transition: width 1.5s ease;
-      box-shadow: 0 0 10px var(--accent-glow);
+    .lb-verify-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
+    /* ===== CONTACT SECTION ===== */
     #contact { padding-top: 60px; }
     .contact-content { text-align: center; }
     .contact-content p {
@@ -936,6 +1082,8 @@
       section { padding: 80px 5% 60px; }
       h2 { font-size: 1.4rem; }
       .hero-title { font-size: 1.8rem; }
+      .lightbox-body iframe { min-height: 50vh; }
+      .certs-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -961,6 +1109,7 @@
         <a href="#bug-bounty">/bounty</a>
         <a href="#experience">/experience</a>
         <a href="#tryhackme">/thm</a>
+        <a href="#certifications">/certs</a>
         <a href="#contact">/contact</a>
       </div>
     </div>
@@ -1280,8 +1429,43 @@ Defend like a pro.">
     </div>
   </section>
 
+  <!-- ===== CERTIFICATIONS SECTION ===== -->
+  <section id="certifications">
+    <div class="section-label">08 / certifications</div>
+    <h2><span class="hash">##</span> Verified credentials. // Proof of work.</h2>
+
+    <div class="cert-filter-bar">
+      <button class="cert-filter-btn active" data-filter="all">[ ALL ]</button>
+      <button class="cert-filter-btn" data-filter="earned">[ EARNED ]</button>
+      <button class="cert-filter-btn" data-filter="in-progress">[ IN PROGRESS ]</button>
+    </div>
+
+    <div class="certs-grid" id="certs-grid">
+      <!-- Certs injected via JS -->
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX MODAL ===== -->
+  <div id="cert-lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+    <div class="lightbox-content">
+      <div class="lightbox-header">
+        <span class="lb-title" id="lb-title">Certificate</span>
+        <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+      </div>
+      <div class="lightbox-body">
+        <iframe id="lb-iframe" src="" title="Certificate PDF"></iframe>
+      </div>
+      <div class="lightbox-footer">
+        <div class="lb-meta" id="lb-meta"></div>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="lb-verify-btn" id="lb-verify">
+          Verify Certificate →
+        </a>
+      </div>
+    </div>
+  </div>
+
   <section id="console">
-    <div class="section-label">08 / live console</div>
+    <div class="section-label">09 / live console</div>
     <h2><span class="hash">##</span> Interactive Shell</h2>
 
     <div class="console-window">
@@ -1304,7 +1488,7 @@ Defend like a pro.">
   </section>
 
   <section id="focus">
-    <div class="section-label">09 / current focus</div>
+    <div class="section-label">10 / current focus</div>
     <h2><span class="hash">##</span> What I'm working towards.</h2>
 
     <div class="focus-card">
@@ -1319,7 +1503,7 @@ Defend like a pro.">
   </section>
 
   <section id="contact">
-    <div class="section-label">10 / establish contact</div>
+    <div class="section-label">11 / establish contact</div>
     <h2><span class="hash">##</span> Have a system worth testing?</h2>
 
     <div class="contact-content">
@@ -1399,6 +1583,36 @@ Defend like a pro.">
         }
       ];
 
+      const certsData = [
+        {
+          id: "pre-security",
+          title: "Pre-Security",
+          issuer: "TryHackMe",
+          date: "2026",
+          status: "earned",
+          pdf: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-C5XVR485GS.pdf",
+          verify: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-C5XVR485GS.pdf"
+        },
+        {
+          id: "security-101",
+          title: "Cyber Security 101",
+          issuer: "TryHackMe",
+          date: "2026",
+          status: "earned",
+          pdf: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WFIRHZMSNV.pdf",
+          verify: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WFIRHZMSNV.pdf"
+        },
+        {
+          id: "hacker-holidays",
+          title: "Hacker Holidays",
+          issuer: "TryHackMe",
+          date: "August 2026",
+          status: "earned",
+          pdf: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-DD78OSJI2E.pdf",
+          verify: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-DD78OSJI2E.pdf"
+        }
+      ];
+
       function renderWriteups(data) {
         const container = document.getElementById('writeups-container');
         if (!container) return;
@@ -1433,6 +1647,95 @@ Defend like a pro.">
           "Metasploitable (12.2%)", "Blue (12.8%)", "OWASP Top 10 (13%)"
         ];
         badgesContainer.innerHTML = notableBadges.map(b => `<span class="thm-badge-item">${b}</span>`).join('');
+      }
+
+      function renderCerts(data) {
+        const grid = document.getElementById('certs-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        data.forEach(c => {
+          const card = document.createElement('div');
+          card.className = 'cert-card';
+          card.dataset.status = c.status;
+          card.dataset.id = c.id;
+
+          const statusLabel = c.status === 'earned' ? 'EARNED' : 'IN PROGRESS';
+          const statusClass = c.status === 'earned' ? 'earned' : 'in-progress';
+
+          card.innerHTML = `
+            <div class="cert-thumb-wrap">
+              <iframe src="${c.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" loading="lazy" title="${c.title} certificate preview"></iframe>
+              <span class="cert-status-badge ${statusClass}">${statusLabel}</span>
+            </div>
+            <div class="cert-info">
+              <div class="cert-title">${c.title}</div>
+              <div class="cert-issuer">${c.issuer}</div>
+              <div class="cert-date">${c.date}</div>
+            </div>
+          `;
+          card.addEventListener('click', () => openLightbox(c));
+          grid.appendChild(card);
+        });
+      }
+
+      function openLightbox(cert) {
+        const lb = document.getElementById('cert-lightbox');
+        const iframe = document.getElementById('lb-iframe');
+        const title = document.getElementById('lb-title');
+        const meta = document.getElementById('lb-meta');
+        const verify = document.getElementById('lb-verify');
+
+        iframe.src = cert.pdf;
+        title.textContent = cert.title;
+        const statusLabel = cert.status === 'earned' ? 'EARNED' : 'IN PROGRESS';
+        meta.innerHTML = `Issuer: <strong>${cert.issuer}</strong> · Date: <strong>${cert.date}</strong> · Status: <strong>${statusLabel}</strong>`;
+        verify.href = cert.verify || cert.pdf;
+
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        const lb = document.getElementById('cert-lightbox');
+        const iframe = document.getElementById('lb-iframe');
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(() => { iframe.src = ''; }, 300);
+      }
+
+      function initCertLightbox() {
+        const lb = document.getElementById('cert-lightbox');
+        const closeBtn = document.getElementById('lb-close');
+        if (!lb || !closeBtn) return;
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lb.addEventListener('click', (e) => {
+          if (e.target === lb) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+        });
+      }
+
+      function initCertFilters() {
+        const buttons = document.querySelectorAll('.cert-filter-btn');
+        const cards = document.querySelectorAll('.cert-card');
+
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+
+            cards.forEach(card => {
+              if (filter === 'all' || card.dataset.status === filter) {
+                card.classList.remove('hidden');
+              } else {
+                card.classList.add('hidden');
+              }
+            });
+          });
+        });
       }
 
       function initThemeToggle() {
@@ -1615,8 +1918,11 @@ Defend like a pro.">
 
       renderWriteups(writeupsData);
       renderTHMBadges();
+      renderCerts(certsData);
       initThemeToggle();
       initConsole();
+      initCertLightbox();
+      initCertFilters();
 
       document.querySelectorAll('.capability-item').forEach(el => observer.observe(el));
 
