@@ -3,10 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kyrillos Kamal | Network Defender & Offensive Security</title>
+
+  <!-- Primary SEO -->
+  <title>Kyrillos Kamal | Network Security & Offensive Security Portfolio</title>
+  <meta name="description" content="Portfolio of Kyrillos Kamal — IT & Network Security professional with 6+ years of experience in offensive security, infrastructure hardening, and OT/ICS defense. TryHackMe Top 3% globally.">
+  <meta name="author" content="Kyrillos Kamal">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="keywords" content="Kyrillos Kamal, penetration tester, network security, offensive security, TryHackMe, eJPT, FortiGate, cybersecurity portfolio, Egypt cybersecurity">
+  <link rel="canonical" href="https://kyriloskamal.github.io/KyrilosKamal/">
+
+  <!-- Open Graph (LinkedIn, WhatsApp, Facebook previews) -->
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://kyriloskamal.github.io/KyrilosKamal/">
+  <meta property="og:title" content="Kyrillos Kamal | Network Security & Offensive Security">
+  <meta property="og:description" content="IT & Network Security professional with 6+ years of experience. TryHackMe Top 3% globally. Focused on offensive security and OT/ICS defense.">
+  <meta property="og:image" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Kyrillos Kamal Portfolio">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kyrillos Kamal | Network Security & Offensive Security">
+  <meta name="twitter:description" content="IT & Network Security professional with 6+ years of experience. TryHackMe Top 3% globally.">
+  <meta name="twitter:image" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
+
+  <!-- Favicon (inline SVG with KK initials) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050508'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='55' font-weight='bold' fill='%23ff0040' text-anchor='middle'%3EKK%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23050508'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='55' font-weight='bold' fill='%23ff0040' text-anchor='middle'%3EKK%3C/text%3E%3C/svg%3E">
+
+  <!-- Structured Data: Person Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kyrillos Kamal",
+    "url": "https://kyriloskamal.github.io/KyrilosKamal/",
+    "jobTitle": "IT & Network Security Professional",
+    "description": "IT & Network Security professional with 6+ years of experience in network infrastructure, firewall administration, and offensive security.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cairo",
+      "addressCountry": "Egypt"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/kyrillos-kamal",
+      "https://github.com/KyrilosKamal",
+      "https://tryhackme.com/p/Hackth3Path"
+    ],
+    "knowsAbout": [
+      "Penetration Testing",
+      "Network Security",
+      "Firewall Administration",
+      "OT/ICS Security",
+      "Vulnerability Assessment"
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #050508;
@@ -15,8 +74,6 @@
       --border: #2a2a3a;
       --text: #e0e0e8;
       --text-muted: #7a7a9a;
-      
-      /* Default: Red Team Theme */
       --accent: #ff0040;
       --accent-dim: rgba(255, 0, 64, 0.15);
       --accent-glow: rgba(255, 0, 64, 0.4);
@@ -26,7 +83,6 @@
       --nav-height: 60px;
     }
 
-    /* Blue Team Theme Override */
     body.blue-team {
       --accent: #00d4ff;
       --accent-dim: rgba(0, 212, 255, 0.15);
@@ -47,12 +103,10 @@
       transition: background 0.5s ease;
     }
 
-    /* Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; transition: background 0.3s; }
 
-    /* Noise Overlay */
     body::before {
       content: '';
       position: fixed;
@@ -62,7 +116,6 @@
       z-index: 9999;
     }
 
-    /* Loader */
     #loader {
       position: fixed; inset: 0; background: var(--bg); z-index: 10000;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -90,7 +143,6 @@
     }
     @keyframes loadFill { to { width: 100%; } }
 
-    /* Nav */
     nav {
       position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height);
       background: rgba(5, 5, 8, 0.85); backdrop-filter: blur(12px);
@@ -109,7 +161,7 @@
       transition: color 0.3s;
     }
     .nav-logo span { color: var(--text-muted); text-shadow: none; }
-    
+
     .nav-right {
       display: flex;
       align-items: center;
@@ -140,7 +192,6 @@
     }
     .nav-links a:hover { color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
 
-    /* Sections */
     section {
       padding: 100px 5% 80px;
       max-width: 1100px;
@@ -167,7 +218,6 @@
     }
     h2 .hash { color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
 
-    /* Hero */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -203,7 +253,6 @@
       -webkit-text-fill-color: transparent;
       position: relative;
     }
-    /* Glitch Effect */
     .hero-title::before, .hero-title::after {
       content: attr(data-text);
       position: absolute;
@@ -298,8 +347,8 @@
       text-align: center;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
-    .hero-stat:hover { 
-      border-color: var(--accent); 
+    .hero-stat:hover {
+      border-color: var(--accent);
       box-shadow: 0 0 20px var(--accent-dim);
     }
     .hero-stat .val {
@@ -316,7 +365,6 @@
       margin-top: 4px;
     }
 
-    /* Profile */
     #profile { padding-top: 60px; }
     .profile-content {
       display: grid;
@@ -349,7 +397,6 @@
     .profile-details .key { color: var(--text-muted); }
     .profile-details .value { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); transition: color 0.3s; }
 
-    /* Capabilities */
     #capabilities { padding-top: 60px; }
     .capabilities-grid {
       display: grid;
@@ -362,8 +409,8 @@
       padding: 1.25rem 1.5rem;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
-    .capability-item:hover { 
-      border-color: var(--accent); 
+    .capability-item:hover {
+      border-color: var(--accent);
       box-shadow: 0 0 25px var(--accent-dim);
     }
     .capability-header {
@@ -405,7 +452,6 @@
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* Field Notes / Writeups */
     #field-notes { padding-top: 60px; }
     .notes-grid {
       display: grid;
@@ -471,8 +517,72 @@
       transition: color 0.3s;
     }
     .note-link:hover { color: var(--info); }
+    .note-footer-disabled {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      opacity: 0.7;
+      font-style: italic;
+    }
 
-    /* Experience */
+    #bug-bounty { padding-top: 60px; }
+    .bounty-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      border-left: 3px solid var(--accent);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+    .bounty-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .bounty-status {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .bounty-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .bounty-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .bounty-method {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+    .bounty-method li {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+    }
+    .bounty-method li:last-child { border-bottom: none; }
+    .bounty-method .step {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
     #experience { padding-top: 60px; }
     .exp-timeline {
       position: relative;
@@ -549,11 +659,8 @@
       transition: color 0.3s;
     }
 
-    /* TryHackMe */
     #tryhackme { padding-top: 60px; }
-    .thm-container {
-      text-align: center;
-    }
+    .thm-container { text-align: center; }
     .thm-badge-wrapper {
       display: inline-block;
       margin-bottom: 1.5rem;
@@ -607,7 +714,6 @@
       color: var(--warning);
     }
 
-    /* Education */
     #education { padding-top: 60px; }
     .edu-grid {
       display: grid;
@@ -639,10 +745,7 @@
       color: var(--warning);
       margin-top: 0.5rem;
     }
-    .cert-list {
-      list-style: none;
-      padding: 0;
-    }
+    .cert-list { list-style: none; padding: 0; }
     .cert-list li {
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -652,7 +755,6 @@
     .cert-list li:last-child { border-bottom: none; }
     .cert-list li strong { color: var(--accent); transition: color 0.3s; }
 
-    /* Console */
     #console { padding-top: 60px; }
     .console-window {
       background: var(--surface);
@@ -698,7 +800,6 @@
       flex: 1;
     }
 
-    /* Focus */
     #focus { padding-top: 60px; }
     .focus-card {
       background: var(--surface);
@@ -719,7 +820,22 @@
     .focus-sub {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .focus-progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 400px;
+      margin: 0 auto 0.5rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .focus-progress-label .pct {
+      color: var(--accent);
+      font-weight: 700;
+      text-shadow: 0 0 5px var(--accent-glow);
     }
     .focus-bar {
       width: 100%;
@@ -739,11 +855,8 @@
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* Contact */
     #contact { padding-top: 60px; }
-    .contact-content {
-      text-align: center;
-    }
+    .contact-content { text-align: center; }
     .contact-content p {
       color: var(--text-muted);
       margin-bottom: 2rem;
@@ -771,7 +884,30 @@
       box-shadow: 0 0 25px var(--accent-glow);
     }
 
-    /* Footer */
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--bg);
+      background: var(--accent);
+      text-decoration: none;
+      padding: 12px 28px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      transition: all 0.3s;
+      box-shadow: 0 0 20px var(--accent-dim);
+      margin-top: 1rem;
+    }
+    .resume-btn:hover {
+      background: transparent;
+      color: var(--accent);
+      box-shadow: 0 0 35px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
     footer {
       text-align: center;
       padding: 2rem 5%;
@@ -781,7 +917,6 @@
       color: var(--text-muted);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .profile-content,
       .edu-grid {
@@ -799,7 +934,6 @@
 
   <!-- FLAG{kyrillos_kamal_red_team_operator} -->
 
-  <!-- Loader -->
   <div id="loader">
     <div class="boot-log" id="boot-log">
       <div>[ OK ] Initializing kernel modules...</div>
@@ -807,7 +941,6 @@
     <div class="loader-bar"><div class="loader-fill"></div></div>
   </div>
 
-  <!-- Nav -->
   <nav>
     <a href="#hero" class="nav-logo">root@darknet<span>:~#</span></a>
     <div class="nav-right">
@@ -816,6 +949,7 @@
         <a href="#profile">/profile</a>
         <a href="#capabilities">/capabilities</a>
         <a href="#field-notes">/writeups</a>
+        <a href="#bug-bounty">/bounty</a>
         <a href="#experience">/experience</a>
         <a href="#tryhackme">/thm</a>
         <a href="#contact">/contact</a>
@@ -823,7 +957,6 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <section id="hero">
     <div class="system-status">
       <span class="dot"></span> SYSTEM ONLINE — AWAITING ORDERS
@@ -879,7 +1012,6 @@ Defend like a pro.">
     </div>
   </section>
 
-  <!-- Profile -->
   <section id="profile">
     <div class="section-label">01 / profile</div>
     <h2><span class="hash">##</span> Security is not just a toolset. // it's a mindset</h2>
@@ -896,20 +1028,20 @@ Defend like a pro.">
           With <strong>6+ years of enterprise IT experience</strong> — from managing 180+ access points and 200+ IP cameras to hardening FortiGate and Sophos firewalls — I bring a depth of infrastructure knowledge that most junior pentesters lack.
         </p>
         <p>
-          I'm currently seeking <strong>Network Security</strong> or <strong>Junior Penetration Tester</strong> opportunities in Saudi Arabia, where I can apply both my infrastructure depth and offensive security skills.
+          I am actively seeking global opportunities in Network Security or Junior Penetration Testing, alongside fully funded Master's programs in Information Security. My goal is to leverage my 6+ years of enterprise infrastructure experience and offensive security skills to contribute to advanced cyber defense strategies and academic research.
         </p>
       </div>
       <div class="profile-details">
         <div class="row"><span class="key">location</span><span class="value">Cairo, Egypt</span></div>
+        <div class="row"><span class="key">relocation</span><span class="value">Global (Canada, Germany, Australia)</span></div>
         <div class="row"><span class="key">availability</span><span class="value">Immediate</span></div>
         <div class="row"><span class="key">focus</span><span class="value">NetSec / Jr Pentester</span></div>
         <div class="row"><span class="key">education</span><span class="value">B.Sc. Computer Science</span></div>
-        <div class="row"><span class="key">languages</span><span class="value">Arabic, English</span></div>
+        <div class="row"><span class="key">languages</span><span class="value">Arabic (Native), English (Professional Working Proficiency)</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Capabilities -->
   <section id="capabilities">
     <div class="section-label">02 / capabilities</div>
     <h2><span class="hash">##</span> Tools I use to read the signal.</h2>
@@ -971,34 +1103,56 @@ Defend like a pro.">
     </div>
   </section>
 
-  <!-- Field Notes / Writeups -->
   <section id="field-notes">
     <div class="section-label">03 / field notes</div>
     <h2><span class="hash">##</span> Practice makes prepared.</h2>
 
     <div class="notes-grid" id="writeups-container">
-      <!-- Writeups injected via JS -->
     </div>
   </section>
 
-  <!-- Experience -->
+  <section id="bug-bounty">
+    <div class="section-label">04 / bug bounty</div>
+    <h2><span class="hash">##</span> Hunting in the wild.</h2>
+
+    <div class="bounty-card">
+      <div class="bounty-header">
+        <span class="bounty-status">Engagement Complete</span>
+        <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">P5 (Informational) Findings</span>
+      </div>
+      <div class="bounty-title">Bugcrowd — LaunchDarkly Program</div>
+      <div class="bounty-desc">
+        Completed a full bug bounty engagement cycle on the LaunchDarkly program via Bugcrowd, from reconnaissance through submission and triage. Findings reached P5 (Informational) severity, with no higher-severity vulnerabilities identified during the engagement. The submission workflow — recon, hunting, validation, and triage review — was exercised end-to-end. Specific technical details remain protected under program NDA.
+      </div>
+
+      <ul class="bounty-method">
+        <li><span class="step">01.</span> <strong>Reconnaissance</strong> — Mapping the attack surface, subdomain enumeration, and identifying potential entry points using tools like Amass, Sublist3r, and Burp Suite.</li>
+        <li><span class="step">02.</span> <strong>Hunting</strong> — Manual testing for OWASP Top 10 vulnerabilities, business logic flaws, and misconfigurations. Documenting every step and payload.</li>
+        <li><span class="step">03.</span> <strong>Validation</strong> — Confirming impact, writing clear proof-of-concept (PoC) reports, and submitting to the program for triage.</li>
+      </ul>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+        <strong style="color: var(--accent);">Current Status:</strong> Engagement cycle complete. P5 findings submitted and reviewed through triage. The full hunting workflow was validated — the next engagement begins with the same rigor and a sharpened methodology.
+      </p>
+    </div>
+  </section>
+
   <section id="experience">
-    <div class="section-label">04 / field operations</div>
+    <div class="section-label">05 / field operations</div>
     <h2><span class="hash">##</span> Where I've made an impact.</h2>
 
     <div class="exp-timeline">
       <div class="exp-item">
         <div class="exp-header">
-          <span class="exp-role">Lead Infrastructure Engineer</span>
+          <span class="exp-role">Assistant IT Manager</span>
           <span class="exp-date">Dec 2025 – Present</span>
         </div>
-        <div class="exp-company">Lazuli Marsa Allam | Marsa Allam, Egypt</div>
+        <div class="exp-company">Golden Beach Lazuli Marsa Alam | Marsa Allam, Egypt</div>
         <div class="exp-desc">
           <ul>
             <li>Spearheaded emergency response to an incomplete IT handover, conducting ground-up discovery across a /16 IP range.</li>
             <li>Deployed and managed 180+ Omada-controlled APs and 200+ IP cameras across segmented VLANs (Staff, Guest, CCTV, Servers, IPTV).</li>
             <li>Engineered FortiGate firewall policies and hardened Active Directory to maintain 24/7 operational security for a 500+ endpoint environment.</li>
-            <li>Authored complete IT documentation suite covering network topology, asset register, and incident response policies.</li>
+            <li>Spearheaded the creation of foundational IT documentation from scratch, including network topology maps, asset registers, and initial incident response policies, transforming an undocumented environment into a structured and manageable system.</li>
           </ul>
         </div>
       </div>
@@ -1050,9 +1204,8 @@ Defend like a pro.">
     </div>
   </section>
 
-  <!-- TryHackMe -->
   <section id="tryhackme">
-    <div class="section-label">05 / live fire exercises</div>
+    <div class="section-label">06 / live fire exercises</div>
     <h2><span class="hash">##</span> TryHackMe Profile</h2>
 
     <div class="thm-container">
@@ -1060,19 +1213,40 @@ Defend like a pro.">
         <img src="https://tryhackme-badges.s3.amazonaws.com/Hackth3Path.png" alt="TryHackMe Badge">
       </a>
 
-      <div class="thm-stats-grid" id="thm-stats">
-        <!-- THM stats injected via JS -->
+      <div class="thm-stats-grid">
+        <div class="thm-stat">
+          <div class="val">Wizard (0xA)</div>
+          <div class="label">Current Rank</div>
+        </div>
+        <div class="thm-stat">
+          <div class="val">64</div>
+          <div class="label">Level</div>
+        </div>
+        <div class="thm-stat">
+          <div class="val">147</div>
+          <div class="label">Rooms Completed</div>
+        </div>
+        <div class="thm-stat">
+          <div class="val">Top 3%</div>
+          <div class="label">Global Rank</div>
+        </div>
+        <div class="thm-stat">
+          <div class="val">3</div>
+          <div class="label">Day Streak</div>
+        </div>
+        <div class="thm-stat">
+          <div class="val">17</div>
+          <div class="label">Badges Earned</div>
+        </div>
       </div>
 
       <div class="thm-badges-list" id="thm-badges">
-        <!-- THM badges injected via JS -->
       </div>
     </div>
   </section>
 
-  <!-- Education -->
   <section id="education">
-    <div class="section-label">06 / training &amp; credentials</div>
+    <div class="section-label">07 / training &amp; credentials</div>
     <h2><span class="hash">##</span> Foundation &amp; continuous learning.</h2>
 
     <div class="edu-grid">
@@ -1085,21 +1259,20 @@ Defend like a pro.">
         <div class="edu-title">Professional Certifications</div>
         <ul class="cert-list">
           <li><strong>eJPT</strong> — INE Security (In Progress)</li>
-          <li><strong>Jr Penetration Tester Path</strong> — TryHackMe (In Progress)</li>
+          <li><strong>Jr Penetration Tester Path</strong> — TryHackMe (In Progress — 39% complete)</li>
           <li><strong>NSE4 FortiGate Firewall</strong> — Fortinet (2025)</li>
           <li><strong>CCNA</strong> — Cisco (2023)</li>
           <li><strong>Sophos Firewall</strong> — Sophos (2024)</li>
           <li><strong>MCSE</strong> — Windows Server Administration (2023)</li>
           <li><strong>CompTIA A+</strong> — Core 1 &amp; 2 (2023)</li>
-          <li><strong>Cyber Security 101</strong> — TryHackMe (2026)</li>
+          <li><strong>Cyber Security 101</strong> — TryHackMe (Completed)</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Console -->
   <section id="console">
-    <div class="section-label">07 / live console</div>
+    <div class="section-label">08 / live console</div>
     <h2><span class="hash">##</span> Interactive Shell</h2>
 
     <div class="console-window">
@@ -1121,21 +1294,23 @@ Defend like a pro.">
     </div>
   </section>
 
-  <!-- Current Focus -->
   <section id="focus">
-    <div class="section-label">08 / current focus</div>
+    <div class="section-label">09 / current focus</div>
     <h2><span class="hash">##</span> What I'm working towards.</h2>
 
     <div class="focus-card">
-      <div class="focus-title">Jr Penetration Tester Learning Path</div>
-      <div class="focus-sub">TryHackMe · In Progress</div>
-      <div class="focus-bar"><div class="focus-fill" data-width="80%"></div></div>
+      <div class="focus-title">Jr Penetration Tester Learning Path — TryHackMe (In Progress)</div>
+      <div class="focus-sub">Research Focus: Exploring the intersection of OT/ICS Security and AI-driven Threat Detection for future academic and professional application.</div>
+      <div class="focus-progress-label">
+        <span>Path Progress</span>
+        <span class="pct">39%</span>
+      </div>
+      <div class="focus-bar"><div class="focus-fill" data-width="39%"></div></div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
-    <div class="section-label">09 / establish contact</div>
+    <div class="section-label">10 / establish contact</div>
     <h2><span class="hash">##</span> Have a system worth testing?</h2>
 
     <div class="contact-content">
@@ -1146,6 +1321,9 @@ Defend like a pro.">
         <a href="https://github.com/KyrilosKamal" target="_blank" class="contact-link">[github]</a>
         <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" class="contact-link">[tryhackme]</a>
       </div>
+      <a href="https://drive.proton.me/urls/PSB4NVYWHM#oUf78vmLtFE1" target="_blank" rel="noopener noreferrer" class="resume-btn">
+        [ Download Resume (PDF) ]
+      </a>
     </div>
   </section>
 
@@ -1154,315 +1332,293 @@ Defend like a pro.">
   </footer>
 
   <script>
-    // ==========================================
-    // DATA
-    // ==========================================
-    const thmData = {
-      rank: "Wizard (0xA)",
-      level: 64,
-      badges: 17,
-      rooms: 147,
-      streak: 3,
-      globalRank: "Top 3% (65146)",
-      completedRooms: [
-        "Cyber Security 101", "Pre Security (Legacy)", "Hacker Holidays",
-        "Metasploitable", "Blue (EternalBlue)", "OWASP Top 10", "Burp'd",
-        "World Wide Web", "Networking Nerd", "cat linux.txt",
-        "Sword Apprentice", "Shield Apprentice", "Cyber Ready", "Intro to Web Hacking"
-      ]
-    };
+    document.addEventListener('DOMContentLoaded', () => {
 
-    const writeupsData = [
-      {
-        tag: "TryHackMe",
-        title: "Recruit — Web Exploitation",
-        desc: "Medium-rated room focusing on Path Traversal and SQL Injection to gain user and admin access. Covered manual and automated SQLi exploitation using SQLMAP.",
-        tools: ["SQLi", "Path Traversal", "SQLMAP"],
-        link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Recruit-TryHackMe-Writeup.md"
-      },
-      {
-        tag: "TryHackMe",
-        title: "Brr — SCADA/Modbus",
-        desc: "OT/ICS challenge involving a SCADA box. Exploited a ScadaBR login page and default Modbus FC03 configuration to gain access to the industrial control system.",
-        tools: ["SCADA", "Modbus", "OT/ICS"],
-        link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Brr-Writeup-room"
-      },
-      {
-        tag: "Metasploit",
-        title: "Cracking SMB with Metasploit",
-        desc: "Detailed walkthrough of SMB brute-forcing on TryHackMe. Used Metasploit's smb_login module with a wordlist to crack credentials and gain unauthorized access.",
-        tools: ["Metasploit", "SMB", "Brute Force"],
-        link: "https://kirll0s.medium.com/cracking-smb-wide-open-brute-force-with-metasploit-on-tryhackme-f71258db3be8"
-      },
-      {
-        tag: "PortSwigger",
-        title: "SQLi Filter Bypass via XML Encoding",
-        desc: "Solved the Practitioner-level SQL injection lab by obfuscating the payload using XML entity encoding to bypass the web application firewall (WAF).",
-        tools: ["SQLi", "WAF Bypass", "XML Encoding"],
-        link: "https://kirll0s.medium.com/portswigger-lab-writeup-sql-injection-with-filter-bypass-via-xml-encoding-7e1436358462"
-      }
-    ];
-
-    // ==========================================
-    // RENDER: WRITEUPS
-    // ==========================================
-    function renderWriteups(data) {
-      const container = document.getElementById('writeups-container');
-      data.forEach(w => {
-        const card = document.createElement('div');
-        card.className = 'note-card';
-        card.innerHTML = `
-          <div class="note-tag">${w.tag}</div>
-          <div class="note-title">${w.title}</div>
-          <div class="note-desc">${w.desc}</div>
-          <div class="note-tools">
-            ${w.tools.map(t => `<span class="note-tool">${t}</span>`).join('')}
-          </div>
-          <a href="${w.link}" target="_blank" rel="noopener" class="note-link">Read Writeup →</a>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    // ==========================================
-    // RENDER: TRYHACKME
-    // ==========================================
-    function renderTHM(data) {
-      const statsContainer = document.getElementById('thm-stats');
-      statsContainer.innerHTML = `
-        <div class="thm-stat">
-          <div class="val">${data.rank}</div>
-          <div class="label">Rank</div>
-        </div>
-        <div class="thm-stat">
-          <div class="val">${data.level}</div>
-          <div class="label">Level</div>
-        </div>
-        <div class="thm-stat">
-          <div class="val">${data.rooms}</div>
-          <div class="label">Rooms Completed</div>
-        </div>
-        <div class="thm-stat">
-          <div class="val">${data.globalRank}</div>
-          <div class="label">Global Rank</div>
-        </div>
-      `;
-
-      const badgesContainer = document.getElementById('thm-badges');
-      const notableBadges = [
-        "Sword Apprentice (3.7%)", "Shield Apprentice (3.1%)", "Session Held (1.5%)",
-        "30 Day Streak (4.7%)", "Burp'ed (9.2%)", "Intro to Web Hacking (8.9%)",
-        "Metasploitable (12.2%)", "Blue (12.8%)", "OWASP Top 10 (13%)"
-      ];
-      badgesContainer.innerHTML = notableBadges.map(b => `<span class="thm-badge-item">${b}</span>`).join('');
-    }
-
-    // ==========================================
-    // THEME TOGGLE
-    // ==========================================
-    function initThemeToggle() {
-      const toggleBtn = document.getElementById('theme-toggle');
-      toggleBtn.addEventListener('click', () => {
-        document.body.classList.toggle('blue-team');
-        const isBlue = document.body.classList.contains('blue-team');
-        toggleBtn.textContent = isBlue ? '[ SWITCH TO RED TEAM ]' : '[ SWITCH TO BLUE TEAM ]';
-      });
-    }
-
-    // ==========================================
-    // BOOT SEQUENCE
-    // ==========================================
-    function initBootSequence() {
-      const bootLog = document.getElementById('boot-log');
-      const lines = [
-        "[ OK ] Initializing kernel modules...",
-        "[ OK ] Mounting /dev/sda1...",
-        "[ OK ] Starting Network Manager...",
-        "[ OK ] Starting Firewall (ufw)...",
-        "[ OK ] Loading offensive security tools...",
-        "[ OK ] Reached target Multi-User System.",
-        "[ OK ] Starting Kyrillos Kamal Portfolio..."
-      ];
-      
-      let currentLine = 0;
-      const interval = setInterval(() => {
-        if (currentLine < lines.length) {
-          const div = document.createElement('div');
-          div.textContent = lines[currentLine];
-          // Add green OK
-          const okText = div.innerHTML.replace('[ OK ]', '<span class="ok">[ OK ]</span>');
-          div.innerHTML = okText;
-          bootLog.appendChild(div);
-          currentLine++;
-        } else {
-          clearInterval(interval);
-        }
-      }, 300);
-    }
-
-    // ==========================================
-    // INTERACTIVE CONSOLE
-    // ==========================================
-    function initConsole() {
-      const output = document.getElementById('console-output');
-      const input = document.getElementById('console-input');
-
-      const commands = {
-        help: () => [
-          'Available commands:',
-          '  whoami      — about me',
-          '  skills      — technical capabilities',
-          '  tools       — security tools I use',
-          '  writeups    — list security writeups',
-          '  thm         — TryHackMe stats',
-          '  scan        — simulate an Nmap scan',
-          '  inject      — simulate a SQL injection',
-          '  flag        — find the hidden flag',
-          '  contact     — contact information',
-          '  clear       — clear console'
-        ],
-        whoami: () => [
-          'Kyrillos Kamal',
-          'Network Defender & Offensive Security Enthusiast',
-          '6+ years IT & Network Security experience',
-          'Currently: eJPT (In Progress) | TryHackMe Top 3%'
-        ],
-        skills: () => [
-          'Network Security & Firewalls: FortiGate, Sophos, VLANs, ACLs, IDS/IPS',
-          'Web App Security: Burp Suite, OWASP Top 10, SQLi, XSS',
-          'Exploitation: Metasploit, Nmap, Hydra, Gobuster, John the Ripper',
-          'Traffic Analysis: Wireshark, tcpdump, IOC Documentation',
-          'Systems: Windows Server, Linux (Kali, Ubuntu), VMware, Hyper-V'
-        ],
-        tools: () => [
-          'Nmap | Metasploit | Burp Suite | Wireshark | Hydra',
-          'Gobuster | John the Ripper | Netcat | SQLmap | OWASP ZAP',
-          'FortiGate | Sophos | Kali Linux | Python | Bash'
-        ],
-        writeups: () => writeupsData.map((w, i) => `  [${i + 1}] ${w.title} — ${w.link}`),
-        thm: () => [
-          `Rank: ${thmData.rank}`,
-          `Level: ${thmData.level}`,
-          `Rooms: ${thmData.rooms}`,
-          `Global Rank: ${thmData.globalRank}`,
-          `Profile: https://tryhackme.com/p/Hackth3Path`
-        ],
-        scan: () => [
-          'Starting Nmap 7.94 ( https://nmap.org )',
-          'Nmap scan report for target.local (192.168.1.105)',
-          'Host is up (0.0021s latency).',
-          'Not shown: 997 closed tcp ports (reset)',
-          'PORT     STATE SERVICE',
-          '22/tcp   open  ssh',
-          '80/tcp   open  http',
-          '443/tcp  open  https',
-          'Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds',
-          '[!] Vulnerabilities detected: Outdated web server (Apache 2.4.49)'
-        ],
-        inject: () => [
-          '[+] Testing SQL Injection on http://target.local/login',
-          "[*] Payload: ' OR 1=1 -- -",
-          '[+] Response length: 4823 (normal: 1024)',
-          '[+] SQL Injection confirmed!',
-          '[+] Dumping database users table...',
-          'admin:admin',
-          'user:password123',
-          '[!] Recommendation: Use parameterized queries.'
-        ],
-        flag: () => [
-          'Searching for hidden flags...',
-          '[!] No flag found in the DOM.',
-          '[!] Hint: Check the HTML source code, look for a comment.',
-          'Try: view-source:https://kyrilloskamal.github.io/'
-        ],
-        contact: () => [
-          'Email:    kyrillos.kamal@proton.me',
-          'LinkedIn: linkedin.com/in/kyrillos-kamal',
-          'GitHub:   github.com/KyrilosKamal',
-          'THM:      tryhackme.com/p/Hackth3Path'
-        ],
-        clear: () => { output.innerHTML = ''; return []; }
+      const thmData = {
+        rank: "Wizard (0xA)",
+        level: 64,
+        badges: 17,
+        rooms: 147,
+        streak: 3,
+        globalRank: "Top 3% (65146)"
       };
 
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          const cmd = input.value.trim().toLowerCase();
-          input.value = '';
-
-          const line = document.createElement('div');
-          line.className = 'line';
-          line.innerHTML = `<span class="prompt">root@darknet:~#</span> <span class="cmd">${cmd}</span>`;
-          output.appendChild(line);
-
-          if (cmd === '') return;
-
-          const fn = commands[cmd];
-          if (fn) {
-            const result = fn();
-            result.forEach(res => {
-              const outLine = document.createElement('div');
-              outLine.className = 'line output';
-              // Highlight success or error messages
-              if (res.includes('[+]') || res.includes('[ OK ]')) outLine.className = 'line success';
-              else if (res.includes('[!]')) outLine.className = 'line error';
-              outLine.textContent = res;
-              output.appendChild(outLine);
-            });
-          } else {
-            const errLine = document.createElement('div');
-            errLine.className = 'line error';
-            errLine.textContent = `command not found: ${cmd}. Type "help" for available commands.`;
-            output.appendChild(errLine);
-          }
-
-          output.scrollTop = output.scrollHeight;
+      const writeupsData = [
+        {
+          tag: "TryHackMe",
+          title: "Recruit — Web Exploitation",
+          desc: "Medium-rated room focusing on Path Traversal and SQL Injection to gain user and admin access. Covered manual and automated SQLi exploitation using SQLMAP.",
+          tools: ["SQLi", "Path Traversal", "SQLMAP"],
+          link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Recruit-TryHackMe-Writeup.md"
+        },
+        {
+          tag: "TryHackMe",
+          title: "Brr — SCADA/Modbus",
+          desc: "OT/ICS challenge involving a SCADA box. Exploited a ScadaBR login page and default Modbus FC03 configuration to gain access to the industrial control system.",
+          tools: ["SCADA", "Modbus", "OT/ICS"],
+          link: "https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Brr-Writeup-room"
+        },
+        {
+          tag: "Metasploit",
+          title: "Cracking SMB with Metasploit",
+          desc: "Detailed walkthrough of SMB brute-forcing on TryHackMe. Used Metasploit's smb_login module with a wordlist to crack credentials and gain unauthorized access.",
+          tools: ["Metasploit", "SMB", "Brute Force"],
+          link: "https://kirll0s.medium.com/cracking-smb-wide-open-brute-force-with-metasploit-on-tryhackme-f71258db3be8"
+        },
+        {
+          tag: "PortSwigger",
+          title: "SQLi Filter Bypass via XML Encoding",
+          desc: "Solved the Practitioner-level SQL injection lab by obfuscating the payload using XML entity encoding to bypass the web application firewall (WAF).",
+          tools: ["SQLi", "WAF Bypass", "XML Encoding"],
+          link: "https://kirll0s.medium.com/portswigger-lab-writeup-sql-injection-with-filter-bypass-via-xml-encoding-7e1436358462"
+        },
+        {
+          tag: "Bugcrowd",
+          title: "LaunchDarkly — Bug Bounty Engagement",
+          desc: "Completed a full bug bounty engagement cycle on the LaunchDarkly program via Bugcrowd. Findings reached P5 (Informational) severity, with the end-to-end workflow — reconnaissance, hunting, validation, and triage review — fully exercised. Technical details are protected under program NDA.",
+          tools: ["Bugcrowd", "Recon", "Burp Suite", "Amass"],
+          link: null,
+          noLinkText: "NDA-protected · No public link"
+        },
+        {
+          tag: "HackTheBox",
+          title: "HTB: Starting Point — Meow",
+          desc: "Completed the introductory HackTheBox Starting Point machine. Exploited a misconfigured Telnet service with default root credentials to gain system access. No public writeup published for this box.",
+          tools: ["Telnet", "Enumeration", "Linux"],
+          link: null,
+          noLinkText: "Completed · No writeup published"
         }
-      });
-    }
+      ];
 
-    // ==========================================
-    // ANIMATIONS & INITIALIZATION
-    // ==========================================
+      function renderWriteups(data) {
+        const container = document.getElementById('writeups-container');
+        if (!container) return;
+        container.innerHTML = '';
+        data.forEach(w => {
+          const card = document.createElement('div');
+          card.className = 'note-card';
 
-    window.addEventListener('load', () => {
+          const footer = w.link
+            ? `<a href="${w.link}" target="_blank" rel="noopener" class="note-link">Read Writeup →</a>`
+            : `<span class="note-footer-disabled">${w.noLinkText || 'No public link'}</span>`;
+
+          card.innerHTML = `
+            <div class="note-tag">${w.tag}</div>
+            <div class="note-title">${w.title}</div>
+            <div class="note-desc">${w.desc}</div>
+            <div class="note-tools">
+              ${w.tools.map(t => `<span class="note-tool">${t}</span>`).join('')}
+            </div>
+            ${footer}
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      function renderTHMBadges() {
+        const badgesContainer = document.getElementById('thm-badges');
+        if (!badgesContainer) return;
+        const notableBadges = [
+          "Sword Apprentice (3.7%)", "Shield Apprentice (3.1%)", "Session Held (1.5%)",
+          "30 Day Streak (4.7%)", "Burp'ed (9.2%)", "Intro to Web Hacking (8.9%)",
+          "Metasploitable (12.2%)", "Blue (12.8%)", "OWASP Top 10 (13%)"
+        ];
+        badgesContainer.innerHTML = notableBadges.map(b => `<span class="thm-badge-item">${b}</span>`).join('');
+      }
+
+      function initThemeToggle() {
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (!toggleBtn) return;
+        toggleBtn.addEventListener('click', () => {
+          document.body.classList.toggle('blue-team');
+          const isBlue = document.body.classList.contains('blue-team');
+          toggleBtn.textContent = isBlue ? '[ SWITCH TO RED TEAM ]' : '[ SWITCH TO BLUE TEAM ]';
+        });
+      }
+
+      function initBootSequence() {
+        const bootLog = document.getElementById('boot-log');
+        if (!bootLog) return;
+        const lines = [
+          "[ OK ] Initializing kernel modules...",
+          "[ OK ] Mounting /dev/sda1...",
+          "[ OK ] Starting Network Manager...",
+          "[ OK ] Starting Firewall (ufw)...",
+          "[ OK ] Loading offensive security tools...",
+          "[ OK ] Reached target Multi-User System.",
+          "[ OK ] Starting Kyrillos Kamal Portfolio..."
+        ];
+        let currentLine = 0;
+        const interval = setInterval(() => {
+          if (currentLine < lines.length) {
+            const div = document.createElement('div');
+            div.textContent = lines[currentLine];
+            const okText = div.innerHTML.replace('[ OK ]', '<span class="ok">[ OK ]</span>');
+            div.innerHTML = okText;
+            bootLog.appendChild(div);
+            currentLine++;
+          } else {
+            clearInterval(interval);
+          }
+        }, 300);
+      }
+
+      function initConsole() {
+        const output = document.getElementById('console-output');
+        const input = document.getElementById('console-input');
+        if (!output || !input) return;
+
+        const commands = {
+          help: () => [
+            'Available commands:',
+            '  whoami      — about me',
+            '  skills      — technical capabilities',
+            '  tools       — security tools I use',
+            '  writeups    — list security writeups',
+            '  thm         — TryHackMe stats',
+            '  scan        — simulate an Nmap scan',
+            '  inject      — simulate a SQL injection',
+            '  flag        — find the hidden flag',
+            '  contact     — contact information',
+            '  clear       — clear console'
+          ],
+          whoami: () => [
+            'Kyrillos Kamal',
+            'Network Defender & Offensive Security Enthusiast',
+            '6+ years IT & Network Security experience',
+            'Currently: eJPT (In Progress) | TryHackMe Top 3%'
+          ],
+          skills: () => [
+            'Network Security & Firewalls: FortiGate, Sophos, VLANs, ACLs, IDS/IPS',
+            'Web App Security: Burp Suite, OWASP Top 10, SQLi, XSS',
+            'Exploitation: Metasploit, Nmap, Hydra, Gobuster, John the Ripper',
+            'Traffic Analysis: Wireshark, tcpdump, IOC Documentation',
+            'Systems: Windows Server, Linux (Kali, Ubuntu), VMware, Hyper-V'
+          ],
+          tools: () => [
+            'Nmap | Metasploit | Burp Suite | Wireshark | Hydra',
+            'Gobuster | John the Ripper | Netcat | SQLmap | OWASP ZAP',
+            'FortiGate | Sophos | Kali Linux | Python | Bash'
+          ],
+          writeups: () => writeupsData.map((w, i) => {
+            const linkDisplay = w.link ? w.link : (w.noLinkText || 'No public link');
+            return `  [${i + 1}] ${w.title} — ${linkDisplay}`;
+          }),
+          thm: () => [
+            `Rank: ${thmData.rank}`,
+            `Level: ${thmData.level}`,
+            `Rooms: ${thmData.rooms}`,
+            `Global Rank: ${thmData.globalRank}`,
+            `Profile: https://tryhackme.com/p/Hackth3Path`
+          ],
+          scan: () => [
+            'Starting Nmap 7.94 ( https://nmap.org )',
+            'Nmap scan report for target.local (192.168.1.105)',
+            'Host is up (0.0021s latency).',
+            'Not shown: 997 closed tcp ports (reset)',
+            'PORT     STATE SERVICE',
+            '22/tcp   open  ssh',
+            '80/tcp   open  http',
+            '443/tcp  open  https',
+            'Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds',
+            '[!] Vulnerabilities detected: Outdated web server (Apache 2.4.49)'
+          ],
+          inject: () => [
+            '[+] Testing SQL Injection on http://target.local/login',
+            "[*] Payload: ' OR 1=1 -- -",
+            '[+] Response length: 4823 (normal: 1024)',
+            '[+] SQL Injection confirmed!',
+            '[+] Dumping database users table...',
+            'admin:admin',
+            'user:password123',
+            '[!] Recommendation: Use parameterized queries.'
+          ],
+          flag: () => [
+            'Searching for hidden flags...',
+            '[!] No flag found in the DOM.',
+            '[!] Hint: Check the HTML source code, look for a comment.',
+            'Try: view-source:https://kyrilloskamal.github.io/KyrilosKamal'
+          ],
+          contact: () => [
+            'Email:    kyrillos.kamal@proton.me',
+            'LinkedIn: linkedin.com/in/kyrillos-kamal',
+            'GitHub:   github.com/KyrilosKamal',
+            'THM:      tryhackme.com/p/Hackth3Path'
+          ],
+          clear: () => { output.innerHTML = ''; return []; }
+        };
+
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            const cmd = input.value.trim().toLowerCase();
+            input.value = '';
+
+            const line = document.createElement('div');
+            line.className = 'line';
+            line.innerHTML = `<span class="prompt">root@darknet:~#</span> <span class="cmd">${cmd}</span>`;
+            output.appendChild(line);
+
+            if (cmd === '') return;
+
+            const fn = commands[cmd];
+            if (fn) {
+              const result = fn();
+              result.forEach(res => {
+                const outLine = document.createElement('div');
+                outLine.className = 'line output';
+                if (res.includes('[+]') || res.includes('[ OK ]')) outLine.className = 'line success';
+                else if (res.includes('[!]')) outLine.className = 'line error';
+                outLine.textContent = res;
+                output.appendChild(outLine);
+              });
+            } else {
+              const errLine = document.createElement('div');
+              errLine.className = 'line error';
+              errLine.textContent = `command not found: ${cmd}. Type "help" for available commands.`;
+              output.appendChild(errLine);
+            }
+
+            output.scrollTop = output.scrollHeight;
+          }
+        });
+      }
+
       initBootSequence();
       setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
       }, 2800);
-    });
 
-    // Skill bar animation on scroll
-    const observerOptions = { threshold: 0.3 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          const fill = entry.target.querySelector('.skill-fill');
-          if (fill) {
-            setTimeout(() => {
-              fill.style.width = fill.getAttribute('data-width');
-            }, 200);
+      const observerOptions = { threshold: 0.3 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            const fill = entry.target.querySelector('.skill-fill');
+            if (fill) {
+              setTimeout(() => {
+                fill.style.width = fill.getAttribute('data-width');
+              }, 200);
+            }
+            observer.unobserve(entry.target);
           }
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
+        });
+      }, observerOptions);
 
-    // Initialize everything
-    renderWriteups(writeupsData);
-    renderTHM(thmData);
-    initThemeToggle();
-    initConsole();
+      renderWriteups(writeupsData);
+      renderTHMBadges();
+      initThemeToggle();
+      initConsole();
 
-    // Observe skill bars
-    document.querySelectorAll('.capability-item').forEach(el => observer.observe(el));
+      document.querySelectorAll('.capability-item').forEach(el => observer.observe(el));
 
-    // Focus bar
-    setTimeout(() => {
-      document.querySelectorAll('.focus-fill').forEach(el => {
-        el.style.width = el.getAttribute('data-width');
-      });
-    }, 500);
+      setTimeout(() => {
+        document.querySelectorAll('.focus-fill').forEach(el => {
+          const w = el.getAttribute('data-width');
+          if (w && w !== '0%') el.style.width = w;
+        });
+      }, 500);
+
+    });
   </script>
 </body>
 </html>
