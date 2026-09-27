@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
-
+  <meta name="google-site-verification" content="CbXRykqPcJYAWYPYDyG83c-Sx_t4O9uERFsHLy0YML4" />
+  
   <title>Kyrillos Kamal | Network Security & Offensive Security Portfolio</title>
   <meta name="description" content="Portfolio of Kyrillos Kamal — IT & Network Security professional with 6+ years of experience in offensive security, infrastructure hardening, and OT/ICS defense. TryHackMe Top 3% globally.">
   <meta name="author" content="Kyrillos Kamal">
@@ -107,7 +107,6 @@
       will-change: auto;
     }
 
-    /* ===== FAST LOADER — 500ms total ===== */
     #loader {
       position: fixed; inset: 0; background: var(--bg); z-index: 10000;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -185,7 +184,6 @@
       max-width: 1100px;
       margin: 0 auto;
       position: relative;
-      /* Skip rendering until near viewport */
       content-visibility: auto;
       contain-intrinsic-size: 0 800px;
     }
@@ -249,7 +247,6 @@
       position: relative;
     }
 
-    /* GPU-friendly glitch — uses transform instead of clip */
     .hero-title .glitch-wrap {
       position: relative;
       display: inline-block;
@@ -475,6 +472,12 @@
     }
 
     #bug-bounty { padding-top: 60px; }
+    .bounty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 1.5rem;
+      align-items: start;
+    }
     .bounty-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -1129,6 +1132,7 @@
       .badge-thumb-wrap { width: 100px; height: 100px; }
       .lightbox-body img { max-height: 60vh; }
       .console-output { height: 250px; }
+      .bounty-grid { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1323,23 +1327,44 @@
     <div class="section-label">04 / bug bounty</div>
     <h2><span class="hash">##</span> Hunting in the wild.</h2>
 
-    <div class="bounty-card">
-      <div class="bounty-header">
-        <span class="bounty-status">Engagement Complete</span>
-        <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">P5 (Informational) Findings</span>
+    <div class="bounty-grid">
+      <div class="bounty-card">
+        <div class="bounty-header">
+          <span class="bounty-status">Engagement Complete</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">P5 (Informational) Findings</span>
+        </div>
+        <div class="bounty-title">Bugcrowd — LaunchDarkly Program</div>
+        <div class="bounty-desc">
+          Completed a full bug bounty engagement cycle on the LaunchDarkly program via Bugcrowd, from reconnaissance through submission and triage. Findings reached P5 (Informational) severity, with no higher-severity vulnerabilities identified during the engagement. The submission workflow — recon, hunting, validation, and triage review — was exercised end-to-end. Specific technical details remain protected under program NDA.
+        </div>
+        <ul class="bounty-method">
+          <li><span class="step">01.</span> <strong>Reconnaissance</strong> — Mapping the attack surface, subdomain enumeration, and identifying potential entry points using tools like Amass, Sublist3r, and Burp Suite.</li>
+          <li><span class="step">02.</span> <strong>Hunting</strong> — Manual testing for OWASP Top 10 vulnerabilities, business logic flaws, and misconfigurations. Documenting every step and payload.</li>
+          <li><span class="step">03.</span> <strong>Validation</strong> — Confirming impact, writing clear proof-of-concept (PoC) reports, and submitting to the program for triage.</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+          <strong style="color: var(--accent);">Current Status:</strong> Engagement cycle complete. P5 findings submitted and reviewed through triage. The full hunting workflow was validated — the next engagement begins with the same rigor and a sharpened methodology.
+        </p>
       </div>
-      <div class="bounty-title">Bugcrowd — LaunchDarkly Program</div>
-      <div class="bounty-desc">
-        Completed a full bug bounty engagement cycle on the LaunchDarkly program via Bugcrowd, from reconnaissance through submission and triage. Findings reached P5 (Informational) severity, with no higher-severity vulnerabilities identified during the engagement. The submission workflow — recon, hunting, validation, and triage review — was exercised end-to-end. Specific technical details remain protected under program NDA.
+
+      <div class="bounty-card">
+        <div class="bounty-header">
+          <span class="bounty-status">Engagement Complete</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">Duplicate (Confirmed Valid Root Cause)</span>
+        </div>
+        <div class="bounty-title">HackerOne — Arc Node (Consensus Client)</div>
+        <div class="bounty-desc">
+          Conducted a full source-code-level security review of Arc node's startup handshake logic, tracing a fatal crash path through the EL (execution layer) capability exchange. Built and ran the repository's existing test suite on a self-hosted local environment to confirm the failure mode before submission. The report was closed as a duplicate of an existing internal finding — validating both the technical root-cause analysis and the reproduction methodology.
+        </div>
+        <ul class="bounty-method">
+          <li><span class="step">01.</span> <strong>Source Review</strong> — Traced the full call chain across multiple crates (consensus_ready.rs → capabilities.rs → engine.rs → app.rs) to identify an unhandled error path with no retry/backoff logic.</li>
+          <li><span class="step">02.</span> <strong>Reproduction</strong> — Built the target from source and executed the project's own unit test suite to confirm the fatal failure mode matched the described startup crash.</li>
+          <li><span class="step">03.</span> <strong>Reporting</strong> — Documented the exact call chain, root cause, and reproduction steps; submitted for triage via HackerOne.</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+          <strong style="color: var(--accent);">Current Status:</strong> Closed as Duplicate — confirms the vulnerability was correctly identified independently, ahead of public disclosure.
+        </p>
       </div>
-      <ul class="bounty-method">
-        <li><span class="step">01.</span> <strong>Reconnaissance</strong> — Mapping the attack surface, subdomain enumeration, and identifying potential entry points using tools like Amass, Sublist3r, and Burp Suite.</li>
-        <li><span class="step">02.</span> <strong>Hunting</strong> — Manual testing for OWASP Top 10 vulnerabilities, business logic flaws, and misconfigurations. Documenting every step and payload.</li>
-        <li><span class="step">03.</span> <strong>Validation</strong> — Confirming impact, writing clear proof-of-concept (PoC) reports, and submitting to the program for triage.</li>
-      </ul>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
-        <strong style="color: var(--accent);">Current Status:</strong> Engagement cycle complete. P5 findings submitted and reviewed through triage. The full hunting workflow was validated — the next engagement begins with the same rigor and a sharpened methodology.
-      </p>
     </div>
   </section>
 
@@ -1968,14 +1993,12 @@
         }, 100);
       }
 
-      // ===== FAST BOOT + LOADER DISMISS (500ms total) =====
       initBootSequence();
       window.setTimeout(() => {
         const loader = document.getElementById('loader');
         if (loader) loader.classList.add('hidden');
       }, 500);
 
-      // Non-critical: defer heavy rendering until browser is idle
       const initDeferred = () => {
         renderWriteups(writeupsData);
         renderTHMBadges();
@@ -1986,7 +2009,6 @@
         initCertLightbox();
         initCertFilters();
 
-        // ===== Reflow optimization: cache queries, batch writes =====
         const observerOptions = { threshold: 0.3 };
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -1994,7 +2016,6 @@
               entry.target.classList.add('visible');
               const fill = entry.target.querySelector('.skill-fill');
               if (fill) {
-                // Use requestAnimationFrame to avoid forced synchronous layout
                 requestAnimationFrame(() => {
                   const w = fill.getAttribute('data-width');
                   if (w) fill.style.width = w;
@@ -2007,7 +2028,6 @@
 
         document.querySelectorAll('.capability-item').forEach(el => observer.observe(el));
 
-        // Batch all focus-fill writes into one rAF cycle
         requestAnimationFrame(() => {
           const fills = document.querySelectorAll('.focus-fill');
           fills.forEach(el => {
