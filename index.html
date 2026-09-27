@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- 🔑 GOOGLE SITE VERIFICATION -->
   <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
 
   <title>Kyrillos Kamal | Network Security & Offensive Security Portfolio</title>
@@ -45,7 +44,6 @@
   }
   </script>
 
-  <!-- ===== PERFORMANCE FIX #3: Preconnect to image CDNs ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
@@ -53,10 +51,7 @@
   <link rel="preconnect" href="https://assets.tryhackme.com" crossorigin>
   <link rel="preconnect" href="https://tryhackme-badges.s3.amazonaws.com" crossorigin>
 
-  <!-- ===== PERFORMANCE FIX #1: Preload critical fonts ===== -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap">
-
-  <!-- ===== PERFORMANCE FIX #2: Make Google Fonts non-blocking ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
 
@@ -101,7 +96,6 @@
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
 
-    /* ===== PERFORMANCE FIX #5: Optimized noise overlay ===== */
     body::before {
       content: '';
       position: fixed;
@@ -109,14 +103,16 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 9999;
-      will-change: auto;
       contain: strict;
+      will-change: auto;
     }
 
+    /* ===== FAST LOADER — 500ms total ===== */
     #loader {
       position: fixed; inset: 0; background: var(--bg); z-index: 10000;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      contain: strict;
     }
     #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
     .boot-log {
@@ -127,16 +123,17 @@
       width: 300px;
       line-height: 1.8;
       text-shadow: 0 0 5px var(--accent-glow);
+      min-height: 1.8em;
     }
     .boot-log .ok { color: #00ff00; }
     .loader-bar {
       width: 300px; height: 2px; background: var(--surface-light); border-radius: 1px; overflow: hidden;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
     }
     .loader-fill {
       height: 100%; width: 0; background: var(--accent);
       box-shadow: 0 0 10px var(--accent);
-      animation: loadFill 2.5s ease forwards;
+      animation: loadFill 0.5s ease forwards;
     }
     @keyframes loadFill { to { width: 100%; } }
 
@@ -147,7 +144,8 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5%;
       transform: translateY(-100%);
-      animation: slideDown 0.6s ease 2.8s forwards;
+      animation: slideDown 0.5s ease 0.5s forwards;
+      contain: layout style;
     }
     @keyframes slideDown { to { transform: translateY(0); } }
     .nav-logo {
@@ -187,7 +185,12 @@
       max-width: 1100px;
       margin: 0 auto;
       position: relative;
+      /* Skip rendering until near viewport */
+      content-visibility: auto;
+      contain-intrinsic-size: 0 800px;
     }
+
+    section#hero { content-visibility: visible; contain-intrinsic-size: auto; }
 
     .section-label {
       font-family: 'Fira Code', monospace;
@@ -229,6 +232,7 @@
       width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
       box-shadow: 0 0 10px var(--accent);
       animation: pulse 2s infinite;
+      will-change: opacity;
     }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
@@ -240,44 +244,47 @@
       margin-bottom: 1.5rem;
       background: linear-gradient(90deg, #ffffff 0%, var(--accent) 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       position: relative;
     }
-    .hero-title::before, .hero-title::after {
+
+    /* GPU-friendly glitch — uses transform instead of clip */
+    .hero-title .glitch-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .hero-title .glitch-wrap::before,
+    .hero-title .glitch-wrap::after {
       content: attr(data-text);
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
+      -webkit-text-fill-color: var(--text);
       background: var(--bg);
       overflow: hidden;
-      clip: rect(0, 900px, 0, 0);
-      -webkit-text-fill-color: var(--text);
+      opacity: 0.8;
+      will-change: transform;
     }
-    .hero-title::before {
-      left: 2px;
-      text-shadow: -2px 0 var(--accent);
-      animation: glitch-1 2s infinite linear alternate-reverse;
+    .hero-title .glitch-wrap::before {
+      transform: translate(-2px, 0);
+      animation: glitchA 3s steps(2) infinite;
     }
-    .hero-title::after {
-      left: -2px;
-      text-shadow: 2px 0 var(--info);
-      animation: glitch-2 3s infinite linear alternate-reverse;
+    .hero-title .glitch-wrap::after {
+      transform: translate(2px, 0);
+      animation: glitchB 4s steps(2) infinite;
     }
-    @keyframes glitch-1 {
-      0% { clip: rect(20px, 9999px, 15px, 0); }
-      20% { clip: rect(50px, 9999px, 80px, 0); }
-      40% { clip: rect(10px, 9999px, 30px, 0); }
-      60% { clip: rect(80px, 9999px, 90px, 0); }
-      80% { clip: rect(40px, 9999px, 60px, 0); }
-      100% { clip: rect(70px, 9999px, 20px, 0); }
+    @keyframes glitchA {
+      0%, 92%, 100% { transform: translate(-2px, 0); clip-path: inset(0 0 0 0); }
+      93% { transform: translate(-4px, -1px); clip-path: inset(20% 0 40% 0); }
+      95% { transform: translate(-3px, 1px); clip-path: inset(60% 0 10% 0); }
+      97% { transform: translate(-2px, 0); clip-path: inset(0 0 0 0); }
     }
-    @keyframes glitch-2 {
-      0% { clip: rect(10px, 9999px, 50px, 0); }
-      20% { clip: rect(80px, 9999px, 20px, 0); }
-      40% { clip: rect(30px, 9999px, 70px, 0); }
-      60% { clip: rect(60px, 9999px, 10px, 0); }
-      80% { clip: rect(90px, 9999px, 40px, 0); }
-      100% { clip: rect(20px, 9999px, 80px, 0); }
+    @keyframes glitchB {
+      0%, 90%, 100% { transform: translate(2px, 0); clip-path: inset(0 0 0 0); }
+      91% { transform: translate(4px, 1px); clip-path: inset(30% 0 30% 0); }
+      94% { transform: translate(3px, -1px); clip-path: inset(70% 0 5% 0); }
+      96% { transform: translate(2px, 0); clip-path: inset(0 0 0 0); }
     }
 
     .hero-sub {
@@ -328,6 +335,7 @@
       padding: 1.25rem;
       text-align: center;
       transition: border-color 0.3s, box-shadow 0.3s;
+      contain: layout style;
     }
     .hero-stat:hover { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-dim); }
     .hero-stat .val {
@@ -375,6 +383,7 @@
       border-radius: 8px;
       padding: 1.25rem 1.5rem;
       transition: border-color 0.3s, box-shadow 0.3s;
+      contain: layout style;
     }
     .capability-item:hover { border-color: var(--accent); box-shadow: 0 0 25px var(--accent-dim); }
     .capability-header {
@@ -421,6 +430,7 @@
       transition: all 0.3s;
       display: flex;
       flex-direction: column;
+      contain: layout style;
     }
     .note-card:hover {
       border-color: var(--accent);
@@ -519,7 +529,7 @@
       width: 2px;
       background: linear-gradient(180deg, var(--accent), var(--info), transparent);
     }
-    .exp-item { position: relative; margin-bottom: 2.5rem; }
+    .exp-item { position: relative; margin-bottom: 2.5rem; contain: layout style; }
     .exp-item::before {
       content: '';
       position: absolute;
@@ -561,6 +571,7 @@
     .thm-badge-wrapper:hover { transform: scale(1.05); }
     .thm-badge-wrapper img {
       max-width: 300px;
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 0 30px var(--accent-dim);
     }
@@ -629,7 +640,6 @@
     .cert-list li:last-child { border-bottom: none; }
     .cert-list li strong { color: var(--accent); }
 
-    /* ===== CERTIFICATIONS SECTION ===== */
     #certifications { padding-top: 60px; }
 
     .cert-filter-bar {
@@ -680,6 +690,7 @@
       display: flex;
       flex-direction: column;
       cursor: pointer;
+      contain: layout style;
     }
     .cert-card:hover {
       border-color: var(--accent);
@@ -760,7 +771,6 @@
       margin-top: auto;
     }
 
-    /* ===== BADGES SECTION ===== */
     #badges { padding-top: 60px; }
 
     .badges-grid {
@@ -782,6 +792,7 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      contain: layout style;
     }
     .badge-card::before {
       content: '';
@@ -837,7 +848,6 @@
       color: var(--accent);
       text-shadow: 0 0 15px var(--accent-glow);
       box-shadow: 0 0 25px var(--accent-dim);
-      animation: pulse 2s infinite;
     }
 
     .badge-info {
@@ -863,7 +873,6 @@
       font-family: 'Fira Code', monospace;
     }
 
-    /* ===== INTERACTIVE CONSOLE ===== */
     #console { padding-top: 60px; }
 
     .console-window {
@@ -931,13 +940,13 @@
       margin-left: 4px;
       pointer-events: none;
       opacity: 0.9;
+      will-change: opacity;
     }
     @keyframes blinkCursor {
       0%, 50% { opacity: 0.9; }
       51%, 100% { opacity: 0; }
     }
 
-    /* ===== LIGHTBOX ===== */
     #cert-lightbox {
       position: fixed;
       inset: 0;
@@ -1121,13 +1130,21 @@
       .lightbox-body img { max-height: 60vh; }
       .console-output { height: 250px; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div id="loader">
     <div class="boot-log" id="boot-log">
-      <div>[ OK ] Initializing kernel modules...</div>
+      <div>[ OK ] Booting portfolio...</div>
     </div>
     <div class="loader-bar"><div class="loader-fill"></div></div>
   </div>
@@ -1156,10 +1173,9 @@
       <span class="dot"></span> SYSTEM ONLINE — AWAITING ORDERS
     </div>
 
-    <h1 class="hero-title" data-text="Think like an attacker.
-Defend like a pro.">
-      Think like an attacker.<br>
-      Defend like a pro.
+    <h1 class="hero-title">
+      <span class="glitch-wrap" data-text="Think like an attacker.">Think like an attacker.</span><br>
+      <span class="glitch-wrap" data-text="Defend like a pro.">Defend like a pro.</span>
     </h1>
 
     <p class="hero-sub">
@@ -1401,7 +1417,7 @@ Defend like a pro.">
 
     <div class="thm-container">
       <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" rel="noopener noreferrer" class="thm-badge-wrapper" title="Visit my TryHackMe Profile">
-        <img src="https://tryhackme-badges.s3.amazonaws.com/Hackth3Path.png" alt="TryHackMe Badge" decoding="async">
+        <img src="https://tryhackme-badges.s3.amazonaws.com/Hackth3Path.png" alt="TryHackMe Badge" width="329" height="75" decoding="async">
       </a>
 
       <div class="thm-stats-grid">
@@ -1511,7 +1527,7 @@ Defend like a pro.">
         <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
       </div>
       <div class="lightbox-body">
-        <img id="lb-img" src="" alt="Certificate full view" decoding="async">
+        <img id="lb-img" src="" alt="Certificate full view" width="1000" height="750" decoding="async">
       </div>
       <div class="lightbox-footer">
         <div class="lb-meta" id="lb-meta"></div>
@@ -1658,22 +1674,22 @@ Defend like a pro.">
       function renderWriteups(data) {
         const container = document.getElementById('writeups-container');
         if (!container) return;
-        container.innerHTML = '';
+        let html = '';
         data.forEach(w => {
-          const card = document.createElement('div');
-          card.className = 'note-card';
           const footer = w.link
             ? `<a href="${w.link}" target="_blank" rel="noopener" class="note-link">Read Writeup →</a>`
             : `<span class="note-footer-disabled">${w.noLinkText || 'No public link'}</span>`;
-          card.innerHTML = `
-            <div class="note-tag">${w.tag}</div>
-            <div class="note-title">${w.title}</div>
-            <div class="note-desc">${w.desc}</div>
-            <div class="note-tools">${w.tools.map(t => `<span class="note-tool">${t}</span>`).join('')}</div>
-            ${footer}
+          html += `
+            <div class="note-card">
+              <div class="note-tag">${w.tag}</div>
+              <div class="note-title">${w.title}</div>
+              <div class="note-desc">${w.desc}</div>
+              <div class="note-tools">${w.tools.map(t => `<span class="note-tool">${t}</span>`).join('')}</div>
+              ${footer}
+            </div>
           `;
-          container.appendChild(card);
         });
+        container.innerHTML = html;
       }
 
       function renderTHMBadges() {
@@ -1690,62 +1706,63 @@ Defend like a pro.">
       function renderCerts(data) {
         const grid = document.getElementById('certs-grid');
         if (!grid) return;
-        grid.innerHTML = '';
+        let html = '';
         data.forEach(c => {
-          const card = document.createElement('div');
-          card.className = 'cert-card';
-          card.dataset.status = c.status;
-          card.dataset.id = c.id;
-
           const statusLabel = c.status === 'earned' ? 'EARNED' : 'IN PROGRESS';
           const statusClass = c.status === 'earned' ? 'earned' : 'in-progress';
-
-          card.innerHTML = `
-            <div class="cert-thumb-wrap">
-              <img src="${c.img}" alt="${c.title}" loading="lazy" decoding="async">
-              <span class="cert-status-badge ${statusClass}">${statusLabel}</span>
-            </div>
-            <div class="cert-info">
-              <div class="cert-title">${c.title}</div>
-              <div class="cert-issuer">${c.issuer}</div>
-              <div class="cert-date">${c.date}</div>
+          html += `
+            <div class="cert-card" data-status="${c.status}" data-id="${c.id}">
+              <div class="cert-thumb-wrap">
+                <img src="${c.img}" alt="${c.title}" width="400" height="300" loading="lazy" decoding="async">
+                <span class="cert-status-badge ${statusClass}">${statusLabel}</span>
+              </div>
+              <div class="cert-info">
+                <div class="cert-title">${c.title}</div>
+                <div class="cert-issuer">${c.issuer}</div>
+                <div class="cert-date">${c.date}</div>
+              </div>
             </div>
           `;
-          card.addEventListener('click', () => openLightbox(c));
-          grid.appendChild(card);
+        });
+        grid.innerHTML = html;
+
+        const cards = grid.querySelectorAll('.cert-card');
+        cards.forEach((card, i) => {
+          card.addEventListener('click', () => openLightbox(data[i]));
         });
       }
 
       function renderBadges(data) {
         const grid = document.getElementById('badges-grid');
         if (!grid) return;
-        grid.innerHTML = '';
+        let html = '';
         data.forEach(b => {
-          const card = document.createElement('div');
-          card.className = 'badge-card';
-          card.dataset.id = b.id;
-
           const initials = b.title
             .split(' ')
             .filter(w => /^[A-Za-z]/.test(w))
             .slice(0, 3)
             .map(w => w[0].toUpperCase())
             .join('');
-
-          card.innerHTML = `
-            <div class="badge-thumb-wrap">
-              <div class="badge-fallback" style="display:none;">${initials}</div>
-              <img src="${b.img}" alt="${b.title}" loading="lazy" decoding="async"
-                   onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';">
-            </div>
-            <div class="badge-info">
-              <div class="badge-title">${b.title}</div>
-              <div class="badge-issuer">${b.issuer}</div>
-              <div class="badge-date">${b.date}</div>
+          html += `
+            <div class="badge-card" data-id="${b.id}">
+              <div class="badge-thumb-wrap">
+                <div class="badge-fallback" style="display:none;">${initials}</div>
+                <img src="${b.img}" alt="${b.title}" width="140" height="140" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';">
+              </div>
+              <div class="badge-info">
+                <div class="badge-title">${b.title}</div>
+                <div class="badge-issuer">${b.issuer}</div>
+                <div class="badge-date">${b.date}</div>
+              </div>
             </div>
           `;
-          card.addEventListener('click', () => openLightbox(b));
-          grid.appendChild(card);
+        });
+        grid.innerHTML = html;
+
+        const cards = grid.querySelectorAll('.badge-card');
+        cards.forEach((card, i) => {
+          card.addEventListener('click', () => openLightbox(data[i]));
         });
       }
 
@@ -1813,33 +1830,6 @@ Defend like a pro.">
           const isBlue = document.body.classList.contains('blue-team');
           toggleBtn.textContent = isBlue ? '[ SWITCH TO RED TEAM ]' : '[ SWITCH TO BLUE TEAM ]';
         });
-      }
-
-      function initBootSequence() {
-        const bootLog = document.getElementById('boot-log');
-        if (!bootLog) return;
-        const lines = [
-          "[ OK ] Initializing kernel modules...",
-          "[ OK ] Mounting /dev/sda1...",
-          "[ OK ] Starting Network Manager...",
-          "[ OK ] Starting Firewall (ufw)...",
-          "[ OK ] Loading offensive security tools...",
-          "[ OK ] Reached target Multi-User System.",
-          "[ OK ] Starting Kyrillos Kamal Portfolio..."
-        ];
-        let currentLine = 0;
-        const interval = setInterval(() => {
-          if (currentLine < lines.length) {
-            const div = document.createElement('div');
-            div.textContent = lines[currentLine];
-            const okText = div.innerHTML.replace('[ OK ]', '<span class="ok">[ OK ]</span>');
-            div.innerHTML = okText;
-            bootLog.appendChild(div);
-            currentLine++;
-          } else {
-            clearInterval(interval);
-          }
-        }, 300);
       }
 
       function initConsole() {
@@ -1958,13 +1948,32 @@ Defend like a pro.">
         });
       }
 
-      // ===== PERFORMANCE FIX #4: Defer non-critical initialization =====
+      function initBootSequence() {
+        const bootLog = document.getElementById('boot-log');
+        if (!bootLog) return;
+        const lines = [
+          "[ OK ] Booting portfolio...",
+          "[ OK ] Loading assets...",
+          "[ OK ] Starting services...",
+          "[ OK ] Ready."
+        ];
+        let currentLine = 0;
+        const interval = setInterval(() => {
+          if (currentLine < lines.length) {
+            bootLog.textContent = lines[currentLine];
+            currentLine++;
+          } else {
+            clearInterval(interval);
+          }
+        }, 100);
+      }
 
-      // Critical: hide loader + boot sequence (needed for UX)
+      // ===== FAST BOOT + LOADER DISMISS (500ms total) =====
       initBootSequence();
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-      }, 2800);
+      window.setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) loader.classList.add('hidden');
+      }, 500);
 
       // Non-critical: defer heavy rendering until browser is idle
       const initDeferred = () => {
@@ -1977,6 +1986,7 @@ Defend like a pro.">
         initCertLightbox();
         initCertFilters();
 
+        // ===== Reflow optimization: cache queries, batch writes =====
         const observerOptions = { threshold: 0.3 };
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -1984,7 +1994,11 @@ Defend like a pro.">
               entry.target.classList.add('visible');
               const fill = entry.target.querySelector('.skill-fill');
               if (fill) {
-                setTimeout(() => { fill.style.width = fill.getAttribute('data-width'); }, 200);
+                // Use requestAnimationFrame to avoid forced synchronous layout
+                requestAnimationFrame(() => {
+                  const w = fill.getAttribute('data-width');
+                  if (w) fill.style.width = w;
+                });
               }
               observer.unobserve(entry.target);
             }
@@ -1993,18 +2007,20 @@ Defend like a pro.">
 
         document.querySelectorAll('.capability-item').forEach(el => observer.observe(el));
 
-        setTimeout(() => {
-          document.querySelectorAll('.focus-fill').forEach(el => {
+        // Batch all focus-fill writes into one rAF cycle
+        requestAnimationFrame(() => {
+          const fills = document.querySelectorAll('.focus-fill');
+          fills.forEach(el => {
             const w = el.getAttribute('data-width');
             if (w && w !== '0%') el.style.width = w;
           });
-        }, 500);
+        });
       };
 
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(initDeferred, { timeout: 2000 });
+        requestIdleCallback(initDeferred, { timeout: 1500 });
       } else {
-        setTimeout(initDeferred, 1);
+        window.setTimeout(initDeferred, 1);
       }
 
     });
