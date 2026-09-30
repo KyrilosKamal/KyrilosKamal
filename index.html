@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
+
   <title>Kyrillos Kamal | Network Security & Offensive Security Portfolio</title>
   <meta name="description" content="Portfolio of Kyrillos Kamal — IT & Network Security professional with 6+ years of experience in offensive security, infrastructure hardening, and OT/ICS defense. TryHackMe Top 3% globally.">
   <meta name="author" content="Kyrillos Kamal">
@@ -1139,6 +1141,184 @@
       color: var(--text-muted);
     }
 
+    /* ===== FOCUS SECTION — NEW PROGRESS BAR DESIGN ===== */
+    #focus { padding-top: 60px; }
+    .focus-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .focus-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--info));
+    }
+    .focus-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .focus-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px var(--accent-dim);
+    }
+    .focus-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+    .focus-platform {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 5px var(--accent-glow);
+    }
+    .focus-pct-circle {
+      position: relative;
+      width: 84px;
+      height: 84px;
+      margin-left: auto;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .focus-pct-number {
+      position: absolute;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-shadow: 0 0 15px var(--accent-glow);
+      z-index: 2;
+      line-height: 1;
+    }
+    .focus-pct-sign {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-left: 1px;
+    }
+    .focus-pct-ring {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .focus-ring-bg {
+      fill: none;
+      stroke: var(--surface-light);
+      stroke-width: 6;
+    }
+    .focus-ring-fill {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-dasharray: 276.46;
+      stroke-dashoffset: 276.46;
+      filter: drop-shadow(0 0 6px var(--accent-glow));
+      transition: stroke-dashoffset 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .focus-bar {
+      position: relative;
+      width: 100%;
+      height: 8px;
+      background: var(--surface-light);
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      overflow: visible;
+    }
+    .focus-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--info));
+      border-radius: 4px;
+      width: 0;
+      transition: width 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 15px var(--accent-glow);
+      position: relative;
+    }
+    .focus-fill::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--accent);
+      animation: pulse 2s infinite;
+    }
+    .focus-milestone {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px;
+      height: 14px;
+      background: var(--border);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .focus-milestone:last-child { display: none; }
+    .focus-milestone span {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .focus-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .focus-meta strong {
+      color: var(--accent);
+      font-weight: 700;
+      text-shadow: 0 0 5px var(--accent-glow);
+    }
+    .focus-research {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.6;
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+    }
+
     @media (max-width: 1024px) and (min-width: 769px) {
       .bounty-grid {
         grid-template-columns: 1fr;
@@ -1161,6 +1341,10 @@
       nav { padding: 0 3%; }
       .nav-logo { font-size: 0.8rem; }
       .theme-toggle { font-size: 0.6rem; padding: 5px 10px; }
+      .focus-header { gap: 1rem; }
+      .focus-pct-circle { width: 72px; height: 72px; }
+      .focus-pct-number { font-size: 1.2rem; }
+      .focus-meta { gap: 1rem; font-size: 0.75rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1393,6 +1577,25 @@
           <strong style="color: var(--accent);">Current Status:</strong> Closed as Duplicate — confirms the vulnerability was correctly identified independently, ahead of public disclosure.
         </p>
       </div>
+
+      <div class="bounty-card">
+        <div class="bounty-header">
+          <span class="bounty-status">Engagement Complete</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">Duplicate (Confirmed Valid Root Cause)</span>
+        </div>
+        <div class="bounty-title">HackerOne — Banco Plata (Fintech · Mexico)</div>
+        <div class="bounty-desc">
+          Identified and reported a CORS misconfiguration on an authentication flow API that reflects arbitrary Origin headers in Access-Control-Allow-Origin while simultaneously enabling Access-Control-Allow-Credentials on real POST responses (not just preflight OPTIONS). The report was closed as a duplicate of an existing finding — validating both the technical identification of the misconfiguration and the overall reproduction methodology. Specific endpoints and full technical details remain protected under the program's coordinated disclosure policy.
+        </div>
+        <ul class="bounty-method">
+          <li><span class="step">01.</span> <strong>Reconnaissance</strong> — Mapped the authentication flow API surface and identified origin-handling behavior across the OAuth2 token issuer, authorize, logout, and OTP-related endpoints.</li>
+          <li><span class="step">02.</span> <strong>Testing</strong> — Systematically tested the CORS policy on actual POST responses (not just preflight OPTIONS) across multiple origin variants — reflected attacker origin, null, and wildcard — to confirm the reflection pattern with credentials enabled.</li>
+          <li><span class="step">03.</span> <strong>Reporting</strong> — Documented the misconfiguration with captured HTTP responses, reproduction steps, CVSS 3.1 scoring (6.1 — Medium), and a recommended fix using an explicit origin allowlist. Submitted for triage via HackerOne.</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+          <strong style="color: var(--accent);">Current Status:</strong> Closed as Duplicate — confirms the CORS misconfiguration was correctly identified independently, ahead of public disclosure.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -1596,13 +1799,38 @@
     <h2><span class="hash">##</span> What I'm working towards.</h2>
 
     <div class="focus-card">
-      <div class="focus-title">Jr Penetration Tester Learning Path — TryHackMe (In Progress)</div>
-      <div class="focus-sub">Research Focus: Exploring the intersection of OT/ICS Security and AI-driven Threat Detection for future academic and professional application.</div>
-      <div class="focus-progress-label">
-        <span>Path Progress</span>
-        <span class="pct">39%</span>
+      <div class="focus-header">
+        <div class="focus-icon">🎯</div>
+        <div style="flex: 1; min-width: 200px;">
+          <div class="focus-title">Jr Penetration Tester Learning Path</div>
+          <div class="focus-platform">TryHackMe · In Progress</div>
+        </div>
+        <div class="focus-pct-circle">
+          <span class="focus-pct-number">39<span class="focus-pct-sign">%</span></span>
+          <svg class="focus-pct-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="focus-ring-bg" cx="50" cy="50" r="44" />
+            <circle class="focus-ring-fill" cx="50" cy="50" r="44" data-pct="39" />
+          </svg>
+        </div>
       </div>
-      <div class="focus-bar"><div class="focus-fill" data-width="39%"></div></div>
+
+      <div class="focus-bar">
+        <div class="focus-fill" data-width="39%"></div>
+        <div class="focus-milestone" style="left: 25%"><span>25%</span></div>
+        <div class="focus-milestone" style="left: 50%"><span>50%</span></div>
+        <div class="focus-milestone" style="left: 75%"><span>75%</span></div>
+        <div class="focus-milestone" style="left: 100%"><span>100%</span></div>
+      </div>
+
+      <div class="focus-meta">
+        <span><strong>147</strong> rooms completed</span>
+        <span><strong>17</strong> badges earned</span>
+        <span><strong>Top 3%</strong> global rank</span>
+      </div>
+
+      <div class="focus-research">
+        Research Focus: Exploring the intersection of OT/ICS Security and AI-driven Threat Detection for future academic and professional application.
+      </div>
     </div>
   </section>
 
@@ -2058,11 +2286,22 @@
         document.querySelectorAll('.capability-item').forEach(el => observer.observe(el));
 
         requestAnimationFrame(() => {
-          const fills = document.querySelectorAll('.focus-fill');
-          fills.forEach(el => {
+          // Animate the linear progress bar
+          document.querySelectorAll('.focus-fill').forEach(el => {
             const w = el.getAttribute('data-width');
             if (w && w !== '0%') el.style.width = w;
           });
+
+          // Animate the SVG circular progress ring
+          const ring = document.querySelector('.focus-ring-fill');
+          if (ring) {
+            const pct = parseInt(ring.getAttribute('data-pct'), 10) || 0;
+            const circumference = 2 * Math.PI * 44; // r = 44 from SVG viewBox
+            const offset = circumference - (pct / 100) * circumference;
+            setTimeout(() => {
+              ring.style.strokeDashoffset = offset;
+            }, 250);
+          }
         });
       };
 
