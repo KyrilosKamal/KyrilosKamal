@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
-
   <title>Kyrillos Kamal | Network Security & Offensive Security Portfolio</title>
   <meta name="description" content="Portfolio of Kyrillos Kamal — IT & Network Security professional with 6+ years of experience in offensive security, infrastructure hardening, and OT/ICS defense. TryHackMe Top 3% globally.">
   <meta name="author" content="Kyrillos Kamal">
@@ -1540,6 +1538,26 @@
     <h2><span class="hash">##</span> Hunting in the wild.</h2>
 
     <div class="bounty-grid">
+
+      <div class="bounty-card">
+        <div class="bounty-header">
+          <span class="bounty-status">Engagement Complete</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">5 Valid Findings (2 Critical · 2 High · 1 Medium)</span>
+        </div>
+        <div class="bounty-title">HackerOne — D-You App &amp; German EUDI Wallet Ecosystem</div>
+        <div class="bounty-desc">
+          Conducted a deep-dive security assessment of the D-You App and the German EUDI Wallet Ecosystem — the backend services governing device attestation, wallet lifecycle, cryptographic operations, and push notifications for a national-scale digital identity infrastructure. Five validated findings spanning the full trust chain: from cryptographic verification and authentication, through device binding, to notification routing and wallet revocation. Reported with code-level root-cause analysis and remediation guidance for each issue. Specific technical details remain protected under the program's coordinated disclosure policy.
+        </div>
+        <ul class="bounty-method">
+          <li><span class="step">01.</span> <strong>Recon &amp; Source Review</strong> — Reviewed four backend services end-to-end, from Kotlin source handling JWT and PKIX validation through the RFC 9421 signature implementation, down to wallet lifecycle and push-notification registration flows.</li>
+          <li><span class="step">02.</span> <strong>Exploitation &amp; PoC</strong> — Constructed forged tokens, replayed signed requests, and demonstrated silent notification hijacking against the sandbox environment to confirm real-world impact.</li>
+          <li><span class="step">03.</span> <strong>Reporting</strong> — Delivered code-level root-cause analysis with remediation guidance for each finding. All five reports validated and triaged by the program.</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+          <strong style="color: var(--accent);">Current Status:</strong> Engagement complete. All five findings validated and triaged. Demonstrated that a single validation short-circuit can cascade into ecosystem-wide trust failure — the next engagement begins with the same rigor and a sharpened methodology.
+        </p>
+      </div>
+
       <div class="bounty-card">
         <div class="bounty-header">
           <span class="bounty-status">Engagement Complete</span>
