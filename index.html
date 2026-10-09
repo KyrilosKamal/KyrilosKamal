@@ -1620,6 +1620,25 @@
           <strong style="color: var(--accent);">Current Status:</strong> Closed as Duplicate — confirms the CORS misconfiguration was correctly identified independently, ahead of public disclosure.
         </p>
       </div>
+
+      <div class="bounty-card">
+        <div class="bounty-header">
+          <span class="bounty-status">Engagement Complete</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">2 Valid Findings — Duplicate (Confirmed Valid Root Cause)</span>
+        </div>
+        <div class="bounty-title">HackerOne — Omarchy (Source Code Pentest &amp; Review)</div>
+        <div class="bounty-desc">
+          Conducted a full source-code-level security review of the Omarchy Linux desktop environment scripts, focusing on command execution sinks and file-write primitives. Discovered two independent command injection vulnerabilities: one in the launcher utility (unsafe eval of attacker-controlled arguments) and one in the TUI installer (unsanitized writes into .desktop files enabling persistent execution). Both reports were closed as duplicates of existing internal findings — validating both the technical root-cause analysis and the discovery methodology.
+        </div>
+        <ul class="bounty-method">
+          <li><span class="step">01.</span> <strong>Source Review</strong> — Audited the launcher and installer scripts, tracing untrusted input through shell eval sinks and .desktop file writes to identify two distinct injection primitives.</li>
+          <li><span class="step">02.</span> <strong>Exploitation</strong> — Demonstrated arbitrary command execution via shell metacharacters, newline-based Exec key injection, and directory traversal in the installer flow.</li>
+          <li><span class="step">03.</span> <strong>Reporting</strong> — Documented both sinks with reproduction steps, PoCs, and remediation guidance (array-based argument parsing, input validation, proper escaping).</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+          <strong style="color: var(--accent);">Current Status:</strong> Both reports closed as Duplicate — confirms the vulnerabilities were correctly identified independently, ahead of public disclosure.
+        </p>
+      </div>
     </div>
   </section>
 
