@@ -10,7 +10,6 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 
-
   <title>Kyrillos Kamal | Network Security & Offensive Security Portfolio</title>
   <meta name="description" content="Portfolio of Kyrillos Kamal — IT Security professional with 2+ years of experience in offensive security, infrastructure hardening, and OT/ICS defense. TryHackMe Top 3% globally.">
   <meta name="author" content="Kyrillos Kamal">
@@ -1635,6 +1634,25 @@
           <li><span class="step">01.</span> <strong>Source Review</strong> — Audited the launcher and installer scripts, tracing untrusted input through shell eval sinks and .desktop file writes to identify two distinct injection primitives.</li>
           <li><span class="step">02.</span> <strong>Exploitation</strong> — Demonstrated arbitrary command execution via shell metacharacters, newline-based Exec key injection, and directory traversal in the installer flow.</li>
           <li><span class="step">03.</span> <strong>Reporting</strong> — Documented both sinks with reproduction steps, PoCs, and remediation guidance (array-based argument parsing, input validation, proper escaping).</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+          <strong style="color: var(--accent);">Current Status:</strong> Both reports closed as Duplicate — confirms the vulnerabilities were correctly identified independently, ahead of public disclosure.
+        </p>
+      </div>
+
+      <div class="bounty-card">
+        <div class="bounty-header">
+          <span class="bounty-status">Engagement Complete</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">2 Valid Findings (1 Critical · 1 Medium) — Duplicate</span>
+        </div>
+        <div class="bounty-title">Bugcrowd — Lively Apps (PocketQuery for Confluence)</div>
+        <div class="bounty-desc">
+          Conducted a deep-dive security assessment of the PocketQuery SQL REST app for Confluence. Discovered two distinct vulnerabilities: a critical SQL injection via the "Constant" parameter type (allowing arbitrary database reads and UNION-based exfiltration) and a Server-Side Request Forgery (SSRF) in the REST Custom Datasource (bypassing the Forge egress allowlist and enabling non-HTTP port access). The SSRF served as the infrastructure to reach the attacker-controlled database, enabling the proof-of-concept for the SQL injection. Both reports were closed as duplicates of existing internal findings — validating the technical root-cause analysis and the discovery methodology.
+        </div>
+        <ul class="bounty-method">
+          <li><span class="step">01.</span> <strong>Recon &amp; Setup</strong> — Analyzed the PocketQuery parameter types and Datasource URL handling. Set up an attacker-controlled MariaDB instance reachable via an SSH reverse tunnel to observe backend behavior.</li>
+          <li><span class="step">02.</span> <strong>Exploitation</strong> — Demonstrated the SSRF pivot by capturing inbound requests from Lively's cloud IP and reaching a raw MySQL port. Chained this with a UNION-based SQL injection using the "Constant" parameter type to exfiltrate restricted tables and enumerate the schema.</li>
+          <li><span class="step">03.</span> <strong>Reporting</strong> — Documented both defects with exact payloads, DB logs, and raw HTTP evidence. Provided remediation guidance (JDBC parameter binding, strict URL/port allowlisting).</li>
         </ul>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--accent);">Current Status:</strong> Both reports closed as Duplicate — confirms the vulnerabilities were correctly identified independently, ahead of public disclosure.
