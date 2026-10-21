@@ -10,6 +10,8 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 
+  <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
+
   <title>Kyrillos Kamal | Network Security & Offensive Security Portfolio</title>
   <meta name="description" content="Portfolio of Kyrillos Kamal — IT Security professional with 2+ years of experience in offensive security, infrastructure hardening, and OT/ICS defense. TryHackMe Top 3% globally.">
   <meta name="author" content="Kyrillos Kamal">
@@ -1659,23 +1661,22 @@
         </p>
       </div>
 
-      <!-- NEW CARD: Brave Browser SSRF -->
       <div class="bounty-card">
         <div class="bounty-header">
           <span class="bounty-status">Engagement Complete</span>
-          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">Submitted (Under Triage)</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">Confidential (Under Triage)</span>
         </div>
-        <div class="bounty-title">HackerOne — Brave Browser (Brave News SSRF)</div>
+        <div class="bounty-title">HackerOne — Brave Browser (Network Boundary Bypass)</div>
         <div class="bounty-desc">
-          Conducted a deep-dive security assessment of the Brave browser's image proxy implementation used by Brave News. Discovered a Blind Server-Side Request Forgery (SSRF) allowing a malicious RSS feed to force the browser process to fetch arbitrary URLs, including loopback (127.0.0.1) and RFC1918 local network addresses. Demonstrated the vulnerability across Stable and Beta release channels using custom CDP (Chrome DevTools Protocol) scripts and local network listeners.
+          Conducted a source-code-level security review of the Brave browser's internal component architecture, focusing on network request handling and privacy boundaries. Identified a security flaw in a privileged browser-process component that could allow an attacker to bypass network restrictions and trigger requests to local network addresses. Specific technical details, vulnerable endpoints, and proof-of-concept mechanisms remain strictly protected under the program's coordinated disclosure policy while the report is under active triage.
         </div>
         <ul class="bounty-method">
-          <li><span class="step">01.</span> <strong>Source Review &amp; Setup</strong> — Analyzed the <code>chrome-untrusted://brave-image</code> proxy and its handling of feed images. Set up local HTTPS servers to monitor incoming browser process requests.</li>
-          <li><span class="step">02.</span> <strong>Exploitation &amp; PoC</strong> — Crafted a malicious RSS feed payload to force the browser to request local endpoints (127.0.0.1 and local bridge IPs), verifying the exact network behavior via Netlogs.</li>
-          <li><span class="step">03.</span> <strong>Reporting</strong> — Captured Netlogs and server hits across Stable/Beta channels, documenting the root cause and providing the patch suggestion (<code>kURLLoadOptionBlockLocalRequest</code>).</li>
+          <li><span class="step">01.</span> <strong>Architecture Review</strong> — Analyzed the browser's internal request handling mechanisms and their interaction with the renderer process boundaries.</li>
+          <li><span class="step">02.</span> <strong>PoC Development</strong> — Built custom automation tooling to simulate the attack vector in a controlled environment, validating the network boundary bypass.</li>
+          <li><span class="step">03.</span> <strong>Reporting</strong> — Submitted a comprehensive report with detailed logs, reproduction steps, and a suggested code-level patch to enforce local network restrictions.</li>
         </ul>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
-          <strong style="color: var(--accent);">Current Status:</strong> Submitted to HackerOne. The finding was documented with comprehensive evidence (CDP scripts, Netlogs, server hit logs), proving local network reachability from a privileged browser context.
+          <strong style="color: var(--accent);">Current Status:</strong> Submitted to HackerOne. The finding was documented with comprehensive evidence proving the security boundary bypass, demonstrating deep understanding of browser architecture.
         </p>
       </div>
 
