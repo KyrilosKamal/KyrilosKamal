@@ -1659,6 +1659,26 @@
         </p>
       </div>
 
+      <!-- NEW CARD: Brave Browser SSRF -->
+      <div class="bounty-card">
+        <div class="bounty-header">
+          <span class="bounty-status">Engagement Complete</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">Submitted (Under Triage)</span>
+        </div>
+        <div class="bounty-title">HackerOne — Brave Browser (Brave News SSRF)</div>
+        <div class="bounty-desc">
+          Conducted a deep-dive security assessment of the Brave browser's image proxy implementation used by Brave News. Discovered a Blind Server-Side Request Forgery (SSRF) allowing a malicious RSS feed to force the browser process to fetch arbitrary URLs, including loopback (127.0.0.1) and RFC1918 local network addresses. Demonstrated the vulnerability across Stable and Beta release channels using custom CDP (Chrome DevTools Protocol) scripts and local network listeners.
+        </div>
+        <ul class="bounty-method">
+          <li><span class="step">01.</span> <strong>Source Review &amp; Setup</strong> — Analyzed the <code>chrome-untrusted://brave-image</code> proxy and its handling of feed images. Set up local HTTPS servers to monitor incoming browser process requests.</li>
+          <li><span class="step">02.</span> <strong>Exploitation &amp; PoC</strong> — Crafted a malicious RSS feed payload to force the browser to request local endpoints (127.0.0.1 and local bridge IPs), verifying the exact network behavior via Netlogs.</li>
+          <li><span class="step">03.</span> <strong>Reporting</strong> — Captured Netlogs and server hits across Stable/Beta channels, documenting the root cause and providing the patch suggestion (<code>kURLLoadOptionBlockLocalRequest</code>).</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+          <strong style="color: var(--accent);">Current Status:</strong> Submitted to HackerOne. The finding was documented with comprehensive evidence (CDP scripts, Netlogs, server hit logs), proving local network reachability from a privileged browser context.
+        </p>
+      </div>
+
       <div class="bounty-card">
         <div class="bounty-header">
           <span class="bounty-status">Platform Mastery</span>
