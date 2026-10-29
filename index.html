@@ -1666,14 +1666,35 @@
         </p>
       </div>
 
+      <!-- XP Inc Open Banking (Critical + Duplicate) -->
       <div class="bounty-card">
         <div class="bounty-header">
           <span class="bounty-status">Engagement Complete</span>
-          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">Confidential (Under Triage)</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--danger); color: var(--danger);">Critical Severity — Duplicate</span>
+        </div>
+        <div class="bounty-title">HackerOne — XP Inc. (Open Banking Consent Flow)</div>
+        <div class="bounty-desc">
+          Identified a critical security flaw in a production Open Banking/Open Finance consent handoff service. The vulnerability allowed unauthenticated actors to inject arbitrary redirect URLs via an unauthenticated REST endpoint, which were then broadcast over WebSockets to all connected clients. This enabled a highly convincing phishing vector during financial data-sharing flows, potentially leading to credential or OTP theft. Specific technical details remain strictly protected under the program's coordinated disclosure policy.
+        </div>
+        <ul class="bounty-method">
+          <li><span class="step">01.</span> <strong>Recon &amp; Source Review</strong> — Mapped the consent handoff architecture and identified unauthenticated REST endpoints interacting with client-side WebSocket listeners.</li>
+          <li><span class="step">02.</span> <strong>Exploitation &amp; PoC</strong> — Demonstrated the full attack chain: injecting an arbitrary URL via the API, receiving the WebSocket broadcast, and confirming client-side navigation logic leading to an open redirect.</li>
+          <li><span class="step">03.</span> <strong>Reporting</strong> — Delivered a comprehensive report detailing the unauthenticated write, mass-assignment risks, and exact reproduction steps. Proposed robust remediation including authentication, URL allowlisting, and scoped WebSocket broadcasts.</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+          <strong style="color: var(--danger);">Current Status:</strong> Closed as Duplicate — confirms the vulnerability was correctly identified independently, ahead of public disclosure. Critical severity assessment confirmed.
+        </p>
+      </div>
+
+      <!-- Brave Browser SSRF (Duplicate) -->
+      <div class="bounty-card">
+        <div class="bounty-header">
+          <span class="bounty-status">Engagement Complete</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--warning); color: var(--warning);">Duplicate (Confirmed Valid Root Cause)</span>
         </div>
         <div class="bounty-title">HackerOne — Brave Browser (Network Boundary Bypass)</div>
         <div class="bounty-desc">
-          Conducted a source-code-level security review of the Brave browser's internal component architecture, focusing on network request handling and privacy boundaries. Identified a security flaw in a privileged browser-process component that could allow an attacker to bypass network restrictions and trigger requests to local network addresses. Specific technical details, vulnerable endpoints, and proof-of-concept mechanisms remain strictly protected under the program's coordinated disclosure policy while the report is under active triage.
+          Conducted a source-code-level security review of the Brave browser's internal component architecture, focusing on network request handling and privacy boundaries. Identified a security flaw in a privileged browser-process component that could allow an attacker to bypass network restrictions and trigger requests to local network addresses. The report was acknowledged and closed as a duplicate of an existing internal finding — validating the technical root-cause analysis and the discovery methodology. Specific technical details remain protected under the program's coordinated disclosure policy.
         </div>
         <ul class="bounty-method">
           <li><span class="step">01.</span> <strong>Architecture Review</strong> — Analyzed the browser's internal request handling mechanisms and their interaction with the renderer process boundaries.</li>
@@ -1681,7 +1702,7 @@
           <li><span class="step">03.</span> <strong>Reporting</strong> — Submitted a comprehensive report with detailed logs, reproduction steps, and a suggested code-level patch to enforce local network restrictions.</li>
         </ul>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
-          <strong style="color: var(--accent);">Current Status:</strong> Submitted to HackerOne. The finding was documented with comprehensive evidence proving the security boundary bypass, demonstrating deep understanding of browser architecture.
+          <strong style="color: var(--accent);">Current Status:</strong> Closed as Duplicate — confirms the vulnerability was correctly identified independently, ahead of public disclosure.
         </p>
       </div>
 
