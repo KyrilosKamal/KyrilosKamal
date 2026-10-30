@@ -10,6 +10,8 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 
+  <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
+
   <title>Kyrillos Kamal | Network Security & Offensive Security Portfolio</title>
   <meta name="description" content="Portfolio of Kyrillos Kamal — IT Security professional with 2+ years of experience in offensive security, infrastructure hardening, and OT/ICS defense. TryHackMe Top 3% globally.">
   <meta name="author" content="Kyrillos Kamal">
@@ -23,7 +25,6 @@
   <meta property="og:title" content="Kyrillos Kamal | Network Security & Offensive Security">
   <meta property="og:description" content="IT Security professional with 2+ years of experience specializing in penetration testing, infrastructure hardening, and OT/ICS defense. Ranked Top 3% globally on TryHackMe.">
   
-  <!-- تم تعديل مسار الصورة للينك المباشر -->
   <meta property="og:image" content="https://i.postimg.cc/ry0HDQwK/Cybersecurity-Network-Command-Center.png">
   <meta property="og:image:secure_url" content="https://i.postimg.cc/ry0HDQwK/Cybersecurity-Network-Command-Center.png">
   <meta property="og:image:type" content="image/png">
@@ -38,7 +39,6 @@
   <meta name="twitter:title" content="Kyrillos Kamal | Network Security & Offensive Security">
   <meta name="twitter:description" content="IT Security professional with 2+ years of experience specializing in penetration testing, infrastructure hardening, and OT/ICS defense. Ranked Top 3% globally on TryHackMe.">
   
-  <!-- تم تعديل مسار الصورة للينك المباشر -->
   <meta name="twitter:image" content="https://i.postimg.cc/ry0HDQwK/Cybersecurity-Network-Command-Center.png">
   
   <meta name="twitter:image:alt" content="Kyrillos Kamal — Network Security & Offensive Security">
@@ -230,6 +230,7 @@
     }
     h2 .hash { color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
 
+    /* ===== HERO SECTION (UPDATED FOR VIDEO) ===== */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -237,6 +238,41 @@
       justify-content: center;
       padding-top: 120px;
     }
+    
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* تنسيق الفيديو عشان يشبه الصورة */
+    .hero-video {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(255, 0, 64, 0.15);
+      border: 1px solid rgba(255, 0, 64, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+    }
+
+    .hero-video:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 0 60px rgba(255, 0, 64, 0.3);
+    }
+
     .system-status {
       font-family: 'Fira Code', monospace;
       font-size: 0.75rem;
@@ -257,7 +293,7 @@
 
     .hero-title {
       font-family: 'Fira Code', monospace;
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 1.5rem;
@@ -306,9 +342,8 @@
     }
 
     .hero-sub {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--text-muted);
-      max-width: 700px;
       margin-bottom: 2rem;
     }
 
@@ -350,7 +385,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 1.25rem;
+      padding: 1rem;
       text-align: center;
       transition: border-color 0.3s, box-shadow 0.3s;
       contain: layout style;
@@ -358,12 +393,14 @@
     .hero-stat:hover { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-dim); }
     .hero-stat .val {
       font-family: 'Fira Code', monospace;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--accent);
       text-shadow: 0 0 10px var(--accent-glow);
     }
-    .hero-stat .label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+    .hero-stat .label { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ========================================= */
 
     #profile { padding-top: 60px; }
     .profile-content {
@@ -1330,7 +1367,17 @@
       padding-left: 1rem;
     }
 
-    @media (max-width: 1024px) and (min-width: 769px) {
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content {
+        align-items: center;
+      }
+      .hero-image {
+        margin-top: 2rem;
+      }
       .bounty-grid {
         grid-template-columns: 1fr;
       }
@@ -1396,55 +1443,67 @@
   </nav>
 
   <section id="hero">
-    <div class="system-status">
-      <span class="dot"></span> SYSTEM ONLINE — AWAITING ORDERS
-    </div>
-
-    <h1 class="hero-title">
-      <span class="glitch-wrap" data-text="Think like an attacker.">Think like an attacker.</span><br>
-      <span class="glitch-wrap" data-text="Defend like a pro.">Defend like a pro.</span>
-    </h1>
-
-    <p class="hero-sub">
-      I'm <strong style="color: var(--text);">Kyrillos Kamal</strong> — an IT Security professional with 2+ years of hands-on experience, backed by a strong foundation in enterprise networking. I hunt for the gaps others miss. Every vulnerability found is a system made stronger.
-    </p>
-
-    <div class="terminal-window">
-      <div class="terminal-header">
-        <span class="btn red"></span>
-        <span class="btn yellow"></span>
-        <span class="btn green"></span>
-        <span class="terminal-title">root@darknet: ~</span>
-      </div>
-      <div class="terminal-body">
-        <div><span class="prompt">root@darknet:~#</span> <span class="cmd">whoami</span></div>
-        <div class="output">kyrillos_kamal // it security &amp; network defender</div>
-        <div style="margin-top: 8px;"><span class="prompt">root@darknet:~#</span> <span class="cmd">cat /etc/motd</span></div>
-        <div class="output">
-          <span class="highlight">2+</span> Years IT Security Experience<br>
-          <span class="highlight">147</span> TryHackMe Rooms Completed<br>
-          <span class="highlight">Top 3%</span> Globally on TryHackMe<br>
-          <span class="highlight">eJPT</span> In Progress
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="system-status">
+          <span class="dot"></span> SYSTEM ONLINE — AWAITING ORDERS
+        </div>
+    
+        <h1 class="hero-title">
+          <span class="glitch-wrap" data-text="Think like an attacker.">Think like an attacker.</span><br>
+          <span class="glitch-wrap" data-text="Defend like a pro.">Defend like a pro.</span>
+        </h1>
+    
+        <p class="hero-sub">
+          I'm <strong style="color: var(--text);">Kyrillos Kamal</strong> — an IT Security professional with 2+ years of hands-on experience, backed by a strong foundation in enterprise networking. I hunt for the gaps others miss. Every vulnerability found is a system made stronger.
+        </p>
+    
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <span class="btn red"></span>
+            <span class="btn yellow"></span>
+            <span class="btn green"></span>
+            <span class="terminal-title">root@darknet: ~</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">root@darknet:~#</span> <span class="cmd">whoami</span></div>
+            <div class="output">kyrillos_kamal // it security &amp; network defender</div>
+            <div style="margin-top: 8px;"><span class="prompt">root@darknet:~#</span> <span class="cmd">cat /etc/motd</span></div>
+            <div class="output">
+              <span class="highlight">2+</span> Years IT Security Experience<br>
+              <span class="highlight">147</span> TryHackMe Rooms Completed<br>
+              <span class="highlight">Top 3%</span> Globally on TryHackMe<br>
+              <span class="highlight">eJPT</span> In Progress
+            </div>
+          </div>
+        </div>
+    
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="val">2+</div>
+            <div class="label">Years Security Exp</div>
+          </div>
+          <div class="hero-stat">
+            <div class="val">180+</div>
+            <div class="label">Nodes Secured</div>
+          </div>
+          <div class="hero-stat">
+            <div class="val">99%</div>
+            <div class="label">Uptime Maintained</div>
+          </div>
+          <div class="hero-stat">
+            <div class="val">Top 3%</div>
+            <div class="label">TryHackMe Global</div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="val">2+</div>
-        <div class="label">Years Security Exp</div>
-      </div>
-      <div class="hero-stat">
-        <div class="val">180+</div>
-        <div class="label">Nodes Secured</div>
-      </div>
-      <div class="hero-stat">
-        <div class="val">99%</div>
-        <div class="label">Uptime Maintained</div>
-      </div>
-      <div class="hero-stat">
-        <div class="val">Top 3%</div>
-        <div class="label">TryHackMe Global</div>
+      
+      <!-- VIDEO ADDED HERE -->
+      <div class="hero-image">
+        <video class="hero-video" autoplay loop muted playsinline>
+          <source src="assets/hero-video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </section>
