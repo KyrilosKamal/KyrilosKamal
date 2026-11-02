@@ -257,7 +257,6 @@
       align-items: center;
     }
 
-    /* تنسيق الفيديو عشان يشبه الصورة */
     .hero-video {
       width: 100%;
       max-width: 450px;
@@ -1112,6 +1111,44 @@
     }
     .lightbox-footer .lb-meta strong { color: var(--accent); }
 
+    /* NEW: Verification Data Section inside Lightbox */
+    .lb-verify-data {
+      display: none;
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255, 0, 64, 0.05);
+      border: 1px dashed var(--accent);
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+    }
+    .lb-verify-data.active { display: block; }
+    .lb-verify-data h4 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+    .lb-verify-data p { margin-bottom: 0.25rem; }
+    .lb-verify-data span { color: var(--text); font-weight: 600; }
+    .lb-copy-btn {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: all 0.3s;
+    }
+    .lb-copy-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
     .lb-verify-btn {
       font-family: 'Fira Code', monospace;
       font-size: 0.75rem;
@@ -1498,7 +1535,6 @@
         </div>
       </div>
       
-      <!-- VIDEO ADDED HERE -->
       <div class="hero-image">
         <video class="hero-video" autoplay loop muted playsinline>
           <source src="assets/hero_video.mp4" type="video/mp4">
@@ -1725,7 +1761,6 @@
         </p>
       </div>
 
-      <!-- XP Inc Open Banking (Critical + Duplicate) -->
       <div class="bounty-card">
         <div class="bounty-header">
           <span class="bounty-status">Engagement Complete</span>
@@ -1745,7 +1780,6 @@
         </p>
       </div>
 
-      <!-- Brave Browser SSRF (Duplicate) -->
       <div class="bounty-card">
         <div class="bounty-header">
           <span class="bounty-status">Engagement Complete</span>
@@ -1972,11 +2006,21 @@
       <div class="lightbox-body">
         <img id="lb-img" src="" alt="Certificate full view" width="1000" height="750" decoding="async">
       </div>
-      <div class="lightbox-footer">
-        <div class="lb-meta" id="lb-meta"></div>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="lb-verify-btn" id="lb-verify">
-          Verify Certificate →
-        </a>
+      <div class="lightbox-footer" style="flex-direction: column; align-items: stretch;">
+        <!-- Verification Data Section -->
+        <div class="lb-verify-data" id="lb-verify-data">
+          <h4>Verification Details:</h4>
+          <p>Select CTF: <span id="lb-ctf-name"></span></p>
+          <p>Team Name: <span id="lb-team-name"></span></p>
+          <p>Email: <span id="lb-email"></span></p>
+          <button class="lb-copy-btn" id="lb-copy-btn">📋 Copy to Clipboard</button>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div class="lb-meta" id="lb-meta"></div>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="lb-verify-btn" id="lb-verify">
+            Verify Certificate →
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -2103,6 +2147,20 @@
       ];
 
       const certsData = [
+        { 
+          id: "blackout-ctf", 
+          title: "BlackOut CTF — Forensics, Web, Crypto & RE", 
+          issuer: "BlackOut CTF", 
+          date: "Earned", 
+          status: "earned", 
+          img: "https://i.postimg.cc/CxmwSmTf/NX-BLACKOUT-0031-Kyrillos-Kamal.png", 
+          verify: "https://nexploit.in/certificate/",
+          meta: {
+            ctf: "BLACKOUT CTF",
+            team: "EgyptianPharohs",
+            email: "kyrillos.kamal@proton.me"
+          }
+        },
         { id: "ejpt", title: "eJPT — Junior Penetration Tester", issuer: "INE Security", date: "In Progress", status: "in-progress", img: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23ffffff'/%3E%3Ctext x='200' y='135' font-family='monospace' font-size='90' font-weight='bold' fill='%23ff0040' text-anchor='middle'%3EeJPT%3C/text%3E%3Ctext x='200' y='180' font-family='monospace' font-size='22' fill='%23555566' text-anchor='middle'%3EIN PROGRESS%3C/text%3E%3Ctext x='200' y='210' font-family='monospace' font-size='14' fill='%23888899' text-anchor='middle'%3EINE Security%3C/text%3E%3C/svg%3E", verify: "https://ine.com/certifications/ejpt" },
         { id: "udemy-ip-subnetting", title: "IP Addressing and Subnetting — Hands-on Learning", issuer: "Udemy", date: "Earned", status: "earned", img: "https://i.postimg.cc/jStFFxKg/image.png", verify: "https://www.udemy.com/certificate/UC-0b9c6ed5-3867-43ed-974e-7604590e517a/" },
         { id: "udemy-powershell", title: "PowerShell Basics", issuer: "Udemy", date: "Earned", status: "earned", img: "https://i.postimg.cc/4ypWWM0J/image.png", verify: "https://www.udemy.com/certificate/UC-2ab65f2a-a9ce-460a-8474-5b17070a4d1b/" },
@@ -2241,6 +2299,11 @@
         const title = document.getElementById('lb-title');
         const meta = document.getElementById('lb-meta');
         const verify = document.getElementById('lb-verify');
+        const verifyDataSection = document.getElementById('lb-verify-data');
+        const ctfName = document.getElementById('lb-ctf-name');
+        const teamName = document.getElementById('lb-team-name');
+        const email = document.getElementById('lb-email');
+        const copyBtn = document.getElementById('lb-copy-btn');
 
         img.src = item.img;
         img.alt = item.title;
@@ -2248,6 +2311,28 @@
         const statusLabel = item.status ? (item.status === 'earned' ? 'EARNED' : 'IN PROGRESS') : 'VERIFIED';
         meta.innerHTML = `Issuer: <strong>${item.issuer}</strong> · Date: <strong>${item.date}</strong>${item.status ? ` · Status: <strong>${statusLabel}</strong>` : ''}`;
         verify.href = item.verify;
+
+        // Handle custom meta data (like CTF details)
+        if (item.meta) {
+          verifyDataSection.classList.add('active');
+          ctfName.textContent = item.meta.ctf;
+          teamName.textContent = item.meta.team;
+          email.textContent = item.meta.email;
+          
+          // Copy to clipboard functionality
+          copyBtn.onclick = () => {
+            const textToCopy = `Select CTF: ${item.meta.ctf}\nTeam Name: ${item.meta.team}\nEmail: ${item.meta.email}`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              const originalText = copyBtn.textContent;
+              copyBtn.textContent = '✅ Copied!';
+              setTimeout(() => { copyBtn.textContent = originalText; }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy: ', err);
+            });
+          };
+        } else {
+          verifyDataSection.classList.remove('active');
+        }
 
         lb.classList.add('open');
         document.body.style.overflow = 'hidden';
