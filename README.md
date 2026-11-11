@@ -1,12 +1,12 @@
-# Hi, I'm Kyrillos Kamal 👋
+# Hi, I'm Kyrillos Kamal 
 
-### 🛡️ Network Defender | Offensive Security Enthusiast | Infrastructure Architect
+### Network Defender | Offensive Security Enthusiast | Infrastructure Architect
 
 Bridging the gap between robust infrastructure defense and offensive security research. **6+ years** hardening enterprise networks (500+ endpoints), now actively hunting vulnerabilities and simulating advanced persistent threats. 
 
 ---
 
-## 🏆 TryHackMe Profile
+## TryHackMe Profile
 
 <p align="center">
   <a href="https://tryhackme.com/p/Hackth3Path">
@@ -22,30 +22,30 @@ Bridging the gap between robust infrastructure defense and offensive security re
   <img src="https://img.shields.io/badge/Badges-17-yellow?style=for-the-badge" alt="Badges" />
 </p>
 
-### 🏅 Notable Badges
+### Notable Badges
 
 | Badge | Description | Rarity |
 |-------|-------------|--------|
-| ⭐ **Sword Apprentice** | Completing the SQLMap room | Rare 3.7% |
-| ⭐ **Shield Apprentice** | Completing the FlareVM room | Rare 3.1% |
-| ⭐ **Session Held** | Completing 4 weekly missions in a row! | Rare 1.5% |
-| ⭐ **30 Day Streak** | Hacking for 30 days solid | Rare 4.7% |
-| ⭐ **Burp'ed** | Completing the Burp Suite module | Rare 9.2% |
-| ⭐ **Intro to Web Hacking** | Completing the 'Introduction to Web Hacking' module | Rare 8.9% |
-| 🛡️ **Metasploitable** | Contains the knowledge to use Metasploit | Common 12.2% |
-| 🛡️ **Blue** | Hacking into Windows via EternalBlue | Common 12.8% |
-| 🛡️ **OWASP Top 10** | Understanding every OWASP vulnerability | Common 13% |
+| **Sword Apprentice** | Completing the SQLMap room | Rare 3.7% |
+| **Shield Apprentice** | Completing the FlareVM room | Rare 3.1% |
+| **Session Held** | Completing 4 weekly missions in a row! | Rare 1.5% |
+| **30 Day Streak** | Hacking for 30 days solid | Rare 4.7% |
+| **Burp'ed** | Completing the Burp Suite module | Rare 9.2% |
+| **Intro to Web Hacking** | Completing the 'Introduction to Web Hacking' module | Rare 8.9% |
+| **Metasploitable** | Contains the knowledge to use Metasploit | Common 12.2% |
+| **Blue** | Hacking into Windows via EternalBlue | Common 12.8% |
+| **OWASP Top 10** | Understanding every OWASP vulnerability | Common 13% |
 
 ---
 
-## 🔬 R&D Labs & Security Research
+## R&D Labs & Security Research
 
-*   **🕵️ MITM Attack Research — Browsec VPN:** Identified and documented a real-world MITM attack by a malicious browser extension rewriting GitHub CDN URLs. Performed deep traffic analysis using Wireshark to confirm URL hijacking and published a full technical writeup with IOCs and remediation strategies. [Read the Writeup](https://github.com/KyrilosKamal/Security-WriteUps)
-*   **📊 NetMon — Network Monitoring Desktop App:** Built a cross-platform network monitoring desktop app (Python, PySide6) with real-time bandwidth tracking, live connection table with process/PID resolution, and integrated speed test. Published to Arch Linux AUR (netmon-gui). [View Repository](https://github.com/KyrilosKamal/NetMon)
+*   **MITM Attack Research — Browsec VPN:** Identified and documented a real-world MITM attack by a malicious browser extension rewriting GitHub CDN URLs. Performed deep traffic analysis using Wireshark to confirm URL hijacking and published a full technical writeup with IOCs and remediation strategies. [Read the Writeup](https://github.com/KyrilosKamal/Security-WriteUps)
+*   **NetMon — Network Monitoring Desktop App:** Built a cross-platform network monitoring desktop app (Python, PySide6) with real-time bandwidth tracking, live connection table with process/PID resolution, and integrated speed test. Published to Arch Linux AUR (netmon-gui). [View Repository](https://github.com/KyrilosKamal/NetMon)
 
 ---
 
-## 📝 Security Writeups & CTF Walkthroughs
+## Security Writeups & CTF Walkthroughs
 
 *   **TryHackMe: Recruit Walkthrough** - Web exploitation room focusing on Path Traversal and SQL Injection. Covered manual and automated SQLi exploitation using SQLMAP. [Read Writeup](https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Recruit-TryHackMe-Writeup.md)
 *   **TryHackMe: Brr — ScadaBR Writeup** - OT/ICS challenge involving a SCADA box. Exploited a ScadaBR login page and default Modbus FC03 configuration to gain access to the industrial control system. [Read Writeup](https://github.com/KyrilosKamal/Security-WriteUps-/blob/main/Brr-Writeup-room)
@@ -54,16 +54,16 @@ Bridging the gap between robust infrastructure defense and offensive security re
 
 ---
 
-## 👨‍💻 About Me
+## About Me
 
-- 🔭 **6+ years** of experience in IT & Networking (Net Admin, Systems, Firewalls)
-- 🔥 Currently pursuing **Red Teaming**: eJPT, WAPT, Bug Bounty
-- 🛡️ Skilled in **FortiGate / Sophos**, **Windows / Linux** environments
-- 💼 Looking for **NetSec / Junior Pentester** opportunities (Open to relocation to Saudi Arabia)
+- **6+ years** of experience in IT & Networking (Net Admin, Systems, Firewalls)
+- Currently pursuing **Red Teaming**: eJPT, WAPT, Bug Bounty
+- Skilled in **FortiGate / Sophos**, **Windows / Linux** environments
+- Looking for **NetSec / Junior Pentester** opportunities (Open to relocation to Saudi Arabia)
 
 ---
 
-## 🛠️ Technical Arsenal
+## Technical Arsenal
 
 <p align="center">
   <b>Infrastructure & OS</b><br>
@@ -87,16 +87,16 @@ Bridging the gap between robust infrastructure defense and offensive security re
 
 ---
 
-## 🎯 Currently Working On
+## Currently Working On
 
-- 🎓 Preparing for **eJPT** (INE Security)
-- 📚 Completing **TryHackMe Jr Penetration Tester Path**
-- 🐛 Practicing **Bug Bounty** hunting
-- 🔬 Solving rooms on **TryHackMe** daily (Top 3% Globally)
+- Preparing for **eJPT** (INE Security)
+- Completing **TryHackMe Jr Penetration Tester Path**
+- Practicing **Bug Bounty** hunting
+- Solving rooms on **TryHackMe** daily (Top 3% Globally)
 
 ---
 
-## 📫 Connect With Me
+## Connect With Me
 
 <p align="center">
   <a href="https://kyrilloskamal.github.io/KyrillosKamal">
@@ -113,5 +113,5 @@ Bridging the gap between robust infrastructure defense and offensive security re
 ---
 
 <p align="center">
-  <i>⚡ "The quieter you become, the more you are able to hear." — Kali Linux</i>
+  <i> "The quieter you become, the more you are able to hear." — Kali Linux</i>
 </p>
