@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ===== SECURITY HEADERS (GitHub Pages Meta Tag Fallback) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.postimg.cc https://images.credly.com https://assets.tryhackme.com https://tryhackme-badges.s3.amazonaws.com; connect-src 'self' https://*.workers.dev; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.postimg.cc https://images.credly.com https://assets.tryhackme.com https://tryhackme-badges.s3.amazonaws.com; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
   <!-- Note: X-Frame-Options and Permissions-Policy are HTTP-header-only directives;
        browsers ignore them in <meta> tags, and GitHub Pages cannot set custom headers.
        Removed to avoid a false sense of security. The CSP and referrer meta tags DO work. -->
@@ -2041,11 +2041,11 @@
         </div>
       </div>
       <p class="thm-snapshot-note" id="thm-live-status" role="status">
-        Fetching live statistics from TryHackMe…
+        Loading the latest scheduled TryHackMe statistics…
       </p>
       <p class="thm-snapshot-note">
-        Statistics are requested directly from TryHackMe when this page loads. If TryHackMe blocks the browser request,
-        use the <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" rel="noopener noreferrer">official Hackth3Path profile</a> for current information.
+        Statistics are refreshed automatically through GitHub Actions. If an update fails, the site keeps the last successful snapshot.
+        Visit the <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" rel="noopener noreferrer">official Hackth3Path profile</a> for live information.
       </p>
       <p class="thm-snapshot-note">Selected badge names from the portfolio record; check the profile for current badge status.</p>
       <div class="thm-badges-list" id="thm-badges" aria-label="Selected TryHackMe badges"></div>
@@ -2676,55 +2676,40 @@
         const status = document.getElementById('thm-live-status');
         if (!container || !status) return;
 
-        // Deploy thm-profile-proxy.js to Cloudflare Workers, then replace this URL.
-        const profileUrl = 'https://kyriloskamal.kyrilloskamal2025.workers.dev';
-        const controller = new AbortController();
-        const timeoutId = window.setTimeout(() => controller.abort(), 10000);
-
         try {
-          const response = await fetch(profileUrl, {
+          const response = await fetch(`assets/thm-stats.json?ts=${Date.now()}`, {
             method: 'GET',
-            mode: 'cors',
-            credentials: 'omit',
             cache: 'no-store',
-            headers: { 'Accept': 'application/json' },
-            signal: controller.signal
+            headers: { 'Accept': 'application/json' }
           });
-          if (!response.ok) throw new Error(`TryHackMe returned HTTP ${response.status}`);
+          if (!response.ok) throw new Error(`Snapshot returned HTTP ${response.status}`);
 
-          const payload = await response.json();
-          const profile = payload && payload.data;
-          if (payload.status !== 'success' || !profile || profile.username !== 'Hackth3Path') {
-            throw new Error('Unexpected TryHackMe profile response');
-          }
-          if (!Number.isFinite(profile.rank) || profile.rank < 1) {
-            throw new Error('TryHackMe did not return a valid global rank');
+          const snapshot = await response.json();
+          if (snapshot.username !== 'Hackth3Path' || !Number.isFinite(snapshot.rank) || snapshot.rank < 1) {
+            throw new Error('Invalid TryHackMe snapshot');
           }
 
           const values = {
-            'thm-rank': `#${profile.rank.toLocaleString()}`,
-            'thm-top': Number.isFinite(profile.topPercentage) ? `Top ${profile.topPercentage}%` : '—',
-            'thm-level': Number.isFinite(profile.level) ? profile.level.toLocaleString() : '—',
-            'thm-rooms': Number.isFinite(profile.completedRoomsNumber) ? profile.completedRoomsNumber.toLocaleString() : '—'
+            'thm-rank': `#${snapshot.rank.toLocaleString()}`,
+            'thm-top': Number.isFinite(snapshot.topPercentage) ? `Top ${snapshot.topPercentage}%` : '—',
+            'thm-level': Number.isFinite(snapshot.level) ? snapshot.level.toLocaleString() : '—',
+            'thm-rooms': Number.isFinite(snapshot.completedRoomsNumber) ? snapshot.completedRoomsNumber.toLocaleString() : '—'
           };
           Object.entries(values).forEach(([id, value]) => {
             const element = document.getElementById(id);
             if (element) element.textContent = value;
           });
 
-          const updatedAt = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-          status.textContent = `Live data loaded from TryHackMe · Updated at ${updatedAt}`;
+          const updatedAt = snapshot.updatedAt ? new Date(snapshot.updatedAt) : null;
+          const dateLabel = updatedAt && !Number.isNaN(updatedAt.getTime())
+            ? updatedAt.toLocaleString()
+            : 'timestamp unavailable';
+          status.textContent = `Last successful TryHackMe snapshot · ${dateLabel}`;
           container.setAttribute('aria-busy', 'false');
         } catch (error) {
-          const message = error && error.name === 'AbortError'
-            ? 'TryHackMe request timed out.'
-            : 'Live rank is currently unavailable (the request may be blocked by TryHackMe or browser CORS).';
-          const rank = document.getElementById('thm-rank');
-          if (rank) rank.textContent = 'Unavailable';
-          status.textContent = `${message} Check the Cloudflare Worker URL configuration and view the official profile for the latest rank.`;
+          status.textContent = 'TryHackMe statistics snapshot is unavailable. Visit the official profile for current information.';
           container.setAttribute('aria-busy', 'false');
-        } finally {
-          window.clearTimeout(timeoutId);
+          console.error('Could not load TryHackMe statistics snapshot:', error);
         }
       }
 
