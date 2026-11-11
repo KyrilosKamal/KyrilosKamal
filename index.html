@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ===== SECURITY HEADERS (GitHub Pages Meta Tag Fallback) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.postimg.cc https://images.credly.com https://assets.tryhackme.com https://tryhackme-badges.s3.amazonaws.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.postimg.cc https://images.credly.com https://assets.tryhackme.com https://tryhackme-badges.s3.amazonaws.com; connect-src 'self' https://*.workers.dev; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
   <!-- Note: X-Frame-Options and Permissions-Policy are HTTP-header-only directives;
        browsers ignore them in <meta> tags, and GitHub Pages cannot set custom headers.
        Removed to avoid a false sense of security. The CSP and referrer meta tags DO work. -->
@@ -13,7 +13,7 @@
   <meta name="theme-color" content="#050508">
 
   <title>Kyrillos Kamal — Network Security | IT Infrastructure | Offensive Security</title>
-  <meta name="description" content="Kyrillos Kamal — IT and Network Security professional with 4+ years in enterprise infrastructure, network administration, and firewall management, plus hands-on penetration testing and bug bounty research. TryHackMe Top 3% globally.">
+  <meta name="description" content="Kyrillos Kamal — IT and Network Security professional with 4+ years in enterprise infrastructure, network administration, and firewall management, plus hands-on penetration testing labs and security research.">
   <meta name="author" content="Kyrillos Kamal">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="keywords" content="Kyrillos Kamal, penetration tester, network security, offensive security, TryHackMe, eJPT, FortiGate, cybersecurity portfolio, Egypt cybersecurity">
@@ -23,23 +23,23 @@
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://kyriloskamal.github.io/KyrilosKamal/">
   <meta property="og:title" content="Kyrillos Kamal — Network Security | Infrastructure | Offensive Security">
-  <meta property="og:description" content="IT and Network Security professional with 4+ years in enterprise infrastructure, firewalls, and network administration — plus hands-on penetration testing and bug bounty research. TryHackMe Top 3% globally.">
+  <meta property="og:description" content="IT and Network Security professional with 4+ years in enterprise infrastructure, firewalls, and network administration — plus hands-on penetration testing labs and security research.">
   
-  <meta property="og:image" content="https://i.postimg.cc/ry0HDQwK/Cybersecurity-Network-Command-Center.png">
-  <meta property="og:image:secure_url" content="https://i.postimg.cc/ry0HDQwK/Cybersecurity-Network-Command-Center.png">
+  <meta property="og:image" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
+  <meta property="og:image:secure_url" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
   <meta property="og:image:type" content="image/png">
   
-  <meta property="og:image:width" content="1279">
-  <meta property="og:image:height" content="720">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Kyrillos Kamal — Network Security & Offensive Security">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Kyrillos Kamal Portfolio">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kyrillos Kamal — Network Security | Infrastructure | Offensive Security">
-  <meta name="twitter:description" content="IT and Network Security professional with 4+ years in enterprise infrastructure, firewalls, and network administration — plus hands-on penetration testing and bug bounty research. TryHackMe Top 3% globally.">
+  <meta name="twitter:description" content="IT and Network Security professional with 4+ years in enterprise infrastructure, firewalls, and network administration — plus hands-on penetration testing labs and security research.">
   
-  <meta name="twitter:image" content="https://i.postimg.cc/ry0HDQwK/Cybersecurity-Network-Command-Center.png">
+  <meta name="twitter:image" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
   
   <meta name="twitter:image:alt" content="Kyrillos Kamal — Network Security & Offensive Security">
 
@@ -52,7 +52,15 @@
     "name": "Kyrillos Kamal",
     "url": "https://kyriloskamal.github.io/KyrilosKamal/",
     "jobTitle": "Network Security & IT Infrastructure Professional",
-   "alumniOf": "Modern Academy, Maadi, Egypt",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Modern Academy",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Maadi",
+        "addressCountry": "EG"
+      }
+    },
     "sameAs": [
       "https://linkedin.com/in/kyrillos-kamal",
       "https://github.com/KyrilosKamal",
@@ -1569,9 +1577,8 @@
             <div style="margin-top: 8px;"><span class="prompt">root@darknet:~#</span> <span class="cmd">cat /etc/motd</span></div>
             <div class="output">
               <span class="highlight">4+</span> Years IT &amp; Network Experience<br>
-              <span class="highlight">147</span> TryHackMe Rooms Completed<br>
-              <span class="highlight">Top 3%</span> Globally on TryHackMe<br>
-              <span class="highlight">eJPT</span> In Progress
+              <span class="highlight">TryHackMe</span> Profile linked below<br>
+              <span class="highlight">eJPT</span> Preparation
             </div>
           </div>
         </div>
@@ -1582,22 +1589,22 @@
             <div class="label">Years IT Experience</div>
           </div>
           <div class="hero-stat">
-            <div class="val">500+</div>
-            <div class="label">Endpoints Supported</div>
+            <div class="val">180+</div>
+            <div class="label">Access Points Managed</div>
           </div>
           <div class="hero-stat">
-            <div class="val">99%</div>
-            <div class="label">Uptime Maintained</div>
+            <div class="val">200+</div>
+            <div class="label">IP Cameras Supported</div>
           </div>
           <div class="hero-stat">
-            <div class="val">Top 3%</div>
-            <div class="label">TryHackMe Global</div>
+            <div class="val">THM</div>
+            <div class="label">Hands-on Security Labs</div>
           </div>
         </div>
       </div>
       
       <div class="hero-image">
-        <video class="hero-video" id="hero-video" loop muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+        <video class="hero-video" id="hero-video" poster="assets/hero-poster.jpg" loop muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" disablepictureinpicture>
           <source src="assets/hero_video.mp4" type="video/mp4">
         </video>
       </div>
@@ -1617,7 +1624,7 @@
           Every lab is a chance to ask better questions: <strong>What can break? Why did it break? And how do we make sure it doesn't happen again?</strong>
         </p>
         <p>
-          With <strong>4+ years of hands-on IT and infrastructure experience</strong> — backed by deep enterprise networking practice, from managing 180+ access points and 200+ IP cameras to hardening FortiGate and Sophos firewalls — I bring a depth of infrastructure knowledge that most junior pentesters lack.
+          With <strong>4+ years of hands-on IT and infrastructure experience</strong>, I bring practical experience in enterprise networking, access-point and CCTV infrastructure, FortiGate and Sophos firewalls, Windows Server, and network troubleshooting. This background supports my ongoing development in offensive security.
         </p>
         <p>
           I am actively seeking global opportunities in Network Security or Junior Penetration Testing, alongside fully funded Master's programs in Information Security. My goal is to leverage my IT Security experience and offensive security skills to contribute to advanced cyber defense strategies and academic research.
@@ -1626,10 +1633,9 @@
       <div class="profile-details">
         <div class="row"><span class="key">location</span><span class="value">Cairo, Egypt</span></div>
         <div class="row"><span class="key">relocation</span><span class="value">Global (Canada, Germany, Australia)</span></div>
-        <div class="row"><span class="key">availability</span><span class="value">Immediate</span></div>
         <div class="row"><span class="key">focus</span><span class="value">NetSec / Jr Pentester</span></div>
         <div class="row"><span class="key">education</span><span class="value">B.Sc. Computer Science</span></div>
-        <div class="row"><span class="key">languages</span><span class="value">Arabic (Native), English (Professional Working Proficiency)</span></div>
+        <div class="row"><span class="key">languages</span><span class="value">Arabic (Native), English (Upper-Intermediate)</span></div>
       </div>
     </div>
   </section>
@@ -1954,7 +1960,7 @@
           <ul>
             <li>Spearheaded emergency response to an incomplete IT handover, conducting ground-up discovery across a /16 IP range.</li>
             <li>Deployed and managed 180+ Omada-controlled APs and 200+ IP cameras across segmented VLANs (Staff, Guest, CCTV, Servers, IPTV).</li>
-            <li>Engineered FortiGate firewall policies and hardened Active Directory to maintain 24/7 operational security for a 500+ endpoint environment.</li>
+            <li>Engineered FortiGate firewall policies and hardened Active Directory across the hotel's segmented operational environment.</li>
             <li>Spearheaded the creation of foundational IT documentation from scratch, including network topology maps, asset registers, and initial incident response policies, transforming an undocumented environment into a structured and manageable system.</li>
           </ul>
         </div>
@@ -1968,8 +1974,8 @@
         <div class="exp-company">Stella Sidi Abd El-Rahman Resort | North Coast, Egypt</div>
         <div class="exp-desc">
           <ul>
-            <li>Maintained 99% uptime for a high-density resort network with 50+ APs across 5 segmented network zones.</li>
-            <li>Managed VPNs, prioritized threat incidents via helpdesk, and monitored system logs to reduce average downtime to under 30 minutes per event.</li>
+            <li>Administered a high-density resort network across segmented network zones, maintaining connectivity for hotel operations.</li>
+            <li>Managed VPNs, prioritized operational incidents, and monitored system logs to support service availability and incident response.</li>
             <li>Configured and secured routers, switches, and access points with role-based access policies.</li>
           </ul>
         </div>
@@ -1983,9 +1989,9 @@
         <div class="exp-company">Al-Ahram Plastic Group | Sohag, Egypt</div>
         <div class="exp-desc">
           <ul>
-            <li>Administered Windows Server environments (AD, DNS, DHCP) for 150+ users across 3 sites.</li>
-            <li>Configured FortiGate &amp; Sophos firewalls, managing VPN tunnels for 20+ remote users and enforcing web filtering policies.</li>
-            <li>Integrated OT/IT production machinery, eliminating 5+ weekly network conflicts and reducing unplanned outages by 40%.</li>
+            <li>Administered Windows Server environments, including Active Directory, DNS, and DHCP, across multiple business locations.</li>
+            <li>Configured FortiGate and Sophos firewalls, managed VPN connectivity, and enforced web-filtering policies.</li>
+            <li>Supported OT/IT connectivity for production machinery and resolved recurring network conflicts.</li>
           </ul>
         </div>
       </div>
@@ -1998,9 +2004,9 @@
         <div class="exp-company">Askyadoc | Cairo, Egypt</div>
         <div class="exp-desc">
           <ul>
-            <li>First-line defense for 150+ hybrid/e-learning users, maintaining 95% same-day resolution rate.</li>
-            <li>Troubleshot Windows/Linux endpoints and maintained LMS uptime for 500+ active learners.</li>
-            <li>Created 20+ security troubleshooting guides, reducing repetitive tickets by 35%.</li>
+            <li>Provided first-line technical support for hybrid and e-learning users.</li>
+            <li>Troubleshot Windows and Linux endpoints and supported learning-management-system availability.</li>
+            <li>Created technical troubleshooting guides to improve support consistency and reduce repetitive work.</li>
           </ul>
         </div>
       </div>
@@ -2016,35 +2022,33 @@
         <img src="https://tryhackme-badges.s3.amazonaws.com/Hackth3Path.png" alt="TryHackMe profile badge for Hackth3Path" width="329" height="75" loading="lazy" decoding="async">
       </a>
 
-      <p class="thm-snapshot-note">Stats below are a manual snapshot — the badge and profile link always show live numbers.</p>
-      <div class="thm-stats-grid">
+      <div class="thm-stats-grid" id="thm-live-stats" aria-live="polite" aria-busy="true">
         <div class="thm-stat">
-          <div class="val">Wizard (0xA)</div>
-          <div class="label">Current Rank</div>
-        </div>
-        <div class="thm-stat">
-          <div class="val">64</div>
-          <div class="label">Level</div>
-        </div>
-        <div class="thm-stat">
-          <div class="val">147</div>
-          <div class="label">Rooms Completed</div>
-        </div>
-        <div class="thm-stat">
-          <div class="val">Top 3%</div>
+          <div class="val" id="thm-rank">Loading…</div>
           <div class="label">Global Rank</div>
         </div>
         <div class="thm-stat">
-          <div class="val">3</div>
-          <div class="label">Day Streak</div>
+          <div class="val" id="thm-top">—</div>
+          <div class="label">Global Percentile</div>
         </div>
         <div class="thm-stat">
-          <div class="val">17</div>
-          <div class="label">Badges Earned</div>
+          <div class="val" id="thm-level">—</div>
+          <div class="label">Level</div>
+        </div>
+        <div class="thm-stat">
+          <div class="val" id="thm-rooms">—</div>
+          <div class="label">Completed Rooms</div>
         </div>
       </div>
-
-      <div class="thm-badges-list" id="thm-badges"></div>
+      <p class="thm-snapshot-note" id="thm-live-status" role="status">
+        Fetching live statistics from TryHackMe…
+      </p>
+      <p class="thm-snapshot-note">
+        Statistics are requested directly from TryHackMe when this page loads. If TryHackMe blocks the browser request,
+        use the <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" rel="noopener noreferrer">official Hackth3Path profile</a> for current information.
+      </p>
+      <p class="thm-snapshot-note">Selected badge names from the portfolio record; check the profile for current badge status.</p>
+      <div class="thm-badges-list" id="thm-badges" aria-label="Selected TryHackMe badges"></div>
     </div>
   </section>
 
@@ -2061,20 +2065,21 @@
       <div class="edu-card">
         <div class="edu-title">Certifications &amp; Training</div>
         <ul class="cert-list">
-          <li class="cert-group-label">Professional Certifications</li>
-          <li><strong>NSE4 FortiGate Firewall</strong> — Fortinet (2025)</li>
-          <li><strong>CCNA</strong> — Cisco (2023)</li>
-          <li><strong>Sophos Firewall</strong> — Sophos (2024)</li>
-          <li><strong>MCSE</strong> — Windows Server Administration (2023)</li>
-          <li><strong>CompTIA A+</strong> — Core 1 &amp; 2 (2023)</li>
-          <li class="cert-group-label">In Progress</li>
-          <li><strong>eJPT</strong> — INE Security (exam in progress)</li>
-          <li><strong>Jr Penetration Tester Path</strong> — TryHackMe (<span id="thm-path-pct">39</span>% complete)</li>
-          <li class="cert-group-label">Completed Learning Paths</li>
+          <li class="cert-group-label">Vendor-focused training &amp; self-study</li>
+          <li><strong>FortiGate Firewall / NSE4 topics</strong> — self-study (2025; not an NSE4 exam credential)</li>
+          <li><strong>CCNA networking topics</strong> — self-study (2023; not a Cisco CCNA credential)</li>
+          <li><strong>Sophos Firewall</strong> — self-study (2024)</li>
+          <li><strong>Windows Server / MCSE topics</strong> — self-study (2023; not an MCSE credential)</li>
+          <li><strong>CompTIA A+ Core 1 &amp; 2 topics</strong> — self-study (2023; not a CompTIA A+ credential)</li>
+          <li class="cert-group-label">Course credentials &amp; learning paths</li>
+          <li><strong>Technical Support Fundamentals</strong> — Google / Coursera (2023)</li>
+          <li><strong>Introduction to Cybersecurity</strong> — Cisco Networking Academy (2025)</li>
           <li><strong>Pre-Security</strong> — TryHackMe (Completed)</li>
           <li><strong>Cyber Security 101</strong> — TryHackMe (Completed)</li>
+          <li class="cert-group-label">Certification preparation</li>
+          <li><strong>eJPT</strong> — INE Security (preparation; exam status to be confirmed)</li>
         </ul>
-        <p class="edu-note">The Udemy, Coursera, and MaharaTech certificates below are course-completion credentials — not official Cisco, CompTIA, Fortinet, or Microsoft certifications. Professional certifications are listed separately above.</p>
+        <p class="edu-note">Self-study and course-completion records are not represented as vendor certification exams. See the certificate gallery for available credential images and issuer links.</p>
       </div>
     </div>
   </section>
@@ -2100,8 +2105,9 @@
   </section>
 
   <section id="console">
-    <div class="section-label">11 / live console</div>
+    <div class="section-label">11 / interactive demo</div>
     <h2><span class="hash">##</span> Interactive Shell</h2>
+    <p class="thm-snapshot-note">Local portfolio simulation only. Commands do not execute on a system or send network traffic; scan and inject return illustrative sample output.</p>
 
     <div class="console-window">
       <div class="terminal-header">
@@ -2157,37 +2163,16 @@
 
     <div class="focus-card">
       <div class="focus-header">
-        <div class="focus-icon">🎯</div>
+        <div class="focus-icon" aria-hidden="true">🎯</div>
         <div style="flex: 1; min-width: 200px;">
-          <div class="focus-title">Jr Penetration Tester Learning Path</div>
-          <div class="focus-platform">TryHackMe · In Progress</div>
-        </div>
-        <div class="focus-pct-circle">
-          <span class="focus-pct-number">39<span class="focus-pct-sign">%</span></span>
-          <svg class="focus-pct-ring" viewBox="0 0 100 100" aria-hidden="true">
-            <circle class="focus-ring-bg" cx="50" cy="50" r="44" />
-            <circle class="focus-ring-fill" cx="50" cy="50" r="44" data-pct="39" />
-          </svg>
+          <div class="focus-title">Hands-on Cybersecurity Learning</div>
+          <div class="focus-platform">TryHackMe · Practical labs and learning paths</div>
         </div>
       </div>
-
-      <div class="focus-bar">
-        <div class="focus-fill" id="focus-fill" data-width="39%"></div>
-        <div class="focus-milestone" style="left: 25%"><span>25%</span></div>
-        <div class="focus-milestone" style="left: 50%"><span>50%</span></div>
-        <div class="focus-milestone" style="left: 75%"><span>75%</span></div>
-        <div class="focus-milestone" style="left: 100%"><span>100%</span></div>
-      </div>
-
-      <div class="focus-meta">
-        <span><strong>147</strong> rooms completed</span>
-        <span><strong>17</strong> badges earned</span>
-        <span><strong>Top 3%</strong> global rank</span>
-      </div>
-
-      <div class="focus-research">
-        Research Focus: Exploring the intersection of OT/ICS Security and AI-driven Threat Detection for future academic and professional application.
-      </div>
+      <p class="focus-research">
+        I use structured labs to build practical skills in network security, web application testing, Linux, Windows, and defensive security.
+        Visit my <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" rel="noopener noreferrer">TryHackMe profile</a> for current progress and achievements.
+      </p>
     </div>
   </section>
 
@@ -2218,22 +2203,10 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      // Single source of truth for Jr Penetration Tester path progress (self-reported).
-      const THM_PATH_PCT = 39;
-
       // Escape helper for strings interpolated into markup (defense-in-depth).
       const esc = (s) => String(s).replace(/[&<>"']/g, (ch) => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
       }[ch]));
-
-      const thmData = {
-        rank: "Wizard (0xA)",
-        level: 64,
-        badges: 17,
-        rooms: 147,
-        streak: 3,
-        globalRank: "Top 3% (65146)"
-      };
 
       const writeupsData = [
         {
@@ -2368,9 +2341,9 @@
         const badgesContainer = document.getElementById('thm-badges');
         if (!badgesContainer) return;
         const notableBadges = [
-          "Sword Apprentice (3.7%)", "Shield Apprentice (3.1%)", "Session Held (1.5%)",
-          "30 Day Streak (4.7%)", "Burp'ed (9.2%)", "Intro to Web Hacking (8.9%)",
-          "Metasploitable (12.2%)", "Blue (12.8%)", "OWASP Top 10 (13%)"
+          "Sword Apprentice", "Shield Apprentice", "Session Held",
+          "30 Day Streak", "Burp'ed", "Intro to Web Hacking",
+          "Metasploitable", "Blue", "OWASP Top 10"
         ];
         badgesContainer.innerHTML = notableBadges.map(b => `<span class="thm-badge-item">${b}</span>`).join('');
       }
@@ -2484,7 +2457,21 @@
         title.textContent = item.title;
         const statusLabel = item.status ? (item.status === 'earned' ? 'EARNED' : 'IN PROGRESS') : 'VERIFIED';
         meta.innerHTML = `Issuer: <strong>${esc(item.issuer)}</strong> · Date: <strong>${esc(item.date)}</strong>${item.status ? ` · Status: <strong>${esc(statusLabel)}</strong>` : ''}`;
-        verify.href = item.verify;
+        const verificationUrl = (() => {
+          try {
+            const parsed = new URL(item.verify, window.location.href);
+            return parsed.protocol === 'https:' ? parsed.href : '';
+          } catch (_) {
+            return '';
+          }
+        })();
+        if (verificationUrl) {
+          verify.href = verificationUrl;
+          verify.hidden = false;
+        } else {
+          verify.removeAttribute('href');
+          verify.hidden = true;
+        }
         const verifyNote = document.getElementById('lb-verify-note');
         if (verifyNote) {
           if (item.verifyNote) { verifyNote.textContent = item.verifyNote; verifyNote.hidden = false; }
@@ -2600,17 +2587,17 @@
         let historyIndex = 0;
         const commands = {
           help: () => ['Available commands:','  about          — who I am (alias: whoami)','  skills         — technical skill categories','  tools          — security tools I use','  experience     — employment history','  projects       — featured GitHub projects','  research       — writeups & bounty research (alias: writeups)','  certifications — certifications & training (alias: certs)','  thm            — TryHackMe stats','  resume         — resume download link','  contact        — contact information','  scan           — simulated Nmap scan (demo only)','  inject         — simulated SQL injection (demo only)','  flag           — find the hidden flag','  clear          — clear console'],
-          about: () => ['Kyrillos Kamal','Assistant IT Manager — Golden Beach Lazuli Marsa Alam','4+ years in IT infrastructure, network administration & firewall management','Offensive security: bug bounty research and penetration testing labs','Currently: eJPT (in progress) | TryHackMe Top 3% globally'],
+          about: () => ['Kyrillos Kamal','Assistant IT Manager — Golden Beach Lazuli Marsa Alam','4+ years in IT infrastructure, network administration & firewall management','Offensive security: bug bounty research and penetration testing labs','Currently: developing practical offensive-security and defensive-security skills'],
           skills: () => ['Production Experience: network administration, TCP/IP, VLANs, routing/switching, FortiGate & Sophos, Windows Server & AD, DNS/DHCP, troubleshooting','Hands-on Experience: Nmap, Burp Suite, Metasploit, web app security testing, SQLi, authentication testing, Linux security, AD security labs, Wireshark, Python & Bash','Currently Developing: red team operations, SOC & SIEM fundamentals, detection engineering, advanced web security testing'],
           tools: () => ['Nmap | Metasploit | Burp Suite | Wireshark | Hydra','Gobuster | John the Ripper | Netcat | SQLmap | OWASP ZAP','FortiGate | Sophos | Kali Linux | Python | Bash'],
           experience: () => ['Dec 2025 - Present   Assistant IT Manager — Golden Beach Lazuli Marsa Alam','Feb 2024 - Dec 2025  Network Administrator — Stella Sidi Abd El-Rahman Resort','Feb 2023 - Jan 2024  IT Specialist — Al-Ahram Plastic Group','Jan 2022 - Jan 2023  Helpdesk — Askyadoc','Full details: see the /experience section.'],
           projects: () => ['SecAppliance — async network security scanner (Python)','  https://github.com/KyrilosKamal/SecAppliance','Payload Obfuscation Engine — measured evasion research (Go + YARA)','  https://github.com/KyrilosKamal/Payload-Obfuscation-Engine','NetMon — network monitoring desktop app (Python/PySide6, AUR: netmon-gui)','  https://github.com/KyrilosKamal/NetMon','PassCrypt — AES-CTR file encryption CLI (Python)','  https://github.com/KyrilosKamal/PassCrypt','Blue-Team-Studies — detection notes, Sigma rules, SPL/KQL queries','  https://github.com/KyrilosKamal/Blue-Team-Studies','Simple-Network-Scanner — Bash ping sweep tool','  https://github.com/KyrilosKamal/Simple-Network-Scanner'],
           research: () => writeupsData.map((w, i) => `  [${i + 1}] ${w.title} — ${w.link || w.noLinkText || 'No public link'}`).concat(['Bug bounty case studies (validated / duplicate / informational): see the /bounty section.']),
-          certifications: () => ['Professional: NSE4 (Fortinet), CCNA (Cisco), Sophos Firewall, MCSE, CompTIA A+','In progress: eJPT (INE Security) | TryHackMe Jr Penetration Tester path','Completed paths: TryHackMe Pre-Security, Cyber Security 101','Course certificates + verification links: see the /certs section.'],
-          thm: () => [`Rank: ${thmData.rank}`,`Level: ${thmData.level}`,`Rooms: ${thmData.rooms}`,`Global Rank: ${thmData.globalRank}`,'Profile: https://tryhackme.com/p/Hackth3Path'],
+          certifications: () => ['Training/self-study: FortiGate/NSE4 topics, CCNA topics, Sophos Firewall, Windows Server/MCSE topics, CompTIA A+ topics','Certification preparation: eJPT (INE Security; current exam status not independently confirmed)','Completed paths: TryHackMe Pre-Security, Cyber Security 101','Course certificates + verification links: see the /certs section.'],
+          thm: () => ['Current rank, level, completed rooms, streak, and badges are maintained on the official profile.','https://tryhackme.com/p/Hackth3Path'],
           resume: () => ['Resume (PDF): https://drive.proton.me/urls/PSB4NVYWHM#oUf78vmLtFE1'],
-          scan: () => ['[simulation — no real traffic is generated]','Starting Nmap 7.94 ( https://nmap.org )','Nmap scan report for target.local (192.168.1.105)','Host is up (0.0021s latency).','Not shown: 997 closed tcp ports (reset)','PORT     STATE SERVICE','22/tcp   open  ssh','80/tcp   open  http','443/tcp  open  https','Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds','[!] Vulnerabilities detected: Outdated web server (Apache 2.4.49)'],
-          inject: () => ['[simulation — no real traffic is generated]','[+] Testing SQL Injection on http://target.local/login',"[*] Payload: ' OR 1=1 -- -",'[+] Response length: 4823 (normal: 1024)','[+] SQL Injection confirmed!','[+] Dumping database users table...','admin:admin','user:password123','[!] Recommendation: Use parameterized queries.'],
+          scan: () => ['SYNTHETIC DEMONSTRATION — NOT A REAL SCAN OR EXPLOITATION','No packets are sent and no host is contacted.','Illustrative target: example.invalid (reserved documentation domain)','Example output only: 22/tcp open ssh; 80/tcp open http','No vulnerability assessment was performed.'],
+          inject: () => ['SYNTHETIC DEMONSTRATION — NOT A REAL SCAN OR EXPLOITATION','No HTTP request is sent and no database is accessed.','Illustrative test case: a login parameter is reviewed for SQL injection risk.','Expected defensive control: parameterized queries and server-side input handling.','No credentials or database records were retrieved.'],
           flag: () => ['Searching for hidden flags...','[!] No flag found in the DOM.','[!] Hint: Check the HTML source code, look for a comment.','Try: view-source:https://kyriloskamal.github.io/KyrilosKamal/'],
           contact: () => ['Email:    kyrillos.kamal@proton.me','LinkedIn: linkedin.com/in/kyrillos-kamal','GitHub:   github.com/KyrilosKamal','THM:      tryhackme.com/p/Hackth3Path'],
           clear: () => { output.replaceChildren(); return []; }
@@ -2684,6 +2671,63 @@
         }, 100);
       }
 
+      async function initTHMLiveStats() {
+        const container = document.getElementById('thm-live-stats');
+        const status = document.getElementById('thm-live-status');
+        if (!container || !status) return;
+
+        // Deploy thm-profile-proxy.js to Cloudflare Workers, then replace this URL.
+        const profileUrl = 'https://REPLACE-WITH-YOUR-WORKER-SUBDOMAIN.workers.dev';
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(() => controller.abort(), 10000);
+
+        try {
+          const response = await fetch(profileUrl, {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'omit',
+            cache: 'no-store',
+            headers: { 'Accept': 'application/json' },
+            signal: controller.signal
+          });
+          if (!response.ok) throw new Error(`TryHackMe returned HTTP ${response.status}`);
+
+          const payload = await response.json();
+          const profile = payload && payload.data;
+          if (payload.status !== 'success' || !profile || profile.username !== 'Hackth3Path') {
+            throw new Error('Unexpected TryHackMe profile response');
+          }
+          if (!Number.isFinite(profile.rank) || profile.rank < 1) {
+            throw new Error('TryHackMe did not return a valid global rank');
+          }
+
+          const values = {
+            'thm-rank': `#${profile.rank.toLocaleString()}`,
+            'thm-top': Number.isFinite(profile.topPercentage) ? `Top ${profile.topPercentage}%` : '—',
+            'thm-level': Number.isFinite(profile.level) ? profile.level.toLocaleString() : '—',
+            'thm-rooms': Number.isFinite(profile.completedRoomsNumber) ? profile.completedRoomsNumber.toLocaleString() : '—'
+          };
+          Object.entries(values).forEach(([id, value]) => {
+            const element = document.getElementById(id);
+            if (element) element.textContent = value;
+          });
+
+          const updatedAt = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          status.textContent = `Live data loaded from TryHackMe · Updated at ${updatedAt}`;
+          container.setAttribute('aria-busy', 'false');
+        } catch (error) {
+          const message = error && error.name === 'AbortError'
+            ? 'TryHackMe request timed out.'
+            : 'Live rank is currently unavailable (the request may be blocked by TryHackMe or browser CORS).';
+          const rank = document.getElementById('thm-rank');
+          if (rank) rank.textContent = 'Unavailable';
+          status.textContent = `${message} Check the Cloudflare Worker URL configuration and view the official profile for the latest rank.`;
+          container.setAttribute('aria-busy', 'false');
+        } finally {
+          window.clearTimeout(timeoutId);
+        }
+      }
+
       function initMobileNav() {
         const toggle = document.getElementById('nav-toggle');
         const menu = document.getElementById('nav-menu');
@@ -2718,20 +2762,9 @@
         }
       }
 
-      function syncThmProgress() {
-        const pct = Math.max(0, Math.min(100, THM_PATH_PCT));
-        const edu = document.getElementById('thm-path-pct');
-        if (edu) edu.textContent = String(pct);
-        const num = document.querySelector('.focus-pct-number');
-        if (num && num.firstChild) num.firstChild.nodeValue = String(pct);
-        const ring = document.querySelector('.focus-ring-fill');
-        if (ring) ring.setAttribute('data-pct', String(pct));
-        const fill = document.getElementById('focus-fill');
-        if (fill) fill.setAttribute('data-width', pct + '%');
-      }
-
       initMobileNav();
       initHeroVideo();
+      initTHMLiveStats();
       initBootSequence();
       window.setTimeout(() => {
         const loader = document.getElementById('loader');
@@ -2747,9 +2780,15 @@
         initConsole();
         initCertLightbox();
         initCertFilters();
-        syncThmProgress();
 
         const observerOptions = { threshold: 0.3 };
+        if (!('IntersectionObserver' in window)) {
+          document.querySelectorAll('.capability-item').forEach(el => el.classList.add('visible'));
+          document.querySelectorAll('.skill-fill').forEach(fill => {
+            const w = fill.getAttribute('data-width');
+            if (w) fill.style.width = w;
+          });
+        } else {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -2767,6 +2806,7 @@
         }, observerOptions);
 
         document.querySelectorAll('.capability-item').forEach(el => observer.observe(el));
+        }
 
         requestAnimationFrame(() => {
           // Animate the linear progress bar

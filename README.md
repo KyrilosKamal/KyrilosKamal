@@ -1,8 +1,8 @@
 # Hi, I'm Kyrillos Kamal 
 
-### Network Defender | Offensive Security Enthusiast | Infrastructure Architect
+### Network Security | IT Infrastructure | Offensive Security
 
-Bridging the gap between robust infrastructure defense and offensive security research. **6+ years** hardening enterprise networks (500+ endpoints), now actively hunting vulnerabilities and simulating advanced persistent threats. 
+Bridging IT infrastructure and network security experience with hands-on offensive-security learning. **4+ years** across network administration, systems support, and firewall management, with practical security labs and research. 
 
 ---
 
@@ -14,27 +14,11 @@ Bridging the gap between robust infrastructure defense and offensive security re
   </a>
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Rank-Wizard_(0xA)-blue?style=for-the-badge&logo=tryhackme&logoColor=white" alt="Rank" />
-  <img src="https://img.shields.io/badge/Global_Top-3%25-purple?style=for-the-badge" alt="Global Rank" />
-  <img src="https://img.shields.io/badge/Level-64-brightgreen?style=for-the-badge" alt="Level" />
-  <img src="https://img.shields.io/badge/Rooms_Completed-147-orange?style=for-the-badge" alt="Rooms Completed" />
-  <img src="https://img.shields.io/badge/Badges-17-yellow?style=for-the-badge" alt="Badges" />
-</p>
+Current rank, level, completed rooms, streak, and badges can change. Visit the official profile for current figures rather than relying on a manually maintained README snapshot.
 
-### Notable Badges
+### Selected Badges
 
-| Badge | Description | Rarity |
-|-------|-------------|--------|
-| **Sword Apprentice** | Completing the SQLMap room | Rare 3.7% |
-| **Shield Apprentice** | Completing the FlareVM room | Rare 3.1% |
-| **Session Held** | Completing 4 weekly missions in a row! | Rare 1.5% |
-| **30 Day Streak** | Hacking for 30 days solid | Rare 4.7% |
-| **Burp'ed** | Completing the Burp Suite module | Rare 9.2% |
-| **Intro to Web Hacking** | Completing the 'Introduction to Web Hacking' module | Rare 8.9% |
-| **Metasploitable** | Contains the knowledge to use Metasploit | Common 12.2% |
-| **Blue** | Hacking into Windows via EternalBlue | Common 12.8% |
-| **OWASP Top 10** | Understanding every OWASP vulnerability | Common 13% |
+See the [official TryHackMe profile](https://tryhackme.com/p/Hackth3Path) for the current badge collection and status.
 
 ---
 
@@ -56,10 +40,10 @@ Bridging the gap between robust infrastructure defense and offensive security re
 
 ## About Me
 
-- **6+ years** of experience in IT & Networking (Net Admin, Systems, Firewalls)
-- Currently pursuing **Red Teaming**: eJPT, WAPT, Bug Bounty
+- **4+ years** of experience in IT & Networking (network administration, systems, firewalls)
+- Developing skills in **Red Teaming, web application testing, and bug bounty research**
 - Skilled in **FortiGate / Sophos**, **Windows / Linux** environments
-- Looking for **NetSec / Junior Pentester** opportunities (Open to relocation to Saudi Arabia)
+- Looking for **Network Security / IT Infrastructure / Junior Pentester** opportunities, including suitable international and remote roles
 
 ---
 
@@ -90,9 +74,9 @@ Bridging the gap between robust infrastructure defense and offensive security re
 ## Currently Working On
 
 - Preparing for **eJPT** (INE Security)
-- Completing **TryHackMe Jr Penetration Tester Path**
+- Continuing structured **TryHackMe** hands-on learning
 - Practicing **Bug Bounty** hunting
-- Solving rooms on **TryHackMe** daily (Top 3% Globally)
+- Building practical skills through **TryHackMe** labs — current profile statistics are linked above
 
 ---
 

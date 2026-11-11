@@ -48,7 +48,7 @@
 
   <!-- Terminal content -->
   <text x="100" y="160" font-family="monospace" font-size="20" fill="#ff0040" filter="url(#glow)">root@darknet:~# whoami</text>
-  <text x="100" y="195" font-family="monospace" font-size="20" fill="#7a7a9a">kyrillos_kamal // network defender &amp; offensive security</text>
+  <text x="100" y="195" font-family="monospace" font-size="20" fill="#7a7a9a">kyrillos_kamal // network security &amp; offensive security</text>
 
   <text x="100" y="250" font-family="monospace" font-size="20" fill="#ff0040" filter="url(#glow)">root@darknet:~# cat /etc/motd</text>
 
@@ -59,9 +59,9 @@
   <text x="100" y="400" font-family="monospace" font-size="26" fill="#e0e0e8">Network Security &amp; Offensive Security</text>
 
   <!-- Stats line -->
-  <text x="100" y="460" font-family="monospace" font-size="20" fill="#00d4ff">► 6+ Years Experience</text>
-  <text x="420" y="460" font-family="monospace" font-size="20" fill="#00d4ff">► TryHackMe Top 3%</text>
-  <text x="760" y="460" font-family="monospace" font-size="20" fill="#00d4ff">► 147 Rooms Completed</text>
+  <text x="100" y="460" font-family="monospace" font-size="20" fill="#00d4ff">► 4+ Years Experience</text>
+  <text x="420" y="460" font-family="monospace" font-size="20" fill="#00d4ff">► TryHackMe Profile</text>
+  <text x="760" y="460" font-family="monospace" font-size="20" fill="#00d4ff">► Network Infrastructure</text>
 
   <!-- Bottom URL -->
   <text x="100" y="530" font-family="monospace" font-size="18" fill="#7a7a9a">kyriloskamal.github.io/KyrilosKamal</text>
