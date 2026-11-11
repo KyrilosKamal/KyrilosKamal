@@ -12,7 +12,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#050508">
 
-  <title>Kyrillos Kamal — Network Security Engineer | Infrastructure & Offensive Security</title>
+  <title>Kyrillos Kamal — Network Security | IT Infrastructure | Offensive Security</title>
   <meta name="description" content="Kyrillos Kamal — IT and Network Security professional with 4+ years in enterprise infrastructure, network administration, and firewall management, plus hands-on penetration testing and bug bounty research. TryHackMe Top 3% globally.">
   <meta name="author" content="Kyrillos Kamal">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -29,8 +29,8 @@
   <meta property="og:image:secure_url" content="https://i.postimg.cc/ry0HDQwK/Cybersecurity-Network-Command-Center.png">
   <meta property="og:image:type" content="image/png">
   
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1279">
+  <meta property="og:image:height" content="720">
   <meta property="og:image:alt" content="Kyrillos Kamal — Network Security & Offensive Security">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Kyrillos Kamal Portfolio">
@@ -1487,6 +1487,18 @@
       .cta-btn { flex: 1 1 auto; text-align: center; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    /* ===== Quality-fix refinements ===== */
+    .cert-group-title.hidden { display: none; }
+    .bounty-summary { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin: 0 0 1.5rem; }
+    .bounty-details { margin-top: 0.75rem; }
+    .bounty-summary-toggle { cursor: pointer; font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--accent); padding: 6px 0; list-style: none; display: inline-flex; align-items: center; gap: 6px; }
+    .bounty-summary-toggle::-webkit-details-marker { display: none; }
+    .bounty-summary-toggle::before { content: '+'; display: inline-block; width: 1em; text-align: center; }
+    details[open] > .bounty-summary-toggle::before { content: '\2212'; }
+    .bounty-summary-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .note-meta { color: var(--text-muted); font-size: 0.8rem; line-height: 1.5; margin: 0.4rem 0; }
+    .note-meta strong { color: var(--text); }
   </style>
 </head>
 <body>
@@ -1629,59 +1641,26 @@
     <div class="capabilities-grid">
       <div class="capability-item">
         <div class="capability-header">
-          <span class="capability-title">01 · Network &amp; Infrastructure</span>
-          <span class="capability-pct">PRODUCTION</span>
+          <span class="capability-title">01 · Production Experience</span>
         </div>
-        <div class="capability-tools">TCP/IP · VLANs · Routing &amp; Switching · DNS/DHCP · Active Directory · Windows Server · Linux Administration · Network Troubleshooting</div>
-        <div class="skill-bar" aria-hidden="true"><div class="skill-fill" data-width="90%"></div></div>
+        <div class="capability-tools">Network Administration · TCP/IP, VLANs, Routing &amp; Switching · FortiGate &amp; Sophos Firewall Administration · Windows Server &amp; Active Directory · DNS/DHCP · Network Troubleshooting · IT Infrastructure Operations</div>
       </div>
 
       <div class="capability-item">
         <div class="capability-header">
-          <span class="capability-title">02 · Network Security</span>
-          <span class="capability-pct">PRODUCTION</span>
+          <span class="capability-title">02 · Hands-on Experience</span>
         </div>
-        <div class="capability-tools">FortiGate · Sophos Firewall · Firewall Policies · Network Segmentation · VPN · Security Monitoring</div>
-        <div class="skill-bar" aria-hidden="true"><div class="skill-fill" data-width="90%"></div></div>
+        <div class="capability-tools">Nmap · Burp Suite · Metasploit · Web Application Security Testing · SQL Injection Testing · Authentication Testing · Linux Security · Active Directory Security Labs · Wireshark &amp; Traffic Analysis · Python &amp; Bash Scripting</div>
       </div>
 
       <div class="capability-item">
         <div class="capability-header">
-          <span class="capability-title">03 · Offensive Security</span>
-          <span class="capability-pct">HANDS-ON</span>
+          <span class="capability-title">03 · Currently Developing</span>
         </div>
-        <div class="capability-tools">Nmap · Burp Suite · Metasploit · SQL Injection · XSS · Authentication Testing · Web App Security · Active Directory Security</div>
-        <div class="skill-bar" aria-hidden="true"><div class="skill-fill" data-width="75%"></div></div>
-      </div>
-
-      <div class="capability-item">
-        <div class="capability-header">
-          <span class="capability-title">04 · Security Operations</span>
-          <span class="capability-pct">FOUNDATIONAL</span>
-        </div>
-        <div class="capability-tools">Log Analysis · SIEM Fundamentals · Incident Detection · MITRE ATT&amp;CK Fundamentals</div>
-        <div class="skill-bar" aria-hidden="true"><div class="skill-fill" data-width="45%"></div></div>
-      </div>
-
-      <div class="capability-item">
-        <div class="capability-header">
-          <span class="capability-title">05 · Traffic Analysis &amp; Threat Hunting</span>
-          <span class="capability-pct">HANDS-ON</span>
-        </div>
-        <div class="capability-tools">Wireshark · tcpdump · Packet Analysis · IOC Documentation</div>
-        <div class="skill-bar" aria-hidden="true"><div class="skill-fill" data-width="80%"></div></div>
-      </div>
-
-      <div class="capability-item">
-        <div class="capability-header">
-          <span class="capability-title">06 · Programming &amp; Scripting</span>
-          <span class="capability-pct">HANDS-ON</span>
-        </div>
-        <div class="capability-tools">Python · Bash · Shell Scripting · PySide6 · MVC Architecture</div>
-        <div class="skill-bar" aria-hidden="true"><div class="skill-fill" data-width="70%"></div></div>
+        <div class="capability-tools">Red Team Operations · SOC &amp; SIEM Fundamentals · Detection Engineering · Advanced Web Security Testing</div>
       </div>
     </div>
-    <p class="skill-legend">Levels reflect real-world usage: PRODUCTION = day-job infrastructure · HANDS-ON = labs, research &amp; tooling · FOUNDATIONAL = structured training (TryHackMe Cyber Security 101, Blue-Team-Studies).</p>
+    <p class="skill-legend">Evidence-based categories: Production Experience = day-job infrastructure &amp; firewall administration · Hands-on Experience = labs, security research &amp; tooling · Currently Developing = active training (eJPT, TryHackMe Jr Penetration Tester path, Blue-Team-Studies, PortSwigger labs). No self-rated percentages.</p>
   </section>
 
   <section id="field-notes">
@@ -1699,6 +1678,8 @@
         <div class="note-tag">Security Automation</div>
         <div class="note-title">SecAppliance</div>
         <div class="note-desc">Asynchronous network security scanner for automated vulnerability assessment and reconnaissance, with offline signature-based CVE mapping and credentialed auditing.</div>
+        <div class="note-meta"><strong>Problem:</strong> Automated vulnerability assessment and reconnaissance that also works offline, without external API dependencies.</div>
+        <div class="note-meta"><strong>Contribution:</strong> Built the async scanning engine, offline + online CVE mapping, credentialed SSH/WinRM auditing, and HTML reporting.</div>
         <div class="note-tools"><span class="note-tool">Python</span><span class="note-tool">Async Scanning</span><span class="note-tool">CVE Mapping</span></div>
         <a href="https://github.com/KyrilosKamal/SecAppliance" target="_blank" rel="noopener noreferrer" class="note-link">View Repository →</a>
       </div>
@@ -1706,6 +1687,8 @@
         <div class="note-tag">Offensive Security Research</div>
         <div class="note-title">Payload Obfuscation Engine (pobf)</div>
         <div class="note-desc">Layered payload obfuscation engine in Go where every evasion claim is measured per stage against a 20-rule YARA suite — detection rate reported before and after each stage.</div>
+        <div class="note-meta"><strong>Problem:</strong> Evasion claims are usually unmeasured — this quantifies detection rate per obfuscation stage.</div>
+        <div class="note-meta"><strong>Contribution:</strong> Built the Go obfuscation pipeline and the per-stage YARA measurement harness (20-rule suite).</div>
         <div class="note-tools"><span class="note-tool">Go</span><span class="note-tool">YARA</span><span class="note-tool">Detection Measurement</span></div>
         <a href="https://github.com/KyrilosKamal/Payload-Obfuscation-Engine" target="_blank" rel="noopener noreferrer" class="note-link">View Repository →</a>
       </div>
@@ -1713,6 +1696,8 @@
         <div class="note-tag">Network Infrastructure</div>
         <div class="note-title">NetMon</div>
         <div class="note-desc">Cross-platform network monitoring desktop app: real-time bandwidth tracking, live connection table with process/PID resolution, and integrated speed test. Published to the Arch Linux AUR as netmon-gui.</div>
+        <div class="note-meta"><strong>Problem:</strong> Lightweight, cross-platform visibility into bandwidth, connections, and data usage.</div>
+        <div class="note-meta"><strong>Contribution:</strong> Built the PySide6 desktop app (dashboard, speed test, connection table, quota tracker) and packaged it for the AUR.</div>
         <div class="note-tools"><span class="note-tool">Python</span><span class="note-tool">PySide6</span><span class="note-tool">AUR</span></div>
         <a href="https://github.com/KyrilosKamal/NetMon" target="_blank" rel="noopener noreferrer" class="note-link">View Repository →</a>
       </div>
@@ -1720,6 +1705,8 @@
         <div class="note-tag">Security Tooling</div>
         <div class="note-title">PassCrypt</div>
         <div class="note-desc">Lightweight CLI file encryption tool using AES-CTR with PBKDF2-SHA256 key derivation from a passphrase — no key files or separate salt storage.</div>
+        <div class="note-meta"><strong>Problem:</strong> Simple passphrase-based file encryption without managing key files.</div>
+        <div class="note-meta"><strong>Contribution:</strong> Built the AES-CTR + PBKDF2-SHA256 CLI tool and cross-platform installer.</div>
         <div class="note-tools"><span class="note-tool">Python</span><span class="note-tool">AES-CTR</span><span class="note-tool">PBKDF2</span></div>
         <a href="https://github.com/KyrilosKamal/PassCrypt" target="_blank" rel="noopener noreferrer" class="note-link">View Repository →</a>
       </div>
@@ -1727,6 +1714,8 @@
         <div class="note-tag">Security Operations</div>
         <div class="note-title">Blue-Team-Studies</div>
         <div class="note-desc">Defensive-security notes, Sigma rules, SPL/KQL queries, and lab write-ups (TryHackMe, LetsDefend, BTLO) mapped to MITRE ATT&amp;CK. AI-assisted study notes, verified against official docs and hands-on labs.</div>
+        <div class="note-meta"><strong>Problem:</strong> Structured defensive-security learning with a public, verifiable detection portfolio.</div>
+        <div class="note-meta"><strong>Contribution:</strong> Curated notes, Sigma/SPL/KQL detections, and lab write-ups mapped to MITRE ATT&amp;CK (AI-assisted, verified against docs and labs).</div>
         <div class="note-tools"><span class="note-tool">Sigma</span><span class="note-tool">SPL/KQL</span><span class="note-tool">MITRE ATT&amp;CK</span></div>
         <a href="https://github.com/KyrilosKamal/Blue-Team-Studies" target="_blank" rel="noopener noreferrer" class="note-link">View Repository →</a>
       </div>
@@ -1734,6 +1723,8 @@
         <div class="note-tag">Network Automation</div>
         <div class="note-title">Simple-Network-Scanner</div>
         <div class="note-desc">Bash ping-sweep tool with regex-validated subnet input and live host status reporting — quick local-network diagnostics from the terminal.</div>
+        <div class="note-meta"><strong>Problem:</strong> Quick live-host discovery on a local subnet without extra tooling.</div>
+        <div class="note-meta"><strong>Contribution:</strong> Built the Bash ping-sweep with regex-validated input and a summary report.</div>
         <div class="note-tools"><span class="note-tool">Bash</span><span class="note-tool">Ping Sweep</span><span class="note-tool">Linux</span></div>
         <a href="https://github.com/KyrilosKamal/Simple-Network-Scanner" target="_blank" rel="noopener noreferrer" class="note-link">View Repository →</a>
       </div>
@@ -1743,17 +1734,19 @@
   <section id="bug-bounty">
     <div class="section-label">05 / bug bounty</div>
     <h2><span class="hash">##</span> Hunting in the wild.</h2>
-    <p class="bounty-legend"><strong>Status key:</strong> VALIDATED = confirmed &amp; triaged by the program · DUPLICATE = independently identified, closed as duplicate of a known issue · INFORMATIONAL = P5 / no security impact · TRAINING = practice platform, not a bounty result. Details stay within each program's disclosure policy.</p>
+    <p class="bounty-legend"><strong>Status key:</strong> Validated / Triaged = confirmed and triaged by the program · Duplicate = independently identified, closed as a duplicate of a known issue (not a newly accepted vulnerability) · Informational = P5 / no security impact · Submitted / Pending = awaiting triage · Training / Lab = practice platform, not a bounty result. Severity labels are my submitted assessments unless a program explicitly assigned them; no bounty payouts are claimed. Details stay within each program's disclosure policy.</p>
+    <p class="bounty-summary"><strong>At a glance:</strong> 9 case studies — 1 validated engagement (5 triaged findings) · 6 closed as duplicate (root causes independently confirmed) · 1 informational (P5) · 1 training platform. Expand any card for methodology and technical detail.</p>
 
     <div class="bounty-grid">
 
       <div class="bounty-card">
         <div class="bounty-header">
           <span class="bounty-status">Engagement Complete</span>
-          <span class="bounty-status" style="background: transparent; border-color: var(--info); color: var(--info);">Validated · 5 Findings (2 Critical · 2 High · 1 Medium)</span>
+          <span class="bounty-status" style="background: transparent; border-color: var(--info); color: var(--info);">Validated / Triaged · 5 Findings (2 Critical · 2 High · 1 Medium)</span>
         </div>
         <div class="bounty-title">HackerOne — D-You App &amp; German EUDI Wallet Ecosystem</div>
         <div class="bounty-classes"><span class="note-tool">JWT/PKIX Validation</span><span class="note-tool">RFC 9421 Signatures</span><span class="note-tool">Device Binding</span><span class="note-tool">Notification Routing</span></div>
+        <details class="bounty-details"><summary class="bounty-summary-toggle">Methodology &amp; technical details</summary>
         <div class="bounty-desc">
           Conducted a deep-dive security assessment of the D-You App and the German EUDI Wallet Ecosystem — the backend services governing device attestation, wallet lifecycle, cryptographic operations, and push notifications for a national-scale digital identity infrastructure. Five validated findings spanning the full trust chain: from cryptographic verification and authentication, through device binding, to notification routing and wallet revocation. Reported with code-level root-cause analysis and remediation guidance for each issue. Specific technical details remain protected under the program's coordinated disclosure policy.
         </div>
@@ -1765,6 +1758,7 @@
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--accent);">Current Status:</strong> Engagement complete. All five findings validated and triaged. Demonstrated that a single validation short-circuit can cascade into ecosystem-wide trust failure — the next engagement begins with the same rigor and a sharpened methodology.
         </p>
+        </details>
       </div>
 
       <div class="bounty-card">
@@ -1774,6 +1768,7 @@
         </div>
         <div class="bounty-title">Bugcrowd — LaunchDarkly Program</div>
         <div class="bounty-classes"><span class="note-tool">Recon</span><span class="note-tool">OWASP Top 10</span><span class="note-tool">Business Logic</span></div>
+        <details class="bounty-details"><summary class="bounty-summary-toggle">Methodology &amp; technical details</summary>
         <div class="bounty-desc">
           Completed a full bug bounty engagement cycle on the LaunchDarkly program via Bugcrowd, from reconnaissance through submission and triage. Findings reached P5 (Informational) severity, with no higher-severity vulnerabilities identified during the engagement. The submission workflow — recon, hunting, validation, and triage review — was exercised end-to-end. Specific technical details remain protected under program NDA.
         </div>
@@ -1785,6 +1780,7 @@
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--accent);">Current Status:</strong> Engagement cycle complete. P5 findings submitted and reviewed through triage. The full hunting workflow was validated — the next engagement begins with the same rigor and a sharpened methodology.
         </p>
+        </details>
       </div>
 
       <div class="bounty-card">
@@ -1794,6 +1790,7 @@
         </div>
         <div class="bounty-title">HackerOne — Arc Node (Consensus Client)</div>
         <div class="bounty-classes"><span class="note-tool">Unhandled Error Path</span><span class="note-tool">Startup DoS</span></div>
+        <details class="bounty-details"><summary class="bounty-summary-toggle">Methodology &amp; technical details</summary>
         <div class="bounty-desc">
           Conducted a full source-code-level security review of Arc node's startup handshake logic, tracing a fatal crash path through the EL (execution layer) capability exchange. Built and ran the repository's existing test suite on a self-hosted local environment to confirm the failure mode before submission. The report was closed as a duplicate of an existing internal finding — validating both the technical root-cause analysis and the reproduction methodology.
         </div>
@@ -1805,6 +1802,7 @@
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--accent);">Current Status:</strong> Closed as Duplicate — confirms the vulnerability was correctly identified independently, ahead of public disclosure.
         </p>
+        </details>
       </div>
 
       <div class="bounty-card">
@@ -1814,6 +1812,7 @@
         </div>
         <div class="bounty-title">HackerOne — Banco Plata (Fintech · Mexico)</div>
         <div class="bounty-classes"><span class="note-tool">CORS Misconfiguration</span><span class="note-tool">Credentialed Origin Reflection</span></div>
+        <details class="bounty-details"><summary class="bounty-summary-toggle">Methodology &amp; technical details</summary>
         <div class="bounty-desc">
           Identified and reported a CORS misconfiguration on an authentication flow API that reflects arbitrary Origin headers in Access-Control-Allow-Origin while simultaneously enabling Access-Control-Allow-Credentials on real POST responses (not just preflight OPTIONS). The report was closed as a duplicate of an existing finding — validating both the technical identification of the misconfiguration and the overall reproduction methodology. Specific endpoints and full technical details remain protected under the program's coordinated disclosure policy.
         </div>
@@ -1825,6 +1824,7 @@
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--accent);">Current Status:</strong> Closed as Duplicate — confirms the CORS misconfiguration was correctly identified independently, ahead of public disclosure.
         </p>
+        </details>
       </div>
 
       <div class="bounty-card">
@@ -1834,6 +1834,7 @@
         </div>
         <div class="bounty-title">HackerOne — Omarchy (Source Code Pentest &amp; Review)</div>
         <div class="bounty-classes"><span class="note-tool">Command Injection ×2</span><span class="note-tool">.desktop Persistence</span></div>
+        <details class="bounty-details"><summary class="bounty-summary-toggle">Methodology &amp; technical details</summary>
         <div class="bounty-desc">
           Conducted a full source-code-level security review of the Omarchy Linux desktop environment scripts, focusing on command execution sinks and file-write primitives. Discovered two independent command injection vulnerabilities: one in the launcher utility (unsafe eval of attacker-controlled arguments) and one in the TUI installer (unsanitized writes into .desktop files enabling persistent execution). Both reports were closed as duplicates of existing internal findings — validating both the technical root-cause analysis and the discovery methodology.
         </div>
@@ -1845,6 +1846,7 @@
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--accent);">Current Status:</strong> Both reports closed as Duplicate — confirms the vulnerabilities were correctly identified independently, ahead of public disclosure.
         </p>
+        </details>
       </div>
 
       <div class="bounty-card">
@@ -1854,6 +1856,7 @@
         </div>
         <div class="bounty-title">Bugcrowd — Lively Apps (PocketQuery for Confluence)</div>
         <div class="bounty-classes"><span class="note-tool">SQL Injection</span><span class="note-tool">SSRF</span><span class="note-tool">Egress Allowlist Bypass</span></div>
+        <details class="bounty-details"><summary class="bounty-summary-toggle">Methodology &amp; technical details</summary>
         <div class="bounty-desc">
           Conducted a deep-dive security assessment of the PocketQuery SQL REST app for Confluence. Discovered two distinct vulnerabilities: a critical SQL injection via the "Constant" parameter type (allowing arbitrary database reads and UNION-based exfiltration) and a Server-Side Request Forgery (SSRF) in the REST Custom Datasource (bypassing the Forge egress allowlist and enabling non-HTTP port access). The SSRF served as the infrastructure to reach the attacker-controlled database, enabling the proof-of-concept for the SQL injection. Both reports were closed as duplicates of existing internal findings — validating the technical root-cause analysis and the discovery methodology.
         </div>
@@ -1865,6 +1868,7 @@
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--accent);">Current Status:</strong> Both reports closed as Duplicate — confirms the vulnerabilities were correctly identified independently, ahead of public disclosure.
         </p>
+        </details>
       </div>
 
       <div class="bounty-card">
@@ -1874,6 +1878,7 @@
         </div>
         <div class="bounty-title">HackerOne — XP Inc. (Open Banking Consent Flow)</div>
         <div class="bounty-classes"><span class="note-tool">Unauthenticated Write</span><span class="note-tool">WebSocket Broadcast</span><span class="note-tool">Open Redirect</span></div>
+        <details class="bounty-details"><summary class="bounty-summary-toggle">Methodology &amp; technical details</summary>
         <div class="bounty-desc">
           Identified a critical security flaw in a production Open Banking/Open Finance consent handoff service. The vulnerability allowed unauthenticated actors to inject arbitrary redirect URLs via an unauthenticated REST endpoint, which were then broadcast over WebSockets to all connected clients. This enabled a highly convincing phishing vector during financial data-sharing flows, potentially leading to credential or OTP theft. Specific technical details remain strictly protected under the program's coordinated disclosure policy.
         </div>
@@ -1885,6 +1890,7 @@
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--danger);">Current Status:</strong> Closed as Duplicate — the vulnerability was correctly identified independently, ahead of public disclosure. Severity shown is my submitted assessment.
         </p>
+        </details>
       </div>
 
       <div class="bounty-card">
@@ -1894,6 +1900,7 @@
         </div>
         <div class="bounty-title">HackerOne — Brave Browser (Network Boundary Bypass)</div>
         <div class="bounty-classes"><span class="note-tool">Network Boundary Bypass</span><span class="note-tool">Local Network Requests</span></div>
+        <details class="bounty-details"><summary class="bounty-summary-toggle">Methodology &amp; technical details</summary>
         <div class="bounty-desc">
           Conducted a source-code-level security review of the Brave browser's internal component architecture, focusing on network request handling and privacy boundaries. Identified a security flaw in a privileged browser-process component that could allow an attacker to bypass network restrictions and trigger requests to local network addresses. The report was acknowledged and closed as a duplicate of an existing internal finding — validating the technical root-cause analysis and the discovery methodology. Specific technical details remain protected under the program's coordinated disclosure policy.
         </div>
@@ -1905,6 +1912,7 @@
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--accent);">Current Status:</strong> Closed as Duplicate — confirms the vulnerability was correctly identified independently, ahead of public disclosure.
         </p>
+        </details>
       </div>
 
       <div class="bounty-card">
@@ -1914,6 +1922,7 @@
         </div>
         <div class="bounty-title">HackerOne — Hacker101 CTF Platform</div>
         <div class="bounty-classes"><span class="note-tool">XSS</span><span class="note-tool">SQLi</span><span class="note-tool">CSRF</span><span class="note-tool">SSRF</span><span class="note-tool">Crypto</span><span class="note-tool">Logic</span></div>
+        <details class="bounty-details"><summary class="bounty-summary-toggle">Methodology &amp; technical details</summary>
         <div class="bounty-desc">
           Successfully completed all Capture The Flag (CTF) challenges available on HackerOne's Hacker101 platform. This comprehensive hands-on training covered a wide range of vulnerability classes including web exploitation (XSS, SQLi, CSRF, SSRF), mobile security, cryptographic flaws, and business logic errors. Each flag required practical exploitation and deep understanding of the application's architecture.
         </div>
@@ -1925,6 +1934,7 @@
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
           <strong style="color: var(--accent);">Current Status:</strong> All CTF flags successfully captured. The platform was fully cleared, demonstrating consistent, hands-on offensive security capability across diverse application surfaces.
         </p>
+        </details>
       </div>
     </div>
   </section>
@@ -2064,7 +2074,7 @@
           <li><strong>Pre-Security</strong> — TryHackMe (Completed)</li>
           <li><strong>Cyber Security 101</strong> — TryHackMe (Completed)</li>
         </ul>
-        <p class="edu-note">Vendor certifications above are listed separately from course-completion certificates (Udemy, Coursera, MaharaTech) shown in the certifications section below.</p>
+        <p class="edu-note">The Udemy, Coursera, and MaharaTech certificates below are course-completion credentials — not official Cisco, CompTIA, Fortinet, or Microsoft certifications. Professional certifications are listed separately above.</p>
       </div>
     </div>
   </section>
@@ -2366,10 +2376,11 @@
       }
 
       const CERT_GROUPS = [
-        ['Professional Certifications', ['cllmse', 'ejpt']],
+        ['Professional Certifications', ['cllmse']],
         ['Training & Course Completion', ['udemy-ip-subnetting', 'udemy-powershell', 'udemy-mcse-2022', 'udemy-linux-ideal-job', 'udemy-ccna-networking', 'udemy-comptia-a-plus', 'coursera-tech-support', 'maharatech-network-fundamentals', 'maharatech-network-impl', 'maharatech-netsec-intro']],
         ['TryHackMe Learning Paths', ['thm-pre-security', 'thm-security-101', 'thm-hacker-holidays']],
-        ['CTF & Events', ['blackout-ctf']]
+        ['CTF & Security Events', ['blackout-ctf']],
+        ['Certifications in Progress', ['ejpt']]
       ];
 
       function renderCerts(data) {
@@ -2557,6 +2568,14 @@
                 card.classList.add('hidden');
               }
             });
+            document.querySelectorAll('.cert-group-title').forEach(title => {
+              let el = title.nextElementSibling, any = false;
+              while (el && !el.classList.contains('cert-group-title')) {
+                if (el.classList.contains('cert-card') && !el.classList.contains('hidden')) { any = true; break; }
+                el = el.nextElementSibling;
+              }
+              title.classList.toggle('hidden', !any);
+            });
           });
         });
       }
@@ -2582,7 +2601,7 @@
         const commands = {
           help: () => ['Available commands:','  about          — who I am (alias: whoami)','  skills         — technical skill categories','  tools          — security tools I use','  experience     — employment history','  projects       — featured GitHub projects','  research       — writeups & bounty research (alias: writeups)','  certifications — certifications & training (alias: certs)','  thm            — TryHackMe stats','  resume         — resume download link','  contact        — contact information','  scan           — simulated Nmap scan (demo only)','  inject         — simulated SQL injection (demo only)','  flag           — find the hidden flag','  clear          — clear console'],
           about: () => ['Kyrillos Kamal','Assistant IT Manager — Golden Beach Lazuli Marsa Alam','4+ years in IT infrastructure, network administration & firewall management','Offensive security: bug bounty research and penetration testing labs','Currently: eJPT (in progress) | TryHackMe Top 3% globally'],
-          skills: () => ['Network & Infrastructure: TCP/IP, VLANs, routing/switching, DNS/DHCP, AD, Windows Server, Linux','Network Security: FortiGate, Sophos, firewall policies, segmentation, VPN, monitoring','Offensive Security: Nmap, Burp Suite, SQLi, XSS, authentication testing, AD security','Security Operations: log analysis, SIEM fundamentals, incident detection, MITRE ATT&CK basics','Traffic Analysis: Wireshark, tcpdump, packet analysis, IOC documentation','Scripting: Python, Bash, PySide6'],
+          skills: () => ['Production Experience: network administration, TCP/IP, VLANs, routing/switching, FortiGate & Sophos, Windows Server & AD, DNS/DHCP, troubleshooting','Hands-on Experience: Nmap, Burp Suite, Metasploit, web app security testing, SQLi, authentication testing, Linux security, AD security labs, Wireshark, Python & Bash','Currently Developing: red team operations, SOC & SIEM fundamentals, detection engineering, advanced web security testing'],
           tools: () => ['Nmap | Metasploit | Burp Suite | Wireshark | Hydra','Gobuster | John the Ripper | Netcat | SQLmap | OWASP ZAP','FortiGate | Sophos | Kali Linux | Python | Bash'],
           experience: () => ['Dec 2025 - Present   Assistant IT Manager — Golden Beach Lazuli Marsa Alam','Feb 2024 - Dec 2025  Network Administrator — Stella Sidi Abd El-Rahman Resort','Feb 2023 - Jan 2024  IT Specialist — Al-Ahram Plastic Group','Jan 2022 - Jan 2023  Helpdesk — Askyadoc','Full details: see the /experience section.'],
           projects: () => ['SecAppliance — async network security scanner (Python)','  https://github.com/KyrilosKamal/SecAppliance','Payload Obfuscation Engine — measured evasion research (Go + YARA)','  https://github.com/KyrilosKamal/Payload-Obfuscation-Engine','NetMon — network monitoring desktop app (Python/PySide6, AUR: netmon-gui)','  https://github.com/KyrilosKamal/NetMon','PassCrypt — AES-CTR file encryption CLI (Python)','  https://github.com/KyrilosKamal/PassCrypt','Blue-Team-Studies — detection notes, Sigma rules, SPL/KQL queries','  https://github.com/KyrilosKamal/Blue-Team-Studies','Simple-Network-Scanner — Bash ping sweep tool','  https://github.com/KyrilosKamal/Simple-Network-Scanner'],
