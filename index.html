@@ -12,18 +12,18 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#050508">
 
-  <title>Kyrillos Kamal — Network Security | IT Infrastructure | Offensive Security</title>
-  <meta name="description" content="Kyrillos Kamal — IT and Network Security professional with 4+ years in enterprise infrastructure, network administration, and firewall management, plus hands-on penetration testing labs and security research.">
+  <title>Kyrillos Kamal — Blue Team | SOC Operations | Network Security</title>
+  <meta name="description" content="Kyrillos Kamal — Network Security professional with 4+ years in IT infrastructure, network administration, and firewall management, developing Blue Team and SOC operations skills through structured study and documented labs.">
   <meta name="author" content="Kyrillos Kamal">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="keywords" content="Kyrillos Kamal, penetration tester, network security, offensive security, TryHackMe, eJPT, FortiGate, cybersecurity portfolio, Egypt cybersecurity">
+  <meta name="keywords" content="Kyrillos Kamal, Blue Team, SOC Analyst, Security Operations, Network Security, Windows Security Monitoring, Detection Engineering, TryHackMe, FortiGate, cybersecurity portfolio, Egypt cybersecurity">
   <link rel="canonical" href="https://kyriloskamal.github.io/KyrilosKamal/">
 
   <!-- ===== Open Graph / Social Media Meta Tags ===== -->
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://kyriloskamal.github.io/KyrilosKamal/">
-  <meta property="og:title" content="Kyrillos Kamal — Network Security | Infrastructure | Offensive Security">
-  <meta property="og:description" content="IT and Network Security professional with 4+ years in enterprise infrastructure, firewalls, and network administration — plus hands-on penetration testing labs and security research.">
+  <meta property="og:title" content="Kyrillos Kamal — Blue Team | SOC Operations | Network Security">
+  <meta property="og:description" content="Network Security professional with 4+ years in IT infrastructure and firewall administration, building a documented Blue Team and SOC learning portfolio.">
   
   <meta property="og:image" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
   <meta property="og:image:secure_url" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
@@ -36,8 +36,8 @@
   <meta property="og:site_name" content="Kyrillos Kamal Portfolio">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kyrillos Kamal — Network Security | Infrastructure | Offensive Security">
-  <meta name="twitter:description" content="IT and Network Security professional with 4+ years in enterprise infrastructure, firewalls, and network administration — plus hands-on penetration testing labs and security research.">
+  <meta name="twitter:title" content="Kyrillos Kamal — Blue Team | SOC Operations | Network Security">
+  <meta name="twitter:description" content="Network Security professional with 4+ years in IT infrastructure and firewall administration, building a documented Blue Team and SOC learning portfolio.">
   
   <meta name="twitter:image" content="https://kyriloskamal.github.io/KyrilosKamal/assets/og-preview.png">
   
@@ -51,7 +51,7 @@
     "@type": "Person",
     "name": "Kyrillos Kamal",
     "url": "https://kyriloskamal.github.io/KyrilosKamal/",
-    "jobTitle": "Network Security & IT Infrastructure Professional",
+    "jobTitle": "Network Security & Blue Team Development",
     "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "Modern Academy",
@@ -1507,9 +1507,25 @@
     .bounty-summary-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .note-meta { color: var(--text-muted); font-size: 0.8rem; line-height: 1.5; margin: 0.4rem 0; }
     .note-meta strong { color: var(--text); }
+
+
+    /* ===== Blue Team portfolio presentation ===== */
+    .soc-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:2rem; }
+    .soc-card { background:var(--surface); border:1px solid var(--border); border-left:2px solid var(--accent); border-radius:4px; padding:1.35rem; min-width:0; transition:border-color .2s ease,transform .2s ease,background .2s ease; }
+    .soc-card:hover { border-color:var(--accent); background:var(--surface-light); transform:translateY(-2px); }
+    .soc-card-top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.65rem; margin-bottom:1rem; }
+    .soc-index { color:var(--text-muted); font:500 .68rem 'Fira Code',monospace; letter-spacing:.08em; }
+    .soc-state { display:inline-flex; align-items:center; border:1px solid currentColor; border-radius:3px; padding:.2rem .5rem; font:500 .65rem 'Fira Code',monospace; letter-spacing:.03em; }
+    .soc-state.complete { color:var(--accent); }
+    .soc-state.planned { color:var(--warning); }
+    .soc-card h3 { color:var(--text); font-size:1.05rem; margin-bottom:.65rem; }
+    .soc-card p { color:var(--text-muted); font-size:.88rem; line-height:1.75; margin-bottom:1rem; }
+    .soc-card a { color:var(--accent); font:500 .76rem 'Fira Code',monospace; text-decoration:none; }
+    .soc-card a:hover { text-decoration:underline; }
+    @media (max-width:760px) { .soc-grid { grid-template-columns:1fr; } .soc-card-top { align-items:flex-start; } }
   </style>
 </head>
-<body>
+<body class="blue-team">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div id="loader">
@@ -1522,14 +1538,15 @@
   <nav aria-label="Primary">
     <a href="#hero" class="nav-logo">root@darknet<span>:~#</span></a>
     <div class="nav-right">
-      <button class="theme-toggle" id="theme-toggle" aria-pressed="false">[ SWITCH TO BLUE TEAM ]</button>
+      <button class="theme-toggle" id="theme-toggle" aria-pressed="true">[ SWITCH TO OFFENSIVE VIEW ]</button>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">&#9776;</button>
       <div class="nav-links" id="nav-menu">
         <a href="#profile">/profile</a>
         <a href="#capabilities">/capabilities</a>
+        <a href="#soc-operations">/soc</a>
         <a href="#field-notes">/writeups</a>
         <a href="#projects">/projects</a>
-        <a href="#bug-bounty">/bounty</a>
+        <a href="#bug-bounty">/research</a>
         <a href="#experience">/experience</a>
         <a href="#tryhackme">/thm</a>
         <a href="#certifications">/certs</a>
@@ -1541,143 +1558,67 @@
   </nav>
 
   <main id="main">
-  <section id="hero">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="system-status">
-          <span class="dot"></span> SYSTEM ONLINE — AWAITING ORDERS
-        </div>
-    
-        <h1 class="hero-title">
-          <span class="glitch-wrap" data-text="Kyrillos Kamal">Kyrillos Kamal</span>
-        </h1>
-        <div class="hero-tagline">Network Security | Infrastructure | Offensive Security</div>
-        <div class="hero-motto">Think like an attacker. Defend like a pro.</div>
-    
-        <p class="hero-sub">
-          IT and Network Security professional with <strong style="color: var(--text);">4+ years of experience</strong> in enterprise infrastructure, network administration, and firewall management — complemented by hands-on penetration testing, vulnerability research, and bug bounty experience.
-        </p>
-    
-        <div class="hero-cta">
-          <a class="cta-btn cta-primary" href="https://drive.proton.me/urls/PSB4NVYWHM#oUf78vmLtFE1" target="_blank" rel="noopener noreferrer">[ Download Resume ]</a>
-          <a class="cta-btn" href="https://github.com/KyrilosKamal" target="_blank" rel="noopener noreferrer">[ View GitHub ]</a>
-          <a class="cta-btn" href="#contact">[ Contact Me ]</a>
-        </div>
+  <section id="hero"><div class="hero-grid"><div class="hero-content">
+<div class="system-status"><span class="dot"></span> BLUE TEAM MODE — DEFENSIVE SECURITY FOCUS</div>
+<h1 class="hero-title"><span class="glitch-wrap" data-text="Kyrillos Kamal">Kyrillos Kamal</span></h1>
+<div class="hero-tagline">Blue Team | SOC Operations | Network Security</div>
+<div class="hero-motto">See the signal. Investigate the evidence. Strengthen the defense.</div>
+<p class="hero-sub">IT and Network Security professional with <strong style="color: var(--text);">4+ years of experience</strong> in enterprise infrastructure, network administration, and firewall management. Building a defensive-security portfolio through structured SOC learning, alert-triage study, and a documented roadmap for Windows security monitoring and detection engineering.</p>
+<div class="hero-cta">
+<a class="cta-btn cta-primary" href="https://drive.proton.me/urls/PSB4NVYWHM#oUf78vmLtFE1" target="_blank" rel="noopener noreferrer">[ Download Resume ]</a>
+<a class="cta-btn" href="https://github.com/KyrilosKamal/Blue-Team-Studies" target="_blank" rel="noopener noreferrer">[ Blue Team Studies ]</a>
+<a class="cta-btn" href="#contact">[ Contact Me ]</a></div>
+<div class="terminal-window"><div class="terminal-header"><span class="btn red"></span><span class="btn yellow"></span><span class="btn green"></span><span class="terminal-title">analyst@kyrillos: ~</span></div><div class="terminal-body">
+<div><span class="prompt">analyst@kyrillos:~$</span> <span class="cmd">whoami</span></div><div class="output">kyrillos_kamal // network security &amp; blue team development</div>
+<div style="margin-top: 8px;"><span class="prompt">analyst@kyrillos:~$</span> <span class="cmd">cat focus.txt</span></div>
+<div class="output"><span class="highlight">4+</span> Years IT &amp; Network Experience<br><span class="highlight">SOC L1</span> Operations — study notes completed<br><span class="highlight">Detection Engineering</span> — planned learning track</div>
+</div></div>
+<div class="hero-stats">
+<div class="hero-stat"><div class="val">4+</div><div class="label">Years IT Experience</div></div>
+<div class="hero-stat"><div class="val">180+</div><div class="label">Access Points Managed</div></div>
+<div class="hero-stat"><div class="val">200+</div><div class="label">IP Cameras Supported</div></div>
+<div class="hero-stat"><div class="val">SOC L1</div><div class="label">Study Notes Completed</div></div>
+</div></div><div class="hero-image"><video class="hero-video" id="hero-video" poster="assets/hero-poster.jpg" loop muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" disablepictureinpicture><source src="assets/hero_video.mp4" type="video/mp4"></video></div></div></section>
 
-        <div class="terminal-window">
-          <div class="terminal-header">
-            <span class="btn red"></span>
-            <span class="btn yellow"></span>
-            <span class="btn green"></span>
-            <span class="terminal-title">root@darknet: ~</span>
-          </div>
-          <div class="terminal-body">
-            <div><span class="prompt">root@darknet:~#</span> <span class="cmd">whoami</span></div>
-            <div class="output">kyrillos_kamal // network security &amp; infrastructure</div>
-            <div style="margin-top: 8px;"><span class="prompt">root@darknet:~#</span> <span class="cmd">cat /etc/motd</span></div>
-            <div class="output">
-              <span class="highlight">4+</span> Years IT &amp; Network Experience<br>
-              <span class="highlight">TryHackMe</span> Profile linked below<br>
-              <span class="highlight">eJPT</span> Preparation
-            </div>
-          </div>
-        </div>
-    
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="val">4+</div>
-            <div class="label">Years IT Experience</div>
-          </div>
-          <div class="hero-stat">
-            <div class="val">180+</div>
-            <div class="label">Access Points Managed</div>
-          </div>
-          <div class="hero-stat">
-            <div class="val">200+</div>
-            <div class="label">IP Cameras Supported</div>
-          </div>
-          <div class="hero-stat">
-            <div class="val">THM</div>
-            <div class="label">Hands-on Security Labs</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="hero-image">
-        <video class="hero-video" id="hero-video" poster="assets/hero-poster.jpg" loop muted playsinline preload="metadata" aria-hidden="true" tabindex="-1" disablepictureinpicture>
-          <source src="assets/hero_video.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </section>
+  <section id="profile"><div class="section-label">01 / profile</div><h2><span class="hash">##</span> Network foundations. // Defensive security mindset.</h2>
+<div class="profile-content"><div class="profile-text">
+<p>I approach security from the systems and network layer upward. My production background is in <strong>IT infrastructure, network administration, segmentation, and firewall operations</strong> — the environments that defenders need to understand before investigating suspicious activity.</p>
+<p>I am now developing toward <strong>Blue Team and Security Operations</strong> through structured study of SOC workflows, L1 alert triage and reporting, SOC metrics, and defensive investigation concepts.</p>
+<p>My practical infrastructure experience includes FortiGate and Sophos firewalls, Windows Server and Active Directory, VLAN-based environments, network troubleshooting, and supporting large-scale access-point and CCTV deployments.</p>
+<p>My current learning roadmap moves from SOC fundamentals into Windows security telemetry, detection engineering, and evidence-led incident investigation. I distinguish completed study notes from practical labs and detections that are still planned.</p>
+</div><div class="profile-details">
+<div class="row"><span class="key">location</span><span class="value">Cairo, Egypt</span></div>
+<div class="row"><span class="key">target roles</span><span class="value">SOC Analyst L1 / Blue Team / Network Security</span></div>
+<div class="row"><span class="key">core background</span><span class="value">IT Infrastructure &amp; Network Administration</span></div>
+<div class="row"><span class="key">education</span><span class="value">B.Sc. Computer Science</span></div>
+<div class="row"><span class="key">languages</span><span class="value">Arabic (Native), English (Upper-Intermediate)</span></div>
+</div></div></section>
 
-  <section id="profile">
-    <div class="section-label">01 / profile</div>
-    <h2><span class="hash">##</span> Security is not just a toolset. // it's a mindset</h2>
+  <section id="capabilities"><div class="section-label">02 / capabilities</div><h2><span class="hash">##</span> Infrastructure experience. // Defensive-security development.</h2>
+<div class="capabilities-grid">
+<div class="capability-item"><div class="capability-header"><span class="capability-title">01 · Production Experience</span></div><div class="capability-tools">Network Administration · TCP/IP · VLANs · Routing &amp; Switching · FortiGate &amp; Sophos Firewall Administration · Windows Server · Active Directory · DNS/DHCP · VPNs · Network Troubleshooting · IT Infrastructure Operations</div></div>
+<div class="capability-item"><div class="capability-header"><span class="capability-title">02 · Defensive-Security Study</span></div><div class="capability-tools">SOC Fundamentals · SOC L1 Alert Triage &amp; Reporting · Alert Classification (TP / FP / BTP) · Alert Prioritization · SLA · MTTD / MTTA / MTTR · SOC Workbooks &amp; Lookups · Network Traffic Analysis · MITRE ATT&amp;CK Concepts</div></div>
+<div class="capability-item"><div class="capability-header"><span class="capability-title">03 · Currently Developing</span></div><div class="capability-tools">Windows Security Monitoring · Windows Event Logs · Sysmon · PowerShell Logging · Detection Engineering · Sigma · SPL / KQL · Threat Hunting · Incident Investigation</div></div>
+</div><p class="skill-legend">Evidence-based categories: Production Experience = work performed in IT/network environments · Defensive-Security Study = documented learning notes · Currently Developing = planned practical work. Windows monitoring and detection rules are not presented as completed or validated labs.</p></section>
 
-    <div class="profile-content">
-      <div class="profile-text">
-        <p>
-          It's a way of thinking. I'm building my foundation through <strong>structured, hands-on practice</strong> across web applications, networks, and exploitation.
-        </p>
-        <p>
-          Every lab is a chance to ask better questions: <strong>What can break? Why did it break? And how do we make sure it doesn't happen again?</strong>
-        </p>
-        <p>
-          With <strong>4+ years of hands-on IT and infrastructure experience</strong>, I bring practical experience in enterprise networking, access-point and CCTV infrastructure, FortiGate and Sophos firewalls, Windows Server, and network troubleshooting. This background supports my ongoing development in offensive security.
-        </p>
-        <p>
-          I am actively seeking global opportunities in Network Security or Junior Penetration Testing, alongside fully funded Master's programs in Information Security. My goal is to leverage my IT Security experience and offensive security skills to contribute to advanced cyber defense strategies and academic research.
-        </p>
-      </div>
-      <div class="profile-details">
-        <div class="row"><span class="key">location</span><span class="value">Cairo, Egypt</span></div>
-        <div class="row"><span class="key">relocation</span><span class="value">Global (Canada, Germany, Australia)</span></div>
-        <div class="row"><span class="key">focus</span><span class="value">NetSec / Jr Pentester</span></div>
-        <div class="row"><span class="key">education</span><span class="value">B.Sc. Computer Science</span></div>
-        <div class="row"><span class="key">languages</span><span class="value">Arabic (Native), English (Upper-Intermediate)</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="capabilities">
-    <div class="section-label">02 / capabilities</div>
-    <h2><span class="hash">##</span> Tools I use to read the signal.</h2>
-
-    <div class="capabilities-grid">
-      <div class="capability-item">
-        <div class="capability-header">
-          <span class="capability-title">01 · Production Experience</span>
-        </div>
-        <div class="capability-tools">Network Administration · TCP/IP, VLANs, Routing &amp; Switching · FortiGate &amp; Sophos Firewall Administration · Windows Server &amp; Active Directory · DNS/DHCP · Network Troubleshooting · IT Infrastructure Operations</div>
-      </div>
-
-      <div class="capability-item">
-        <div class="capability-header">
-          <span class="capability-title">02 · Hands-on Experience</span>
-        </div>
-        <div class="capability-tools">Nmap · Burp Suite · Metasploit · Web Application Security Testing · SQL Injection Testing · Authentication Testing · Linux Security · Active Directory Security Labs · Wireshark &amp; Traffic Analysis · Python &amp; Bash Scripting</div>
-      </div>
-
-      <div class="capability-item">
-        <div class="capability-header">
-          <span class="capability-title">03 · Currently Developing</span>
-        </div>
-        <div class="capability-tools">Red Team Operations · SOC &amp; SIEM Fundamentals · Detection Engineering · Advanced Web Security Testing</div>
-      </div>
-    </div>
-    <p class="skill-legend">Evidence-based categories: Production Experience = day-job infrastructure &amp; firewall administration · Hands-on Experience = labs, security research &amp; tooling · Currently Developing = active training (eJPT, TryHackMe Jr Penetration Tester path, Blue-Team-Studies, PortSwigger labs). No self-rated percentages.</p>
-  </section>
+<section id="soc-operations"><div class="section-label">03 / blue team development</div><h2><span class="hash">##</span> Security Operations. // Learning with evidence.</h2>
+<p class="projects-intro">A transparent view of my defensive-security learning path. Each status reflects the current documentation in the <a href="https://github.com/KyrilosKamal/Blue-Team-Studies" target="_blank" rel="noopener noreferrer">Blue-Team-Studies repository</a>.</p>
+<div class="soc-grid">
+<article class="soc-card"><div class="soc-card-top"><span class="soc-index">01 / SOC FUNDAMENTALS</span><span class="soc-state complete">Notes completed</span></div><h3>SOC Team &amp; Analyst Foundations</h3><p>Study notes covering the SOC role, Blue Team responsibilities, analyst fundamentals, and common human and system attack vectors.</p><a href="https://github.com/KyrilosKamal/Blue-Team-Studies/tree/main/01-%20Blue%20Team%20Introduction" target="_blank" rel="noopener noreferrer">Review study notes ↗</a></article>
+<article class="soc-card"><div class="soc-card-top"><span class="soc-index">02 / SOC L1 OPERATIONS</span><span class="soc-state complete">Notes completed</span></div><h3>Alert Triage, Reporting &amp; Metrics</h3><p>Documented L1 triage workflow, alert classification, prioritization, reporting, workbooks, lookups, SLA, MTTD, MTTA, MTTR, and false-positive considerations.</p><a href="https://github.com/KyrilosKamal/Blue-Team-Studies/tree/main/02.%20SOC%20Team%20Internals" target="_blank" rel="noopener noreferrer">Review SOC notes ↗</a></article>
+<article class="soc-card"><div class="soc-card-top"><span class="soc-index">03 / WINDOWS TELEMETRY</span><span class="soc-state planned">Planned</span></div><h3>Windows Security Monitoring</h3><p>Next practical track: Security Event Logs, logon events (4624 / 4625), process creation (4688), Sysmon, PowerShell logging, and timeline investigation.</p><a href="https://github.com/KyrilosKamal/Blue-Team-Studies/tree/main/03-%20Windows%20Security%20Monitoring" target="_blank" rel="noopener noreferrer">View learning plan ↗</a></article>
+<article class="soc-card"><div class="soc-card-top"><span class="soc-index">04 / DETECTION ENGINEERING</span><span class="soc-state planned">Planned</span></div><h3>Detection Logic &amp; Validation</h3><p>Planned work on Sigma and SIEM queries, telemetry requirements, positive and benign test cases, false-positive review, tuning, and documented limitations.</p><a href="https://github.com/KyrilosKamal/Blue-Team-Studies/tree/main/04-%20Detection%20Engineering" target="_blank" rel="noopener noreferrer">View detection roadmap ↗</a></article>
+</div><p class="skill-legend">Status is taken from the repository README: completed means study notes exist; planned means practical work has not started. No SIEM detection is claimed as validated.</p></section>
 
   <section id="field-notes">
-    <div class="section-label">03 / field notes</div>
-    <h2><span class="hash">##</span> Practice makes prepared.</h2>
+    <div class="section-label">04 / technical write-ups</div>
+    <h2><span class="hash">##</span> Technical write-ups. // Evidence over assumptions.</h2>
     <div class="notes-grid" id="writeups-container"><noscript><p class="noscript-note">JavaScript is disabled — writeups are available on <a href="https://github.com/KyrilosKamal/Security-WriteUps-">GitHub</a> and <a href="https://kirll0s.medium.com/">Medium</a>.</p></noscript></div>
   </section>
 
   <section id="projects">
-    <div class="section-label">04 / featured projects</div>
-    <h2><span class="hash">##</span> Tools I built. // Source included.</h2>
+    <div class="section-label">05 / featured projects</div>
+    <h2><span class="hash">##</span> Selected projects. // Built, documented, reviewable.</h2>
     <p class="projects-intro">Real repositories from my <a href="https://github.com/KyrilosKamal" target="_blank" rel="noopener noreferrer">GitHub</a>. Security writeups live in <a href="https://github.com/KyrilosKamal/Security-WriteUps-" target="_blank" rel="noopener noreferrer">Security-WriteUps-</a>.</p>
     <div class="notes-grid">
       <div class="note-card">
@@ -1717,12 +1658,12 @@
         <a href="https://github.com/KyrilosKamal/PassCrypt" target="_blank" rel="noopener noreferrer" class="note-link">View Repository →</a>
       </div>
       <div class="note-card">
-        <div class="note-tag">Security Operations</div>
+        <div class="note-tag">Blue Team Learning Journal</div>
         <div class="note-title">Blue-Team-Studies</div>
-        <div class="note-desc">Defensive-security notes, Sigma rules, SPL/KQL queries, and lab write-ups (TryHackMe, LetsDefend, BTLO) mapped to MITRE ATT&amp;CK. AI-assisted study notes, verified against official docs and hands-on labs.</div>
-        <div class="note-meta"><strong>Problem:</strong> Structured defensive-security learning with a public, verifiable detection portfolio.</div>
-        <div class="note-meta"><strong>Contribution:</strong> Curated notes, Sigma/SPL/KQL detections, and lab write-ups mapped to MITRE ATT&amp;CK (AI-assisted, verified against docs and labs).</div>
-        <div class="note-tools"><span class="note-tool">Sigma</span><span class="note-tool">SPL/KQL</span><span class="note-tool">MITRE ATT&amp;CK</span></div>
+        <div class="note-desc">Structured learning journal for SOC operations, alert triage and reporting, Windows security monitoring, and detection engineering. Current progress and planned practical work are explicitly tracked in the repository.</div>
+        <div class="note-meta"><strong>Scope:</strong> SOC fundamentals and SOC team operations notes completed; Windows monitoring and detection engineering practical work planned.</div>
+        <div class="note-meta"><strong>Method:</strong> Separate study notes from lab evidence; validate commands, queries, and detection logic before marking them tested.</div>
+        <div class="note-tools"><span class="note-tool">SOC L1</span><span class="note-tool">Windows Telemetry</span><span class="note-tool">Detection Engineering</span></div>
         <a href="https://github.com/KyrilosKamal/Blue-Team-Studies" target="_blank" rel="noopener noreferrer" class="note-link">View Repository →</a>
       </div>
       <div class="note-card">
@@ -1738,8 +1679,8 @@
   </section>
 
   <section id="bug-bounty">
-    <div class="section-label">05 / bug bounty</div>
-    <h2><span class="hash">##</span> Hunting in the wild.</h2>
+    <div class="section-label">06 / offensive security research</div>
+    <h2><span class="hash">##</span> Offensive security research. // A supporting perspective.</h2>
     <p class="bounty-legend"><strong>Status key:</strong> Validated / Triaged = confirmed and triaged by the program · Duplicate = independently identified, closed as a duplicate of a known issue (not a newly accepted vulnerability) · Informational = P5 / no security impact · Submitted / Pending = awaiting triage · Training / Lab = practice platform, not a bounty result. Severity labels are my submitted assessments unless a program explicitly assigned them; no bounty payouts are claimed. Details stay within each program's disclosure policy.</p>
     <p class="bounty-summary"><strong>At a glance:</strong> 9 case studies — 1 validated engagement (5 triaged findings) · 6 closed as duplicate (root causes independently confirmed) · 1 informational (P5) · 1 training platform. Expand any card for methodology and technical detail.</p>
 
@@ -1946,7 +1887,7 @@
   </section>
 
   <section id="experience">
-    <div class="section-label">06 / field operations</div>
+    <div class="section-label">07 / professional experience</div>
     <h2><span class="hash">##</span> Where I've made an impact.</h2>
 
     <div class="exp-timeline">
@@ -2014,7 +1955,7 @@
   </section>
 
   <section id="tryhackme">
-    <div class="section-label">07 / live fire exercises</div>
+    <div class="section-label">08 / security labs</div>
     <h2><span class="hash">##</span> TryHackMe Profile</h2>
 
     <div class="thm-container">
@@ -2053,7 +1994,7 @@
   </section>
 
   <section id="education">
-    <div class="section-label">08 / training &amp; credentials</div>
+    <div class="section-label">09 / education &amp; training</div>
     <h2><span class="hash">##</span> Foundation &amp; continuous learning.</h2>
 
     <div class="edu-grid">
@@ -2085,7 +2026,7 @@
   </section>
 
   <section id="certifications">
-    <div class="section-label">09 / certifications</div>
+    <div class="section-label">10 / certifications</div>
     <h2><span class="hash">##</span> Verified credentials. // Proof of work.</h2>
 
     <div class="cert-filter-bar">
@@ -2098,14 +2039,14 @@
   </section>
 
   <section id="badges">
-    <div class="section-label">10 / badges</div>
+    <div class="section-label">11 / badges</div>
     <h2><span class="hash">##</span> Digital credentials. // Verified achievements.</h2>
 
     <div class="badges-grid" id="badges-grid"><noscript><p class="noscript-note">JavaScript is disabled — badges are visible on my <a href="https://tryhackme.com/p/Hackth3Path">TryHackMe profile</a>.</p></noscript></div>
   </section>
 
   <section id="console">
-    <div class="section-label">11 / interactive demo</div>
+    <div class="section-label">12 / interactive demo</div>
     <h2><span class="hash">##</span> Interactive Shell</h2>
     <p class="thm-snapshot-note">Local portfolio simulation only. Commands do not execute on a system or send network traffic; scan and inject return illustrative sample output.</p>
 
@@ -2157,28 +2098,13 @@
     </div>
   </div>
 
-  <section id="focus">
-    <div class="section-label">12 / current focus</div>
-    <h2><span class="hash">##</span> What I'm working towards.</h2>
-
-    <div class="focus-card">
-      <div class="focus-header">
-        <div class="focus-icon" aria-hidden="true">🎯</div>
-        <div style="flex: 1; min-width: 200px;">
-          <div class="focus-title">Hands-on Cybersecurity Learning</div>
-          <div class="focus-platform">TryHackMe · Practical labs and learning paths</div>
-        </div>
-      </div>
-      <p class="focus-research">
-        I use structured labs to build practical skills in network security, web application testing, Linux, Windows, and defensive security.
-        Visit my <a href="https://tryhackme.com/p/Hackth3Path" target="_blank" rel="noopener noreferrer">TryHackMe profile</a> for current progress and achievements.
-      </p>
-    </div>
-  </section>
+  <section id="focus"><div class="section-label">13 / current focus</div><h2><span class="hash">##</span> Building toward Blue Team operations.</h2>
+<div class="focus-card"><div class="focus-header"><div class="focus-icon" aria-hidden="true">🛡️</div><div style="flex: 1; min-width: 200px;"><div class="focus-title">Blue Team &amp; SOC Analyst Development</div><div class="focus-platform">Blue-Team-Studies · TryHackMe · Structured practical roadmap</div></div></div>
+<p class="focus-research">Current documented progress includes Blue Team fundamentals and SOC team operations study notes. The next milestones are practical Windows telemetry collection, event correlation, detection-rule testing, and evidence-led incident investigation. Follow the <a href="https://github.com/KyrilosKamal/Blue-Team-Studies" target="_blank" rel="noopener noreferrer">public learning journal</a> for progress and technical notes.</p></div></section>
 
   <section id="contact">
-    <div class="section-label">13 / establish contact</div>
-    <h2><span class="hash">##</span> Have a system worth testing?</h2>
+    <div class="section-label">14 / establish contact</div>
+    <h2><span class="hash">##</span> Strengthening security operations starts with a conversation.</h2>
 
     <div class="contact-content">
       <p>I'm always open to conversations about security, learning, and opportunities to grow alongside a strong team.</p>
@@ -2588,11 +2514,22 @@
       function initThemeToggle() {
         const toggleBtn = document.getElementById('theme-toggle');
         if (!toggleBtn) return;
-        toggleBtn.addEventListener('click', () => {
-          document.body.classList.toggle('blue-team');
-          const isBlue = document.body.classList.contains('blue-team');
-          toggleBtn.textContent = isBlue ? '[ SWITCH TO RED TEAM ]' : '[ SWITCH TO BLUE TEAM ]';
+        let isBlue = document.body.classList.contains('blue-team');
+        try {
+          const savedTheme = localStorage.getItem('portfolio-theme');
+          if (savedTheme === 'offensive') isBlue = false;
+          if (savedTheme === 'blue') isBlue = true;
+        } catch (_) {}
+        const syncThemeControl = () => {
+          document.body.classList.toggle('blue-team', isBlue);
+          toggleBtn.textContent = isBlue ? '[ SWITCH TO OFFENSIVE VIEW ]' : '[ SWITCH TO BLUE TEAM ]';
           toggleBtn.setAttribute('aria-pressed', String(isBlue));
+        };
+        syncThemeControl();
+        toggleBtn.addEventListener('click', () => {
+          isBlue = !isBlue;
+          syncThemeControl();
+          try { localStorage.setItem('portfolio-theme', isBlue ? 'blue' : 'offensive'); } catch (_) {}
         });
       }
 
